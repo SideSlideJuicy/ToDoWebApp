@@ -12,11 +12,11 @@
 </head>
 <body>
     
-    <!-- NAV BAR -->
-    <div>
-        <nav>
+    <!-- TOP NAV BAR -->
+    <!-- <div> -->
+        <nav class="top-nav">
             <ul class="icons-left">
-                <li> <a href="#"> <i class="fa-solid fa-bars"></i> </a> </li>
+                <li> <a href="#" onclick="openSideMenu()"> <i class="fa-solid fa-bars"></i> </a> </li>
                 <li> <a href="#"> <i class="fa-solid fa-house"></i> </a> </li>
                 <li> <a href="#"> <i class="fa-solid fa-plus"></i> </a> </li>
             </ul>
@@ -60,7 +60,49 @@
 
             </ul>
         </nav>
+    <!-- </div> -->
+
+
+    <!-- SIDE NAV BAR -->
+    <div id="side-menu" class="side-nav">
+        <a href="#" onclick="closeSideMenu()"> <i class="fa-solid fa-xmark"></i> </a>
+        <a href="#">Tasks</a>
+        <a href="#">Views</a>
+        <a href="#">Filters</a>
     </div>
+
+
+
+
+
+    <div id="main">
+        <h1>Main view</h1>
+    </div>
+
+
+ 
+
+    <script>
+        function openSideMenu(){
+            document.getElementById('side-menu').style.width
+            = '250px';
+
+            document.getElementById('main').style.marginLeft
+            = '250px';
+        }
+
+        function closeSideMenu(){
+            document.getElementById('side-menu').style.width
+            = '0';
+
+            document.getElementById('main').style.marginLeft
+            = '0';
+        }
+    </script>
+
+
+
+
 
     <script>
         let subMenu = document.getElementById("subMenu");

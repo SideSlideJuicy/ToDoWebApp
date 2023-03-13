@@ -4,78 +4,101 @@
 }
 
 body{
-    /* background: #eceaff; */
+    /* background: #f6f5ff; */
     padding: 0;
     margin: 0;
 }
 
 
 
+/* SIDE NAV BAR */
+.side-nav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+    .side-nav a{
+        padding: 10px 10px 10px 30px;
+        text-decoration: none;
+        font-size: 10px;
+        color: lightgrey;
+        display: block;
+        transition: 0.3s;
+    }
+
+        .side-nav a:hover{
+            color: white;
+            font-weight: 600;
+        }
+
+            .fa-solid.fa-xmark{
+                position: absolute;
+                top: 5px;
+                right: 22px;
+                font-size: 18px;
+                margin-left: 50px;
+            }
 
 
 
 
-/* NAVIGATION BAR */
-nav{
+/* TOP NAV BAR */
+nav.top-nav{
     height: 48px;
     width: 100%;
     background: #1a1a1a;
     position: sticky;
+    /* border-radius: 4px; */
 }
 
+    /* TOP NAV BAR ICONS POSITIONING */
+    nav ul.icons-left{
+        float: left;
+        margin-left: -12px;
+        margin-top: 14px;
+        
+    }
 
+    nav ul.icons-right{
+        float: right;
+        margin-right: 20px;
+        margin-top: 4px;
+    }
 
+        /* TOP NAV BAR LIST ITEMS */
+        .icons-left li{
+            list-style-type: none;
+            display: inline-block;
+        }
 
+        .icons-left li a{
+            text-decoration: none;
+            padding: 8px;
+            color: white;
+            /* border: 2px solid lightgrey; */
+            /* background: lightgrey; */
+            border-radius: 4px;
+        }
 
+        .user-pic{
+            width: 36px;
+            border: 2px solid grey;
+            border-radius: 50%;
+        }
 
-
-/* NAV BAR ICONS POSITIONING */
-nav ul.icons-left{
-    float: left;
-    margin-left: -12px;
-    margin-top: 14px;
-    
-}
-
-nav ul.icons-right{
-    float: right;
-    margin-right: 20px;
-    margin-top: 4px;
-}
-
-
-
-
-
-
-
-
-/* LIST ITEMS STYLING */
-ul li{
-    list-style-type: none;
-    display: inline-block;
-}
-
-ul li a{
-    text-decoration: none;
-    padding: 8px;
-    color: white;
-    border: 2px solid lightgrey;
-    background: lightgrey;
-    border-radius: 4px;
-}
-
-.user-pic{
-    width: 36px;
-    border: 2px solid grey;
-    border-radius: 50%;
-}
-
-
-
-
-
-
+            /* TOP NAV BAR LIST ITEMS HOVERS */
+            ul li:hover a{
+                background: rgb(92, 92, 92);
+            }
 
 
 
