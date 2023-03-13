@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- NAV BAR -->
+    <div>
+        <nav>
+            <ul class="icons-left">
+                <li> <a href="#"> <i class="fa-solid fa-bars"></i> </a> </li>
+                <li> <a href="#"> <i class="fa-solid fa-house"></i> </a> </li>
+                <li> <a href="#"> <i class="fa-solid fa-plus"></i> </a> </li>
+            </ul>
+
+            <ul class="icons-right">
+                <img src="empty.jpg" class="user-pic" onclick="toggleMenu() ">
+                
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            <img src="empty.jpg">
+                            <h2>Matti Meikäläinen</h2>
+                        </div>
+                        <hr>
+
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-solid fa-user"></i>
+                            <p>Edit Profile</p>
+                            <span>></span>
+                        </a>
+
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-solid fa-gear"></i>
+                            <p>Settings & Privacy</p>
+                            <span>></span>
+                        </a>
+
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <p>Help & Support</p>
+                            <span>></span>
+                        </a>
+
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        let subMenu = document.getElementById("subMenu");
+
+        function toggleMenu(){
+            subMenu.classList.toggle("open-menu");
+        }
+    </script>
+
+
+
+
+
+</body>
+</html>
