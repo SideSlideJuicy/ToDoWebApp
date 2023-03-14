@@ -12,11 +12,20 @@
 </head>
 <body>
     
+    <input type="checkbox" id="check">
+
     <!-- TOP NAV BAR -->
-    <!-- <div> -->
+    <!-- <div> --> 
         <nav class="top-nav">
             <ul class="icons-left">
-                <li> <a href="#" onclick="openSideMenu()"> <i class="fa-solid fa-bars"></i> </a> </li>
+                <li>
+                    <a href="#">
+                        <label for="check"> 
+                            <i class="fa-solid fa-bars" id="menu_btn"></i>
+                        </label>
+                    </a>
+                </li>
+
                 <li> <a href="#"> <i class="fa-solid fa-house"></i> </a> </li>
                 <li> <a href="#"> <i class="fa-solid fa-plus"></i> </a> </li>
             </ul>
@@ -64,8 +73,7 @@
 
 
     <!-- SIDE NAV BAR -->
-    <div id="side-menu" class="side-nav">
-        <a href="#" onclick="closeSideMenu()"> <i class="fa-solid fa-xmark"></i> </a>
+    <div class="side-nav">
         <a href="#">Tasks</a>
         <a href="#">Views</a>
         <a href="#">Filters</a>
@@ -74,36 +82,20 @@
 
 
 
+    <!-- CONTENT SECTION -->
 
-    <div id="main">
-        <h1>Main view</h1>
-    </div>
+        <div class="content">
+            <h1>Main</h1>
+            <p>Lorem ipsum dolor sit amet. Qui laudantium iure sed harum voluptatibus et eveniet dolores et laudantium dolores hic corrupti alias. Ad velit voluptate id quos quaerat et deleniti quia. Hic pariatur beatae non alias possimus ut voluptate accusantium a deleniti cupiditate qui nobis nesciunt est architecto Quis ad cumque cupiditate. Sit suscipit nobis vel animi molestias et assumenda commodi ut tempore amet.
 
-
- 
-
-    <script>
-        function openSideMenu(){
-            document.getElementById('side-menu').style.width
-            = '250px';
-
-            document.getElementById('main').style.marginLeft
-            = '250px';
-        }
-
-        function closeSideMenu(){
-            document.getElementById('side-menu').style.width
-            = '0';
-
-            document.getElementById('main').style.marginLeft
-            = '0';
-        }
-    </script>
+                Nam velit quos est voluptas nemo ut quas ipsa et doloremque nulla ab facere saepe est quas inventore sit ipsum ratione. Et rerum illum et porro itaque et nihil officia qui illum natus hic repudiandae eligendi. At eveniet fugiat vel corporis laborum sit tenetur quia a voluptatum numquam sit adipisci mollitia et delectus consequatur et tenetur adipisci?
+                
+                Id accusantium nobis aut facilis odit non odio possimus non recusandae tempore quo repudiandae animi. Ad laborum neque sit quis modi vel incidunt dicta ut facere magnam id natus esse sed commodi quos. Aut debitis eaque qui sunt officia id quia assumenda sed porro libero 33 autem harum sit quia modi aut enim rerum.</p>
+        </div>
 
 
 
-
-
+    
     <script>
         let subMenu = document.getElementById("subMenu");
 
