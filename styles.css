@@ -24,17 +24,21 @@ body{
 }
 
     .side-nav a{
-        padding: 20px 20px 0px 55px;
+        padding: 0px 20px 0px 55px;
+        margin-top: 10px;
         text-decoration: none;
         font-size: 13px;
         color: lightgrey;
         display: block;
         transition: 0.3s;
+        box-sizing: border-box;
+        line-height: 30px;
     }
 
         .side-nav a:hover{
             color: white;
             font-weight: 600;
+            background: #0c5d6e;
         }
         
 /* TOP NAV BAR */
@@ -101,16 +105,9 @@ nav.top-nav{
     text-align: center;
 }
 
-
-
-
-
-
-
-
-
-
-
+.fa-solid.fa-bars{
+    color: white;
+}
 
 
 
@@ -138,11 +135,13 @@ label #menu_btn{
             margin: 20px 20px 20px 170px;
         }
 
-            /* #check:checked ~ .content {
-                background-color: rgba(0, 0, 0, 0.5);
-            } */
+            #check:checked ~ * .fa-solid.fa-bars{
+                color: #19b3d3;
+            }
 
-
+                /* #check:checked ~ .content {
+                    background-color: rgba(0, 0, 0, 0.5);
+                } */
 
 
 
