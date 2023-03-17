@@ -103,40 +103,74 @@
                     <h6 id="date">Date</h6>
                 </div>
 
-                <div class="content-right">
-                    <a href="#"><i class="fa-solid fa-arrow-down"></i></a>
-                    <a href="#">Sorted by due time</a>
-                </div>
+                <ul class="content-right">
+                    <li><a href="#"><i class="fa-solid fa-arrow-down"></i></a></li>
+                    <li><a href="#">Sorted by due time</a></li>
+                </ul>
             </nav>
-            <hr>
+            <!-- <hr> -->
 
 
 
-            <div class="Upcoming">
-                <a href="#"><i class="fa-solid fa-sort-down"></i></a>
-                <a href="#">Upcoming</a>
+            <div class="upcoming-content">
+
+                <div class="upcoming-nav">
+
+                <input type="checkbox" id="upcoming">
+
+                    <a href="#">
+                        <label for="upcoming">
+                            <i class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i>
+                        </label>
+                    </a>
+
+                    <p>Upcoming</p>
+
+                    <hr>
+                </div>
+                
                 <div class="task">
                     <p>
                         Go to market
                     </p>
+
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
                 </div>
 
                 <div class="task">
                     <p>
                         Teams meeting
                     </p>
+
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
                 </div>
             </div>
 
-            <hr>
+            <!-- <hr> -->
 
-            <div class="Completed">
-                <a href="#"><i class="fa-solid fa-sort-down"></i></a>
-                <a href="#">Completed</a>
+            <div class="completed-nav">
+
+                <input type="checkbox" id="completed">
+
+                <a href="#">
+                    <label for="completed">
+                        <i class="fa-solid fa-caret-down rotate" id="dropdown-btn-completed"></i>
+                    </label>
+                </a>
+
+                <p>Completed</p>
+
+                <hr>
+                
                 <div class="task">
                     <p>
                         Tennis
                     </p>
+
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
                 </div>
             </div>
 

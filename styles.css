@@ -159,6 +159,7 @@ nav.top-nav{
 .content .fa-regular.fa-clock{
     color: #22242a;
     margin-right: 10px;
+    font-size: 30px;
 }
 
 
@@ -175,50 +176,178 @@ nav.top-nav{
 .content-nav{
     height: 70px;
     width: 100%;
-    background: #cee4e8;
+    background: rgb(207, 233, 242);
     position: sticky;
+    /* background: linear-gradient(lightblue, white); */
+    
 }
 
     .content-nav .content-left{
         list-style-type: none;
-        display: inline-block;
-        text-decoration: none;
-        padding: 8px;
-        border-radius: 4px;
+        /* display: inline-block; */
+        /* text-decoration: none; */
+        /* padding: 8px; */
+        /* border-radius: 4px; */
     }
 
         .content-nav h1{
             float: left;
-            margin-left: 30px;
+            margin-left: 20px;
         }
 
             .content h6{
                 float: left;
                 color: #22242a;
-                margin-top: 40px;
+                margin-top: 37px;
                 margin-left: 10px;
             }
 
-.content-nav .content-right{
-    float: right;
-}
-
-    .content-right{
+    .content-nav .content-right{
+        float: right;
         margin-top: 40px;
+        /* padding: 8px; */
+        border-radius: 4px;
+        margin-right: 4px;
+        
     }
 
-        .content-right a{
-            padding: 8px;
-            color: black;
-            text-decoration: none;
-            font-size: 13px;
-            transition: 0.3s;
+        .content-right li{
+            list-style-type: none;
+            display: inline-block;
         }
 
-            .content-right:hover a{
-                background: #19b3d3;
+        .content-right li a{
+            text-decoration: none;
+                    padding: 8px;
+                    color: white;
+                    border-radius: 4px;
+            
+        }
+
+            .content-nav ul li a{
+                padding: 8px;
+                color: black;
+                text-decoration: none;
+                font-size: 13px;
+                transition: 0.3s;
             }
 
+                .content-nav ul li:hover a{
+                    background: #7dc9d8;
+                }
+
+
+
+
+#upcoming{
+    display: none;
+}
+
+    .fa-solid.fa-caret-down{
+        font-size: 15px;
+        color: black;
+        margin-left: 10px;
+        margin-top: 4px;
+        transition: 0.5s;
+    }
+
+        #upcoming:checked ~ * .fa-solid.fa-caret-down {
+            transform: rotate(-90deg);
+        }
+
+
+#completed{
+    display: none;
+}
+
+    .fa-solid.fa-caret-down{
+        font-size: 15px;
+        color: black;
+        margin-left: 10px;
+        margin-top: 4px;
+        transition: 0.5s;
+    }
+
+        #completed:checked ~ * .fa-solid.fa-caret-down {
+            transform: rotate(-90deg);
+        }
+
+
+
+
+
+
+.upcoming-nav{
+    margin-top: 30px;
+    width: 100%;
+    height: 25px;
+    /* background: green; */
+    /* border: 2px solid black; */
+    border-radius: 4px;
+    /* display: inline-block; */
+    /* text-decoration: none; */
+    /* display: inline; */
+}
+
+    .upcoming-nav a{
+        /* text-decoration: none; */
+        /* color: blue; */
+        text-decoration: none;
+    }
+
+        .upcoming-nav p{
+            display: inline;
+            text-decoration: none;
+        }
+
+
+
+
+
+.completed-nav{
+    margin-top: 30px;
+    width: 100%;
+    height: 25px;
+    /* background: green; */
+    /* border: 2px solid black; */
+    border-radius: 4px;
+    /* display: inline-block; */
+    /* text-decoration: none; */
+    /* display: inline; */
+}
+
+    .completed-nav a{
+        /* text-decoration: none; */
+        /* color: blue; */
+        text-decoration: none;
+    }
+
+        .completed-nav p{
+            display: inline;
+            text-decoration: none;
+        }
+
+
+
+
+
+
+.task{
+    height: 25px;
+    width: 100%;
+    margin: 10px;
+    /* border: 2px solid green; */
+}
+
+.task a{
+    display: inline;
+    float: right;
+    margin-right: 10px;
+}
+
+.task p{
+    display: inline;
+}
 
 
 
@@ -227,6 +356,12 @@ nav.top-nav{
 
 
 
+
+
+.upcoming-content{
+    /* border: 2px solid blue; */
+    border-radius: 4px;
+}
 
 
 
