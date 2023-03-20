@@ -112,15 +112,14 @@
 
 
 
-            <div class="upcoming-content">
-
+            
                 <div class="upcoming-nav">
 
                 <input type="checkbox" id="upcoming">
 
                     <a href="#">
                         <label for="upcoming">
-                            <i class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i>
+                            <i onclick="upcoming()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i>
                         </label>
                     </a>
 
@@ -129,6 +128,8 @@
                     <hr>
                 </div>
                 
+
+            <div id="upcoming-content" class="upcoming-content">
                 <div class="task">
                     <p>
                         Go to market
@@ -156,14 +157,17 @@
 
                 <a href="#">
                     <label for="completed">
-                        <i class="fa-solid fa-caret-down rotate" id="dropdown-btn-completed"></i>
+                        <i onclick="completed()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-completed"></i>
                     </label>
                 </a>
 
                 <p>Completed</p>
 
                 <hr>
+
+            </div>
                 
+            <div id="completed-content" class="completed-content">
                 <div class="task">
                     <p>
                         Tennis
@@ -179,12 +183,15 @@
         </div>
 
 
+    <script src="untitled.js"></script>
+
+
     <script>
         n =  new Date();
         y = n.getFullYear();
         m = n.getMonth() + 1;
         d = n.getDate();
-        document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+        document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
     </script>
     
     <script>
