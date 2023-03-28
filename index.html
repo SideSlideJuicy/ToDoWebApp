@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,124 +11,70 @@
     
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    
-    <input type="checkbox" id="check">
-    
-
-    <!-- TOP NAV BAR -->
+    <input type="checkbox" id="bars-btn-checkbox"> <!-- muuta tämän id -->
+    <header class="page-header">
         <nav class="top-nav">
-
-            <img src="empty.jpg" class="user-pic" onclick="toggleMenu() ">
-
-            <ul class="icons-left">
-                <li>
-                    <a href="#">
-                        <label for="check"> 
-                            <i class="fa-solid fa-bars" id="menu_btn"></i>
-                        </label>
-                    </a>
-                </li>
-
-                <li> <a href="#"> <i class="fa-solid fa-house"></i> </a> </li>
-                <li> <a href="#"> <i class="fa-solid fa-plus"></i> </a> </li>
+            <ul class="items-left">
+                <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
+                <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-plus"></i></a></li>
             </ul>
-
-
             
-            <ul class="icons-right">
-
+            <ul class="items-right">
                 <input type="search">
-                <li> <a href="#"> <i class="fa-solid fa-magnifying-glass"></i> </a> </li>
-                <li> <a href="#"> <i class="fa-solid fa-bell"></i> </a> </li>
-
-                
-                
-                
-
-                <div class="sub-menu-wrap" id="subMenu">
-                    <div class="sub-menu">
-                        <div class="user-info">
-                            <img src="empty.jpg">
-                            <h2>Jussi Nevalainen</h2>
-                        </div>
-                        <hr>
-
-                        <a href="#" class="sub-menu-link">
-                            <i class="fa-solid fa-user"></i>
-                            <p>Edit Profile</p>
-                            <span>></span>
-                        </a>
-
-                        <a href="#" class="sub-menu-link">
-                            <i class="fa-solid fa-gear"></i>
-                            <p>Settings & Privacy</p>
-                            <span>></span>
-                        </a>
-
-                        <a href="#" class="sub-menu-link">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <p>Help & Support</p>
-                            <span>></span>
-                        </a>
-
-                        <a href="#" class="sub-menu-link">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <p>Logout</p>
-                            <span>></span>
-                        </a>
-                    </div>
-                </div>
-
+                <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+                <li><a href="#"><img src="empty.jpg" class="user-pic"></a></li>
             </ul>
         </nav>
+    </header>
+
+    <nav class="side-nav">
+        <div class="items-up">
+            <a href="#"> <i class="fa-solid fa-pen-to-square"></i> Tasks</a>
+            <a href="#"> <i class="fa-solid fa-eye"></i> Views</a>
+            <a href="#"> <i class="fa-solid fa-filter"></i> Filters</a>
+        </div>
+
+        <div class="items-bottom">
+
+        </div>
+    </nav>
 
 
-    <!-- SIDE NAV BAR -->
-    <div class="side-nav">
-        <a href="#"> <i class="fa-solid fa-pen-to-square"></i> Tasks</a>
-        <a href="#"> <i class="fa-solid fa-eye"></i> Views</a>
-        <a href="#"> <i class="fa-solid fa-filter"></i> Filters</a>
-    </div>
+    <main class="content">
+        <header class="content-header">
+            <div class="content-left">
+                <h1><i class="fa-regular fa-clock"></i>Today</h1>
+                <h6 id="date">Date</h6>
+            </div>
+
+            <ul class="content-right">
+                <li><a href="#"><i class="fa-solid fa-arrow-down"></i></a></li>
+                <li><a href="#">Sorted by due time</a></li>
+            </ul>
+        </header>
 
 
 
+        <section class="upcoming-tasks">
+            <div class="upcoming-nav">
 
-    <!-- CONTENT -->
+            <input type="checkbox" id="upcoming">
 
-        <div class="content">
+                <a href="#">
+                    <label for="upcoming">
+                        <i onclick="upcoming()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i>
+                    </label>
+                </a>
 
-            <nav class="content-nav">
-                <div class="content-left">
-                    <h1><i class="fa-regular fa-clock"></i>Today</h1>
-                    <h6 id="date">Date</h6>
-                </div>
+                <p>Upcoming</p>
 
-                <ul class="content-right">
-                    <li><a href="#"><i class="fa-solid fa-arrow-down"></i></a></li>
-                    <li><a href="#">Sorted by due time</a></li>
-                </ul>
-            </nav>
-            <!-- <hr> -->
-
-
-
+                <hr>
+            </div>
             
-                <div class="upcoming-nav">
-
-                <input type="checkbox" id="upcoming">
-
-                    <a href="#">
-                        <label for="upcoming">
-                            <i onclick="upcoming()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i>
-                        </label>
-                    </a>
-
-                    <p>Upcoming</p>
-
-                    <hr>
-                </div>
-                
 
             <div id="upcoming-content" class="upcoming-content">
                 <div class="task">
@@ -148,9 +95,11 @@
                     <a href="#">Delete</a>
                 </div>
             </div>
+        </section>
 
-            <!-- <hr> -->
 
+
+        <section class="completed-tasks">
             <div class="completed-nav">
 
                 <input type="checkbox" id="completed">
@@ -177,34 +126,25 @@
                     <a href="#">Delete</a>
                 </div>
             </div>
+        </section>
+    </main>
 
 
 
-        </div>
+
+    <footer>
+        
+    </footer>
+
+
+
+
+
+
+
 
 
     <script src="untitled.js"></script>
-
-
-    <script>
-        n =  new Date();
-        y = n.getFullYear();
-        m = n.getMonth() + 1;
-        d = n.getDate();
-        document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
-    </script>
-    
-    <script>
-        let subMenu = document.getElementById("subMenu");
-
-        function toggleMenu(){
-            subMenu.classList.toggle("open-menu");
-        }
-    </script>
-
-
-
-
 
 </body>
 </html>

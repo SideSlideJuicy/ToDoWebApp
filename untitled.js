@@ -33,3 +33,25 @@ function completed()
         display2 = 1;
     }
 }
+
+
+
+
+
+
+
+
+// Date
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+
+
+
+// let subMenu = document.getElementById("subMenu");
+
+// function toggleMenu(){
+//     subMenu.classList.toggle("open-menu");
+// }
