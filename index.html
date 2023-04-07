@@ -37,7 +37,7 @@
         </nav>
     </header>
 
-    <!-- SIDE NAVIGATINO BAR -->
+    <!-- SIDE NAVIGATION BAR -->
     <nav class="side-nav">
         <div class="items-up">
             <a href="#"> <i class="fa-solid fa-pen-to-square"></i> Tasks</a>
@@ -65,10 +65,15 @@
             </div>
 
             <ul class="content-right">
-                <li><a href="#"><i class="fa-solid fa-arrow-down"></i></a></li>
+                <input type="checkbox" id="sorting">
+                <li><a href="#"><label for="sorting"><i class="fa-solid fa-arrow-down rotate"></i></label></a></li>
                 <li><a href="#">Sorted by due time</a></li>
             </ul>
         </header>
+
+
+
+
 
 
 
@@ -79,9 +84,9 @@
 
                 <input type="checkbox" id="upcoming">
 
-                    <a href="#"><label for="upcoming"><i onclick="upcoming()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i></label></a>
+                    <a href="#"><label for="upcoming"><i onclick="upcoming()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-upcoming"></i></label></a>
 
-                    <p>Upcoming</p>
+                    <p>Upcoming</p><i class="fa-solid fa-spinner"></i><p class="task-count">2</p>
 
                 <hr>
             </nav>
@@ -90,6 +95,7 @@
             <div id="upcoming-content" class="upcoming-content">
                 <div class="task">
                     <h5>Go to market</h5>
+                    <p class="task-description">Task description here</p>
                     <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
                     
                     <ul class="task-buttons">
@@ -102,6 +108,7 @@
 
                 <div class="task">
                     <h5>Teams meeting</h5>
+                    <p class="task-description">Task description here</p>
                     <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
 
                     <ul class="task-buttons">
@@ -115,6 +122,37 @@
         </section>
 
 
+                <!-- OVERDUE TASKS -->
+                <section class="overdue-tasks">
+                    <nav class="overdue-nav">
+        
+                        <input type="checkbox" id="overdue">
+        
+                            <a href="#"><label for="overdue"><i onclick="overdue()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-overdue"></i></label></a>
+        
+                            <p>Overdue</p><i class="fa-solid fa-triangle-exclamation"></i><p class="task-count">1</p>
+        
+                        <hr>
+                    </nav>
+                    
+                    <!-- TASKS -->
+                    <div id="overdue-content" class="overdue-content">
+                        <div class="task">
+                            <h5>Learn mathematics</h5>
+                            <p class="task-description">Task description here</p>
+                            <p><i class="fa-solid fa-calendar-days"></i>7.January</p>
+                            
+                            <ul class="task-buttons">
+                                <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                                <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                                <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                                <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                            </ul>    
+                        </div>
+                    </div>
+                </section>
+
+
 
 
 
@@ -126,14 +164,13 @@
 
                 <a href="#">
                     <label for="completed">
-                        <i onclick="completed()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-completed"></i>
+                        <i onclick="completed()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-completed"></i>
                     </label>
                 </a>
 
-                <p>Completed</p>
+                <p>Completed</p><i class="fa-solid fa-square-check"></i><p class="task-count">1</p>
 
                 <hr>
-
             </div>
                 
             <div id="completed-content" class="completed-content">
@@ -141,6 +178,7 @@
                     <h5>
                         Tennis
                     </h5>
+                    <p class="task-description">Task description here</p>
                     <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
 
                     <ul class="task-buttons">
