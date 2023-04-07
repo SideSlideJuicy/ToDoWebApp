@@ -12,8 +12,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<!-- BODY -->
 <body>
-    <input type="checkbox" id="bars-btn-checkbox"> <!-- muuta tämän id -->
+
+    <!-- CHECKBOX FOR SIDENAV -->
+    <input type="checkbox" id="bars-btn-checkbox">
+
+    <!-- TOP NAVIGATION BAR -->
     <header class="page-header">
         <nav class="top-nav">
             <ul class="items-left">
@@ -24,13 +29,15 @@
             
             <ul class="items-right">
                 <input type="search">
+                <img src="empty.jpg" class="user-pic">
                 <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
-                <li><a href="#"><img src="empty.jpg" class="user-pic"></a></li>
+                
             </ul>
         </nav>
     </header>
 
+    <!-- SIDE NAVIGATINO BAR -->
     <nav class="side-nav">
         <div class="items-up">
             <a href="#"> <i class="fa-solid fa-pen-to-square"></i> Tasks</a>
@@ -44,7 +51,13 @@
     </nav>
 
 
+
+
+
+    <!-- MAIN CONTENT -->
     <main class="content">
+
+        <!-- MAIN CONTENT HEADER -->
         <header class="content-header">
             <div class="content-left">
                 <h1><i class="fa-regular fa-clock"></i>Today</h1>
@@ -59,46 +72,53 @@
 
 
 
+
+        <!-- UPCOMING TASKS -->
         <section class="upcoming-tasks">
-            <div class="upcoming-nav">
+            <nav class="upcoming-nav">
 
-            <input type="checkbox" id="upcoming">
+                <input type="checkbox" id="upcoming">
 
-                <a href="#">
-                    <label for="upcoming">
-                        <i onclick="upcoming()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i>
-                    </label>
-                </a>
+                    <a href="#"><label for="upcoming"><i onclick="upcoming()" class="fa-solid fa-caret-down rotate" id="dropdown-btn-upcoming"></i></label></a>
 
-                <p>Upcoming</p>
+                    <p>Upcoming</p>
 
                 <hr>
-            </div>
+            </nav>
             
-
+            <!-- TASKS -->
             <div id="upcoming-content" class="upcoming-content">
                 <div class="task">
-                    <p>
-                        Go to market
-                    </p>
-
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <h5>Go to market</h5>
+                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
+                    
+                    <ul class="task-buttons">
+                        <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                    </ul>    
                 </div>
 
                 <div class="task">
-                    <p>
-                        Teams meeting
-                    </p>
+                    <h5>Teams meeting</h5>
+                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
 
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <ul class="task-buttons">
+                        <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                    </ul>  
                 </div>
             </div>
         </section>
 
 
 
+
+
+        <!-- COMPLETED TASKS -->
         <section class="completed-tasks">
             <div class="completed-nav">
 
@@ -118,12 +138,17 @@
                 
             <div id="completed-content" class="completed-content">
                 <div class="task">
-                    <p>
+                    <h5>
                         Tennis
-                    </p>
+                    </h5>
+                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
 
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
+                    <ul class="task-buttons">
+                        <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                    </ul>  
                 </div>
             </div>
         </section>
