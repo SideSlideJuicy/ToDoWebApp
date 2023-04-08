@@ -1,35 +1,33 @@
 *{
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 }
 
 body{
     margin: 0;
 }
 
-/* PAGE HEADER */
+/* TOP NAV BAR */
 .top-nav{
     height: 48px;
     width: 100%;
     background: #22242a;
+    justify-content: space-between;
+    display: flex;
 }
 
-    nav ul.items-left{
-        float: left;
-        margin-left: -30px;
+    .top-nav ul li{
+        list-style-type: none;
+        display: inline-block;
     }
 
-    nav ul.items-right{
-        float: right;
-    }
-
-        .items-left li{
-            list-style-type: none;
-            display: inline-block;
+        nav ul.items-left{
+            float: left;
+            margin-left: -30px;
         }
 
-        .items-right li{
-            list-style-type: none;
-            display: inline-block;
+        nav ul.items-right{
+            float: right;
         }
 
             .items-left li a{
@@ -69,6 +67,10 @@ body{
                                     display: none;
                                 }
 
+                                #search{
+                                    display: inline-block;
+                                }
+
                                     #bars-btn-checkbox:checked ~ .side-nav {
                                         left: 0;
                                     }
@@ -89,6 +91,12 @@ body{
                                                     border-radius: 50%;
                                                     margin: -10px 10px 0px 10px;
                                                 }
+
+                                                    @media (max-width: 500px){
+                                                        #search{
+                                                            display: none;
+                                                        }
+                                                    }
 
 /* SIDE NAV BAR */
 .side-nav{
@@ -130,22 +138,24 @@ body{
 
 
 
+/* SORTING ARROW */
+#sorting{
+    display: none;
+}
 
-        #sorting{
-            display: none;
+    .fa-solid.fa-arrow-down{
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+        #sorting:checked ~ * .fa-solid.fa-arrow-down {
+            transform: rotate(-180deg);
         }
 
-            .fa-solid.fa-arrow-down{
-                transition: 0.5s;
-                cursor: pointer;
-            }
+
+
+
         
-                #sorting:checked ~ * .fa-solid.fa-arrow-down {
-                    transform: rotate(-180deg);
-                }
-
-
-
 /* MAIN CONTENT */
 .content{
     margin: 20px 20px 20px 20px;
@@ -526,10 +536,14 @@ body{
 
 
 
+.fa-solid.fa-calendar-days{
+    margin: 0px 5px 0px 0px;
+}
 
 
-
-
+.fa-solid.fa-clock-rotate-left{
+    margin: 0px 5px 0px 0px;
+}
 
 
 
