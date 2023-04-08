@@ -21,7 +21,7 @@
             <ul class="items-left">
                 <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
                 <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-plus"></i></a></li>
+                <li><a href="#" onclick="newTask()"><i class="fa-solid fa-plus"></i></a></li>
             </ul>
             
             <ul class="items-right">
@@ -47,6 +47,15 @@
     </aside>
 
 
+    <!-- NEW TASK -->
+    <div class="new-task" id="add-new-task">
+        <div class="overlay"></div>
+            <div class="new-content">
+                <div class="close-btn" onclick="newTask()"><i class="fa-solid fa-xmark"></i></div>
+                <input type="text" class="task-name" placeholder="Task name">
+                <input type="text" class="task-description" placeholder="Description">
+            </div>
+    </div>
 
 
 
