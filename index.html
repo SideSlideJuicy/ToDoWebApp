@@ -17,7 +17,7 @@
     <input type="checkbox" id="bars-btn-checkbox">
 
     <header class="page-header">
-        <nav class="top-nav">
+        <nav class="top-nav" id="navbar">
             <ul class="items-left">
                 <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
                 <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
@@ -34,7 +34,7 @@
         </nav>
     </header>
 
-    <nav class="side-nav">
+    <aside class="side-nav">
         <div class="items-up">
             <a href="#"> <i class="fa-solid fa-pen-to-square"></i> Tasks</a>
             <a href="#"> <i class="fa-solid fa-eye"></i> Views</a>
@@ -44,7 +44,7 @@
         <div class="items-bottom">
 
         </div>
-    </nav>
+    </aside>
 
 
 
@@ -89,14 +89,15 @@
             
             <!-- TASKS -->
             <div id="upcoming-content" class="upcoming-content">
+
                 <div class="task">
                     <h5>Go to market</h5>
-                    <p class="task-description">Task description here</p>
+                    <p>Task description here</p>
                     <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
                     <p><i class="fa-solid fa-clock-rotate-left"></i>12:30</p>
                     
                     <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
                         <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
@@ -104,13 +105,55 @@
                 </div>
 
                 <div class="task">
-                    <h5>Teams meeting</h5>
+                    <h5>Meeting</h5>
                     <p>Task description here</p>
                     <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
                     <p><i class="fa-solid fa-clock-rotate-left"></i>14:20</p>
 
                     <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
+                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                    </ul>  
+                </div>
+
+                <div class="task">
+                    <h5>Meeting</h5>
+                    <p>Task description here</p>
+                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i>14:20</p>
+
+                    <ul class="task-buttons">
+                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
+                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                    </ul>  
+                </div>
+
+                <div class="task">
+                    <h5>Meeting</h5>
+                    <p>Task description here</p>
+                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i>14:20</p>
+
+                    <ul class="task-buttons">
+                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
+                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                    </ul>  
+                </div>
+
+                <div class="task">
+                    <h5>Meeting</h5>
+                    <p>Task description here</p>
+                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
+                    <p><i class="fa-solid fa-clock-rotate-left"></i>14:20</p>
+
+                    <ul class="task-buttons">
+                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
                         <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
@@ -142,7 +185,7 @@
                             <p><i class="fa-solid fa-clock-rotate-left"></i>9:30</p>
                             
                             <ul class="task-buttons">
-                                <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                                <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
                                 <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
                                 <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
                                 <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
@@ -177,12 +220,12 @@
                     <h5>
                         Tennis
                     </h5>
-                    <p class="task-description">Task description here</p>
+                    <p>Task description here</p>
                     <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
                     <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
 
                     <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-regular fa-square"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
                         <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>

@@ -69,6 +69,26 @@ document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 
 
 
+
+
+
+
+
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
 // let subMenu = document.getElementById("subMenu");
 
 // function toggleMenu(){

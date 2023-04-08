@@ -1,6 +1,6 @@
 *{
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 body{
@@ -67,12 +67,14 @@ body{
                                 display: none;
                             }
 
-                                #bars-btn-checkbox:checked ~ .side-nav {
+                                #bars-btn-checkbox:checked ~ aside {
                                     left: 0;
+                                    /* position: -webkit-sticky; */
+                                    /* position: sticky; */
                                 }
 
                                     #bars-btn-checkbox:checked ~ .content {
-                                        margin: 20px 20px 20px 170px;
+                                        margin: 68px 20px 20px 170px;
                                     }
 
                                         #bars-btn-checkbox:checked ~ * .fa-solid.fa-bars{
@@ -108,16 +110,16 @@ body{
 
 
 /* SIDE NAV BAR */
-.side-nav{
-    position: absolute;
+aside{position: fixed;
     width: 150px;
     height: 100%;
     background-color: #2c3e50;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
     left: -150px;
-    z-index: 1;
     transition: left 0.5s ease-in-out;
+    margin-top: -20px;
 }
+
 
     .side-nav a{
         padding: 0px 20px 0px 48px;
@@ -175,7 +177,8 @@ body{
         
 
 .content{
-    margin: 20px 20px 20px 20px;
+    /* position: fixed; */
+    margin: 68px 20px 20px 20px;
     height: 600px;
     transition: margin 0.5s ease-in-out;
     /* background-color: lightblue; */
@@ -192,7 +195,7 @@ body{
     height: 70px;
     width: 100%;
     background: rgb(207, 233, 242);
-    
+    border-radius: 4px;
 }
 
 .content-header .content-left{
@@ -269,13 +272,16 @@ body{
             padding: 2px;
             margin: 20px 0px 0px 0px;
             cursor: pointer;
-            
-
+            transition: 0.5s;
+            border-radius: 3px;
+            /* background: blue; */
         }
 
             .content .task h5{
                 padding: 5px;
                 margin: 0px 0px 0px 30px;
+                /* display: inline-block; */
+                /* background: red; */
             }        
 
                 .content .task p{
@@ -302,6 +308,7 @@ body{
                         padding: 8px;
                         border-radius: 4px;
                         margin: -48px 0px 0px 0px;
+                        /* transition: 0.5s; */
                         /* display: none; */
                         
                     }
@@ -334,13 +341,13 @@ body{
                             }
                             
                             
-                            @media (min-width: 550px){
+                            @media (min-width: 740px){
                                 .task p{
                                     display: inline-block;
                                 }
                             }
 
-                            @media (max-width: 550px){
+                            @media (max-width: 740px){
                                 .content .task{
                                     height: 100px;
                                 }
@@ -364,6 +371,18 @@ body{
                                         /* box-sizing: border-box; */
                                         /* line-height: 30px; */
                                     }
+                            }
+
+                            @media (max-width: 260px){
+                                .fa-solid.fa-plus{
+                                    display: none;
+                                }
+                            }
+
+                            @media (max-width: 200px){
+                                .fa-solid.fa-house{
+                                    display: none;
+                                }
                             }
 
 
@@ -702,8 +721,17 @@ body{
 
 
 
-
-
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* margin-top: 48px; */
+  }
+  
+  .sticky + .content {
+    padding-top: 48px;
+    /* margin-top: 48px; */
+  }
 
 
 
