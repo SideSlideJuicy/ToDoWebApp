@@ -74,4 +74,18 @@ document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 
 function newTask(){
     document.getElementById("add-new-task").classList.toggle("active");
+    document.getElementById('task-name').value = "";
+    document.getElementById('task-description').value = "";
+    document.getElementById("add-btn").disabled = true; 
+}
+
+
+function btnActivation(){
+
+    if(!document.getElementById('task-name').value.length){
+        document.getElementById("add-btn").disabled = true;            
+    }else{
+        document.getElementById("add-btn").disabled = false;
+
+    }           
 }

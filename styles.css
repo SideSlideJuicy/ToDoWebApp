@@ -538,7 +538,7 @@ aside{
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 3;
     display: none;
 }
@@ -558,10 +558,18 @@ aside{
     box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.5);
 }
 
-.close-btn{
+
+
+.add-btn{
     position: absolute;
     right: 20px;
-    top: 20px; 
+    bottom: 20px; 
+}
+
+.cancel-btn{
+    position: absolute;
+    right: 100px;
+    bottom: 20px; 
 }
 
 .new-task.active .overlay{

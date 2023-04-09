@@ -51,9 +51,10 @@
     <div class="new-task" id="add-new-task">
         <div class="overlay"></div>
             <div class="new-content">
-                <div class="close-btn" onclick="newTask()"><i class="fa-solid fa-xmark"></i></div>
-                <input type="text" class="task-name" placeholder="Task name">
-                <input type="text" class="task-description" placeholder="Description">
+                <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="btnActivation()">
+                <input type="text" class="task-description" id="task-description" placeholder="Description">
+                <button class="cancel-btn" onclick="newTask()">Cancel</button>
+                <button class="add-btn" type="button" id="add-btn" disabled>Add task</button>
             </div>
     </div>
 
