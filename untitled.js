@@ -71,7 +71,7 @@ document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 
 
 
-
+// Enable / Disable Scroll
 Scroll = (
     function(){
           var x,y;
@@ -104,34 +104,25 @@ Scroll = (
           }
     })();
 
-
-
 function newTaskButton(){
     document.getElementById("new-task").classList.toggle("active");
     Scroll.disable(0,document.body.scrollTop);
-
-    document.getElementById('task-name').value = "";
-    document.getElementById('task-description').value = "";
-    document.getElementById("add-btn").disabled = true; 
-    document.getElementById('date').checked = false;
-    document.getElementById('time').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('notifications').checked = false;
-
-
-        
-    
-
+    clearNewTaskContent()
 }
 
+function addTaskButton(){
+    document.getElementById("new-task").classList.toggle("active");
+    Scroll.enable();
+    clearNewTaskContent()
+}
 
-        
+function cancelTaskButton(){
+    document.getElementById("new-task").classList.toggle("active");
+    Scroll.enable();
+    clearNewTaskContent()
+}
 
-        
-
-
-function btnActivation(){
+function addTaskButtonActivation(){
 
     if(!document.getElementById('task-name').value.length){
         document.getElementById("add-btn").disabled = true;            
@@ -140,34 +131,6 @@ function btnActivation(){
 
     }           
 }
-
-function addTaskButton(){
-    document.getElementById("new-task").classList.toggle("active");
-
-    document.getElementById('task-name').value = "";
-    document.getElementById('task-description').value = "";
-    document.getElementById("add-btn").disabled = true; 
-    Scroll.enable();
-}
-
-function cancelTaskButton(){
-    document.getElementById("new-task").classList.toggle("active");
-
-    document.getElementById('task-name').value = "";
-    document.getElementById('task-description').value = "";
-    document.getElementById("add-btn").disabled = true; 
-    Scroll.enable();
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -213,16 +176,6 @@ function notifications(){
 
 
 
-function preventScroll(e){
-    e.preventDefault();
-    e.stopPropagation();
-
-    return false;
-}
-
-var disableBodyScroll = function(){
-    
-}
 
 
 
@@ -232,7 +185,14 @@ var disableBodyScroll = function(){
 
 
 
-
+// Clear task content
 function clearNewTaskContent(){
-
+    document.getElementById('task-name').value = "";
+    document.getElementById('task-description').value = "";
+    document.getElementById("add-btn").disabled = false; 
+    document.getElementById('date').checked = false;
+    document.getElementById('time').checked = false;
+    document.getElementById('repeat').checked = false;
+    document.getElementById('priority').checked = false;
+    document.getElementById('notifications').checked = false;
 }
