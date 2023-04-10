@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     
     <link rel="stylesheet" href="styles.css">
@@ -47,35 +49,40 @@
     </aside>
 
     <form class="new-task" id="new-task">
-        <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
-            <section class="new-task-content">
-                <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
-                <input type="text" class="task-description" id="task-description" placeholder="Description">
-                    <ul class="task-icons">
-                        <input type="checkbox" id="date" class="checkbox">
-                        <input type="checkbox" id="time" class="checkbox">
-                        <input type="checkbox" id="repeat" class="checkbox">
-                        <input type="checkbox" id="priority" class="checkbox">
-                        <input type="checkbox" id="notifications" class="checkbox">
-                        <li><a href="#" onclick="date()"><label for="date"><i class="fa-regular fa-calendar"></i></label></a></li>
-                        <li><a href="#" onclick="time()"><label for="time"><i class="fa-regular fa-clock"></i></label></a></li>
-                        <li><a href="#" onclick="repeat()"><label for="repeat"><i class="fa-solid fa-repeat"></i></label></a></li>
-                        <li><a href="#" onclick="priority()"><label for="priority"><i class="fa-regular fa-flag"></i></label></a></li>
-                        <li><a href="#" onclick="notifications()"><label for="notifications"><i class="fa-regular fa-bell"></i></label></a></li>
-                    </ul>
+        <input type="checkbox" id="day" class="checkbox"> 
+        <input type="checkbox" id="time" class="checkbox">
+        <input type="checkbox" id="repeat" class="checkbox">
+        <input type="checkbox" id="priority" class="checkbox">
+        <input type="checkbox" id="notifications" class="checkbox">
 
-                <!-- <div class="window">
+            <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
+            
+                <section class="new-task-content">
+                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
+                    <input type="text" class="task-description" id="task-description" placeholder="Description">
+                    
+                        <ul>
+                            <li onclick="day()"><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
+                            <li onclick="time()"><label for="time"><i class="fa-regular fa-clock"></i></label></li>
+                            <li onclick="repeat()"><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
+                            <li onclick="priority()"><label for="priority"><i class="fa-regular fa-flag"></i></label></li>
+                            <li onclick="notifications()"><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
+                        </ul>
 
-                </div>
+                    <!-- <hr> -->
 
-                <hr> -->
+                    <div class="window">
+                        <div class="calendar">
+                    </div>
 
-                <div class="buttons">
-                    <button class="cancel-btn" onclick="cancelTaskButton()">Cancel</button>
-                    <button class="add-btn" onclick="addTaskButton()" type="button" id="add-btn" disabled>Add task</button>
-                </div>
-            </section>
-        </form>
+                    
+
+                    <div class="buttons">
+                        <button class="cancel-btn" onclick="cancelTaskButton()">Cancel</button>
+                        <button class="add-btn" onclick="addTaskButton()" type="button" id="add-btn" disabled>Add task</button>
+                    </div>
+                </section>
+    </form>
 
 
 

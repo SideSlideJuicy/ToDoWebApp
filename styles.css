@@ -1,5 +1,5 @@
 *{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Barlow', sans-serif;
 }
 
 body{
@@ -209,6 +209,7 @@ aside{
     .content-header h1{
         float: left;
         margin: 15px 0px 0px 10px;
+        font-family:sans-serif;
     }
 
         .content .date{
@@ -533,44 +534,48 @@ aside{
 
 
 
-    .new-task .overlay{
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.2);
-        z-index: 3;
-        display: none;
+.new-task .overlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    display: none;
+}
+
+    .new-task-content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: white;
+        width: 450px;
+        height: 250px;
+        z-index: 4;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.5);
     }
 
-        .new-task-content{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            width: 450px;
-            height: 230px;
-            z-index: 4;
-            padding: 20px;
-            box-sizing: border-box;
-            border-radius: 10px;
-            box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.5);
+        .new-task-content hr{
+            margin: 20px 0px 0px 0px;
+            height: 0px;
         }
 
-            .new-task-content hr{
-                margin: 20px 0px 0px 0px;
-                height: 0px;
+            .new-task.active .overlay{
+                display: block;
             }
-
-                .new-task.active .overlay{
-                    display: block;
+            
+                .new-task.active .new-task-content{
+                    transition: all 300ms ease-in-out;
+                    transform: translate(-50%, -50%) scale(1 );
                 }
-                
-                    .new-task.active .new-task-content{
-                        transition: all 300ms ease-in-out;
-                        transform: translate(-50%, -50%) scale(1 );
+
+                    input:focus{
+                        outline: none;
                     }
 
                         .new-task-content .task-name{
@@ -592,15 +597,206 @@ aside{
                                 margin: 5px 0px 0px 0px;
                             }
 
-/* .window{
+.window{
     position: flex;
     width: 100%;
-    height: 230px;
+    height: 0px;
     background: white;
     border: 1px solid rgb(175, 174, 174);
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    display: none;
+    transition: all 300ms ease-in-out;
+    /* display: none; */
+    /* transform: translate(0%, -50%) scale(0); */
+    /* transition: 0.5s; */
+    /* visibility: hidden; */
+    /* transition: visibility 0s linear 300ms, opacity 300ms; */
+}
+
+.new-task-content .window .calendar{
+    transition: all 300ms ease-in-out;
+    height: 0px;
+}
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    /* --calendar-bg-color: #262829; */
+    --calendar-font-color: black;
+    --weekdays-border-bottom-color: #404040;
+    --calendar-date-hover-color: #505050;
+    --calendar-current-date-color: lightgrey;
+    --calendar-today-color: linear-gradient(to bottom, #03a9f4, #2196f3);
+    --calendar-today-innerborder-color: transparent;
+    --calendar-nextprev-bg-color: transparent;
+    --next-prev-arrow-color : black;
+    --calendar-border-radius: 16px;
+    --calendar-prevnext-date-color: #484848
+}
+
+/* * {
+    padding: 0;
+    margin: 0;
 } */
+
+.calendar {
+    font-family: 'IBM Plex Sans', sans-serif;
+    position: relative;
+    max-width: 400px; /*change as per your design need */
+    min-width: 320px;
+    background: var(--calendar-bg-color);
+    color: var(--calendar-font-color);
+    margin: 20px auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-weight: normal;
+    border-radius: var(--calendar-border-radius);
+}
+
+.calendar-inner {
+    padding: 10px 10px;
+}
+
+.calendar .calendar-inner .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.calendar .calendar-inner .calendar-body div {
+    padding: 4px;
+    min-height: 30px;
+    line-height: 30px;
+    border: 1px solid transparent;
+    margin: 10px 2px 0px;
+}
+
+.calendar .calendar-inner .calendar-body div:nth-child(-n+7) {
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--weekdays-border-bottom-color);
+}
+
+.calendar .calendar-inner .calendar-body div:nth-child(-n+7):hover {
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--weekdays-border-bottom-color);
+}
+
+.calendar .calendar-inner .calendar-body div>a {
+    color: var(--calendar-font-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar .calendar-inner .calendar-body div:hover {
+    border: 1px solid var(--calendar-date-hover-color);
+    border-radius: 4px;
+}
+
+.calendar .calendar-inner .calendar-body div.empty-dates:hover {
+    border: 1px solid transparent;
+}
+
+.calendar .calendar-inner .calendar-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.calendar .calendar-inner .calendar-today-date {
+    display: grid;
+    text-align: center;
+    cursor: pointer;
+    margin: 3px 0px;
+    background: var(--calendar-current-date-color);
+    padding: 8px 0px;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-year-month {
+    display: flex;
+    min-width: 100px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next {
+    text-align: right;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-year-month .calendar-year-label,
+.calendar .calendar-inner .calendar-controls .calendar-year-month .calendar-month-label {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-today {
+    background: var(--calendar-today-color);
+    border-radius: 4px;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-today:hover {
+    border: 1px solid transparent;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-today a {
+    outline: 2px solid var(--calendar-today-innerborder-color);
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next a,
+.calendar .calendar-inner .calendar-controls .calendar-prev a {
+    color: var(--calendar-font-color);
+    font-family: arial, consolas, sans-serif;
+    font-size: 26px;
+    text-decoration: none;
+    padding: 4px 12px;
+    display: inline-block;
+    background: var(--calendar-nextprev-bg-color);
+    margin: 10px 0 10px 0;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next a svg,
+.calendar .calendar-inner .calendar-controls .calendar-prev a svg {
+    height: 20px;
+    width: 20px;
+}
+
+.calendar .calendar-inner .calendar-controls .calendar-next a svg path,
+.calendar .calendar-inner .calendar-controls .calendar-prev a svg path{
+    fill: var(--next-prev-arrow-color);
+}
+
+.calendar .calendar-inner .calendar-body .prev-dates,
+.calendar .calendar-inner .calendar-body .next-dates {
+    color: var(--calendar-prevnext-date-color);
+}
+
+.calendar .calendar-inner .calendar-body .prev-dates:hover,
+.calendar .calendar-inner .calendar-body .next-dates:hover {
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* NEW TASK -> BUTTONS */
 .buttons{
@@ -684,74 +880,136 @@ aside{
 
 
 
-input:focus{
-    outline: none;
-}
 
-
-.task-icons{
-    padding: 0px;
-    width: auto;
-    height: 50px;
+.new-task-content ul{
+    height: 60px;
     display: flex;
     list-style-type: none;
     align-items: center;
-    
-}
-
-.new-task-content ul{
-    margin: 0px;
     justify-content: center;
+    /* background: lightcyan; */
 }
 
-.new-task-content .task-icons li a{
-    font-size: 26px;
-    margin-right: 20px;
-    
-}
-
-.new-task-content ul li a{
-    
-    padding: 8px;
-    color: grey;
-    text-decoration: none;
-    font-size: 13px;
-    transition: 0.3s;
-    border-radius: 4px;
-
-}
-
-    .kaksi ul li:hover a{
-        font-size: 35px;
+    .new-task-content ul li{
+        font-size: 23px;
+        padding: 8px;
+        color: white;
+        /* background: lightblue; */
+        position: relative; left:-90px;
     }
 
+        .new-task-content ul li i{
+            cursor: pointer;
+            padding: 8px;
+            background: lightcoral;
+            border-radius: 5px;
+            transition: 0.5s;
+        }
+
+            .new-task-content ul li:hover i{
+                font-size: 35px;
+            }
 
 
-.new-task-content ul li i{
-    cursor: pointer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#day:checked ~ * .fa-regular.fa-calendar {
+    color: rgb(255, 213, 213);
+    font-size: 35px;
 }
 
-        #date:checked ~ * .fa-regular.fa-calendar {
-            color: rgb(29, 162, 206);
-            font-size: 40px;
+    #day:checked ~ .new-task-content .window{
+        height: 530px;
+    }
+
+        #day:checked ~ .new-task-content{
+            height: 800px;
         }
 
-        #time:checked ~ * .fa-regular.fa-clock {
-            color: rgb(29, 162, 206);
-            font-size: 40px;
-        }
+            #day:checked ~ .new-task-content .window .calendar{
+                height: 100vh;
+            }
 
-        #repeat:checked ~ * .fa-solid.fa-repeat {
-            color: rgb(29, 162, 206);
-            font-size: 40px;
-        }
 
-        #priority:checked ~ * .fa-regular.fa-flag {
-            color: rgb(29, 162, 206);
-            font-size: 40px;
-        }
 
-        #notifications:checked ~ * .fa-regular.fa-bell {
-            color: rgb(29, 162, 206);
-            font-size: 40px;
-        }
+
+
+#time:checked ~ * .fa-regular.fa-clock {
+    color: rgb(255, 213, 213);
+    font-size: 35px;
+}
+
+#time:checked ~ .new-task-content .window{
+    height: 230px;
+}
+
+#time:checked ~ .new-task-content{
+    height: 500px;
+}
+
+
+
+
+#repeat:checked ~ * .fa-solid.fa-repeat {
+    color: rgb(255, 213, 213);
+    font-size: 35px;
+}
+
+#repeat:checked ~ .new-task-content .window{
+    height: 230px;
+}
+
+#repeat:checked ~ .new-task-content{
+    height: 500px;
+}
+
+
+
+
+#priority:checked ~ * .fa-regular.fa-flag {
+    color: rgb(255, 213, 213);
+    font-size: 35px;
+}
+
+#priority:checked ~ .new-task-content .window{
+    height: 230px;
+}
+
+#priority:checked ~ .new-task-content{
+    height: 500px;
+}
+
+
+
+
+#notifications:checked ~ * .fa-regular.fa-bell {
+    color: rgb(255, 213, 213);
+    font-size: 35px;
+}
+
+#notifications:checked ~ .new-task-content .window{
+    height: 230px;
+}
+
+#notifications:checked ~ .new-task-content{
+    height: 500px;
+}
+
+
+
+
+
