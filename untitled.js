@@ -145,6 +145,13 @@ function clearNewTaskContent(){
     document.getElementById('task-name').value = "";
     document.getElementById('task-description').value = "";
     document.getElementById('set-date').value = "";
+    document.getElementById('set-time').value = "";
+
+    document.getElementById('day').checked = false;
+    document.getElementById('time').checked = false;
+    document.getElementById('repeat').checked = false;
+    document.getElementById('priority').checked = false;
+    document.getElementById('notifications').checked = false;
 
     for (var item of document.querySelectorAll(".number-item")) {
         item.classList.remove("calendar-select");
