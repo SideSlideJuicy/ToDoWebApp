@@ -55,11 +55,6 @@ function overdue()
 
 
 
-
-
-
-
-
 // Date
 n =  new Date();
 y = n.getFullYear();
@@ -104,6 +99,8 @@ Scroll = (
           }
     })();
 
+
+
 function newTaskButton(){
     document.getElementById("new-task").classList.toggle("active");
     Scroll.disable(0,document.body.scrollTop);
@@ -131,54 +128,12 @@ function addTaskButtonActivation(){
     }           
 }
 
-
-
-
-function day(){
-    document.getElementById('time').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('notifications').checked = false;
+ function onlyOne(checkbox) {
+    var checkboxes = document.getElementsByName('check')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
 }
-
-function time(){
-    document.getElementById('day').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('notifications').checked = false;
-}
-
-function repeat(){
-    document.getElementById('time').checked = false;
-    document.getElementById('day').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('notifications').checked = false;
-}
-
-function priority(){
-    document.getElementById('time').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('day').checked = false;
-    document.getElementById('notifications').checked = false;
-}
-
-function notifications(){
-    document.getElementById('time').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('day').checked = false;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -189,11 +144,11 @@ function clearNewTaskContent(){
     document.getElementById("add-btn").disabled = true;
     document.getElementById('task-name').value = "";
     document.getElementById('task-description').value = "";
-    document.getElementById('date').checked = false;
-    document.getElementById('time').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('notifications').checked = false;
+    document.getElementById('set-date').value = "";
+
+    for (var item of document.querySelectorAll(".number-item")) {
+        item.classList.remove("calendar-select");
+    }
 }
 
 
@@ -206,12 +161,14 @@ function clearNewTaskContent(){
 
 
 
+selection = false;
+selectedDay = value = 0;
+selectedMonth = value = 0;
+selectedYear = value = 0;
 
-
-
-//check the console for date click event
-//Fixed day highlight
-//Added previous month and next month view
+// check the console for date click event
+// Fixed day highlight
+// Added previous month and next month view
 
 function CalendarControl() {
     const calendar = new Date();
@@ -219,20 +176,7 @@ function CalendarControl() {
       localDate: new Date(),
       prevMonthLastDate: null,
       calWeekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-      calMonthName: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
+      calMonthName: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       daysInMonth: function (month, year) {
         return new Date(year, month, 0).getDate();
       },
@@ -276,22 +220,50 @@ function CalendarControl() {
         yearLabel.innerHTML = calendar.getFullYear();
       },
       displayMonth: function () {
-        let monthLabel = document.querySelector(
-          ".calendar .calendar-month-label"
-        );
+        let monthLabel = document.querySelector(".calendar .calendar-month-label");
         monthLabel.innerHTML = calendarControl.calMonthName[calendar.getMonth()];
       },
+
+
+
+
+
+      
+
+    //   SelectDate function
       selectDate: function (e) {
-        console.log(
-          `${e.target.textContent} ${
-            calendarControl.calMonthName[calendar.getMonth()]
-          } ${calendar.getFullYear()}`
-        );
+
+        selectedDay = e.target.textContent;
+        selectedMonth = calendar.getMonth() + 1;
+        selectedYear = calendar.getFullYear();
+
+        // set date into text box
+        document.getElementById("set-date").value = selectedDay + "/" + selectedMonth + "/" + selectedYear;
+
+        // 
+        for (var item of document.querySelectorAll(".number-item")) {
+            item.classList.remove("calendar-select");
+        }
+
+        // selected day
+        {
+            document.querySelectorAll(".number-item")[selectedDay - 1].classList.add("calendar-select");
+        }
+
       },
+
+
+
+
+
+
+
+
       plotSelectors: function () {
         document.querySelector(
           ".calendar"
-        ).innerHTML += `<div class="calendar-inner"><div class="calendar-controls">
+        ).innerHTML += 
+        `<div class="calendar-inner"><div class="calendar-controls">
           <div class="calendar-prev"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#666" d="M88.2 3.8L35.8 56.23 28 64l7.8 7.78 52.4 52.4 9.78-7.76L45.58 64l52.4-52.4z"/></svg></a></div>
           <div class="calendar-year-month">
           <div class="calendar-month-label"></div>
@@ -350,6 +322,7 @@ function CalendarControl() {
           ).innerHTML += `<div class="number-item" data-num=${count}><a class="dateNumber" href="#">${count++}</a></div>`;
         }
         calendarControl.highlightToday();
+        calendarControl.highlightSelect();
         calendarControl.plotPrevMonthDates(prevMonthDatesArray);
         calendarControl.plotNextMonthDates();
       },
@@ -358,23 +331,19 @@ function CalendarControl() {
         let nextBtn = document.querySelector(".calendar .calendar-next a");
         let todayDate = document.querySelector(".calendar .calendar-today-date");
         let dateNumber = document.querySelectorAll(".calendar .dateNumber");
-        prevBtn.addEventListener(
-          "click",
-          calendarControl.navigateToPreviousMonth
-        );
+        prevBtn.addEventListener("click", calendarControl.navigateToPreviousMonth);
         nextBtn.addEventListener("click", calendarControl.navigateToNextMonth);
-        todayDate.addEventListener(
-          "click",
-          calendarControl.navigateToCurrentMonth
-        );
+        todayDate.addEventListener("click", calendarControl.navigateToCurrentMonth);
         for (var i = 0; i < dateNumber.length; i++) {
-            dateNumber[i].addEventListener(
-              "click",
-              calendarControl.selectDate,
-              false
-            );
+
+            // console.log(i)
+
+            dateNumber[i].addEventListener("click",calendarControl.selectDate,false);
         }
       },
+
+
+    //   Highlight days
       highlightToday: function () {
         let currentMonth = calendarControl.localDate.getMonth() + 1;
         let changedMonth = calendar.getMonth() + 1;
@@ -390,6 +359,33 @@ function CalendarControl() {
             [calendar.getDate() - 1].classList.add("calendar-today");
         }
       },
+
+      highlightSelect: function () {
+        let setMonth = selectedMonth;
+        let changedMonth2 = calendar.getMonth() + 1;
+        let setYear = selectedYear;
+        let changedYear2 = calendar.getFullYear();
+        if (
+          setYear === changedYear2 &&
+          setMonth === changedMonth2 &&
+          document.querySelectorAll(".number-item")
+        )
+        
+        {
+        document
+            .querySelectorAll(".number-item")
+            [selectedDay - 1].classList.add("calendar-select");
+
+            
+        }
+      },
+
+
+
+
+
+
+
       plotPrevMonthDates: function(dates){
         dates.reverse();
         for(let i=0;i<dates.length;i++) {

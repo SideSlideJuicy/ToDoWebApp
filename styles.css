@@ -530,6 +530,9 @@ aside{
 
 
 
+.task-inputs{
+
+}
 
 
 
@@ -582,19 +585,19 @@ aside{
                             background-color:transparent;
                             border: 0px solid;
                             height:30px;
-                            width:260px;
+                            width:255px;
                             font-size: 30px;
-                            /* background: blue; */
+                            /* border-bottom: 1px solid grey; */
                         }
                         
                             .new-task-content .task-description{
                                 background-color:transparent;
                                 border: 0px solid;
                                 height:30px;
-                                width:260px;
+                                width:255px;
                                 font-size: 18px;
-                                /* background: red; */
                                 margin: 5px 0px 0px 0px;
+                                /* border-bottom: 1px solid grey; */
                             }
 
 .window{
@@ -619,35 +622,56 @@ aside{
 
 
 
+.set-date{
+    text-align: right;
+    position: absolute;
+    margin-right: auto;
+    top: 20px;
+    right: 20px;
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width:140px;
+    font-size: 30px;
+    color: grey;
+}
+
+.set-time{
+    text-align: right;
+    position: absolute;
+    margin-right: auto;
+    top: 57px;
+    right: 20px;
+    background-color:transparent;
+    border: 0px solid;
+    height:30px;
+    width:140px;
+    font-size: 18px;
+    color: grey;
+}
 
 
 
-
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
-    /* --calendar-bg-color: #262829; */
+    --calendar-bg-color: transparent;
     --calendar-font-color: black;
     --weekdays-border-bottom-color: #404040;
     --calendar-date-hover-color: #505050;
     --calendar-current-date-color: lightgrey;
-    --calendar-today-color: linear-gradient(to bottom, #03a9f4, #2196f3);
+    --calendar-today-color: rgb(216, 245, 255);
     --calendar-today-innerborder-color: transparent;
+    --calendar-select-color: rgb(36, 161, 202);
+    --calendar-select-innerborder-color: transparent;
     --calendar-nextprev-bg-color: transparent;
     --next-prev-arrow-color : black;
-    --calendar-border-radius: 16px;
-    --calendar-prevnext-date-color: #484848
+    --calendar-prevnext-date-color: #dedede;
 }
-
-/* * {
-    padding: 0;
-    margin: 0;
-} */
 
 .calendar {
     font-family: 'IBM Plex Sans', sans-serif;
     position: relative;
-    max-width: 400px; /*change as per your design need */
+    max-width: 400px;
     min-width: 320px;
     background: var(--calendar-bg-color);
     color: var(--calendar-font-color);
@@ -781,7 +805,39 @@ aside{
 .calendar .calendar-inner .calendar-body .next-dates:hover {
   border: 1px solid transparent;
   pointer-events: none;
+} 
+
+
+
+
+
+.calendar .calendar-inner .calendar-select-date {
+    display: grid;
+    text-align: center;
+    cursor: pointer;
+    margin: 3px 0px;
+    background: var(--calendar-current-date-color);
+    padding: 8px 0px;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
 }
+
+.calendar .calendar-inner .calendar-body .calendar-select {
+    background: var(--calendar-select-color);
+    border-radius: 4px;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-select:hover {
+    border: 1px solid transparent;
+}
+
+.calendar .calendar-inner .calendar-body .calendar-select a {
+    outline: 2px solid var(--calendar-select-innerborder-color);
+}
+
+
+
 
 
 
@@ -901,7 +957,7 @@ aside{
         .new-task-content ul li i{
             cursor: pointer;
             padding: 8px;
-            background: lightcoral;
+            background: rgb(116, 190, 215);
             border-radius: 5px;
             transition: 0.5s;
         }
@@ -928,7 +984,7 @@ aside{
 
 
 #day:checked ~ * .fa-regular.fa-calendar {
-    color: rgb(255, 213, 213);
+    color: rgb(255, 255, 255);
     font-size: 35px;
 }
 
@@ -949,7 +1005,7 @@ aside{
 
 
 #time:checked ~ * .fa-regular.fa-clock {
-    color: rgb(255, 213, 213);
+    color: rgb(255, 255, 255);
     font-size: 35px;
 }
 
@@ -965,7 +1021,7 @@ aside{
 
 
 #repeat:checked ~ * .fa-solid.fa-repeat {
-    color: rgb(255, 213, 213);
+    color: rgb(255, 255, 255);
     font-size: 35px;
 }
 
@@ -981,7 +1037,7 @@ aside{
 
 
 #priority:checked ~ * .fa-regular.fa-flag {
-    color: rgb(255, 213, 213);
+    color: rgb(255, 255, 255);
     font-size: 35px;
 }
 
@@ -997,7 +1053,7 @@ aside{
 
 
 #notifications:checked ~ * .fa-regular.fa-bell {
-    color: rgb(255, 213, 213);
+    color: rgb(255, 255, 255);
     font-size: 35px;
 }
 
@@ -1008,6 +1064,9 @@ aside{
 #notifications:checked ~ .new-task-content{
     height: 500px;
 }
+
+
+
 
 
 

@@ -5,19 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo</title>
 
+    <title>Todo</title>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
     <input type="checkbox" id="bars-btn-checkbox" class="checkbox">
-
     <header class="page-header">
         <nav class="top-nav" id="navbar">
             <ul class="items-left">
@@ -31,7 +27,6 @@
                 <img src="empty.jpg" class="user-pic">
                 <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
-                
             </ul>
         </nav>
     </header>
@@ -49,26 +44,31 @@
     </aside>
 
     <form class="new-task" id="new-task">
-        <input type="checkbox" id="day" class="checkbox"> 
-        <input type="checkbox" id="time" class="checkbox">
-        <input type="checkbox" id="repeat" class="checkbox">
-        <input type="checkbox" id="priority" class="checkbox">
-        <input type="checkbox" id="notifications" class="checkbox">
+        <input type="checkbox" id="day" class="checkbox" name="check" onclick="onlyOne(this)"> 
+        <input type="checkbox" id="time" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="repeat" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="priority" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="notifications" class="checkbox" name="check" onclick="onlyOne(this)">
 
             <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
             
                 <section class="new-task-content">
-                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
-                    <input type="text" class="task-description" id="task-description" placeholder="Description">
-                    
+                    <var class="task-inputs">
+                        <input type="text" id="set-date" class="set-date" placeholder="No date" readonly>
+                        <input type="text" id="set-time" class="set-time" placeholder="No time" readonly>
+                        <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
+                        <input type="text" class="task-description" id="task-description" placeholder="Description">
+                    </var>
+
                         <ul>
-                            <li onclick="day()"><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
-                            <li onclick="time()"><label for="time"><i class="fa-regular fa-clock"></i></label></li>
-                            <li onclick="repeat()"><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
-                            <li onclick="priority()"><label for="priority"><i class="fa-regular fa-flag"></i></label></li>
-                            <li onclick="notifications()"><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
+                            <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
+                            <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
+                            <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
+                            <li><label for="priority"><i class="fa-regular fa-flag"></i></label></li>
+                            <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
                         </ul>
 
+                        
                     <!-- <hr> -->
 
                     <div class="window">
@@ -83,6 +83,21 @@
                     </div>
                 </section>
     </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
