@@ -4,14 +4,12 @@
 
 body{
     margin: 0;
-    /* min-width: 0px; */
-    /* min-height: 0px; */
+    height: 100%;
+    overflow: hidden
 }
 
 .page-header{
     top: 0;
-    position: -webkit-sticky;
-    position: sticky;
     z-index: 2;
 }
 
@@ -26,40 +24,36 @@ body{
     width: 100%;
     background: #22242a;
     justify-content: space-between;
-    display: flex;
 }
 
-    .top-nav ul li{
-        list-style-type: none;
-        display: inline-block;
+    .top-nav ul.items-left{
+        float: left;
+        margin-left: -30px;
     }
 
-        nav ul.items-left{
-            float: left;
-            margin-left: -30px;
+    .top-nav ul.items-right{
+        float: right;
+    }
+        .top-nav ul li{
+            display: inline-block;
         }
 
-        nav ul.items-right{
-            float: right;
+        .top-nav ul li:hover a{
+            background: rgb(92, 92, 92);
         }
 
-            .items-left li a{
+            .top-nav ul li a{
                 text-decoration: none;
                 padding: 8px;
                 color: white;
                 border-radius: 4px;
             }
 
-            .items-right li a{
-                text-decoration: none;
-                padding: 8px;
-                color: white;
-                border-radius: 4px;
-            }
 
-                .top-nav ul li:hover a{
-                    background: rgb(92, 92, 92);
-                }
+
+
+
+
 
                     /* BARS BTN */
                     label #menu_btn{
@@ -80,7 +74,8 @@ body{
                                 }
 
                                     #bars-btn-checkbox:checked ~ .main-content {
-                                        margin: 20px 20px 20px 170px;
+                                        margin: 0px 0px 20px 170px;
+                                        width: calc(100% - 170px);
                                     }
 
                                         #bars-btn-checkbox:checked ~ * .fa-solid.fa-bars{
@@ -175,14 +170,20 @@ aside{
 
 
 
-/* html, body {margin: 0; height: 100%; overflow: hidden} */
 
 
 .main-content{
-    margin: 0px 20px 20px 20px;
-    height: 2500px;
-    transition: margin 0.5s ease-in-out;
+    position: absolute;
+    margin: 0px 0px 0px 20px;
+    width: calc(100% - 20px);
+    height: 94vh;
+    transition: all 0.5s ease-in-out;
+    /* transition: all ease-in-out; */
     /* background: rgb(255, 228, 228); */
+    overflow-y: scroll;
+    /* border: 5px solid blue; */
+    /* border-right: 20px solid lightgrey; */
+    
 }
 
 /* MAIN CONTENT HEADER */
@@ -193,13 +194,13 @@ aside{
 }
 
 .content-header{
+    /* margin-top: -50px; */
     z-index: 1;
     height: 70px;
-    width: 100%;
+    width: calc(100% - 20px);
     background: rgb(207, 233, 242);
-    /* background: white; */
     border-top: 20px solid white;
-    top: 48px;
+    top: 0px;
     position: -webkit-sticky;
     position: sticky;
 }
@@ -265,8 +266,9 @@ aside{
         float: right;
         color: #22242a;
         height: 0px;
-        width: calc(100% - 36px);
+        width: calc(100% - 56px);
         background: grey;
+        margin-right: 20px;
     }
 
 
@@ -274,7 +276,8 @@ aside{
         /* TASK CONTENT */
         .main-content .task{
             /* display: block; */
-            width: calc(100% - 38px);
+            
+            width: calc(100% - 58px);
             height: 55px;
             padding: 2px;
             margin: 4px 0px 0px 34px;
@@ -424,7 +427,7 @@ aside{
     width: 100%;
     height: 37px;
     border-top: 10px solid white;
-    top: 138px;
+    top: 90px;
     position: -webkit-sticky;
     position: sticky;
     display: block;
@@ -449,7 +452,7 @@ aside{
     width: 100%;
     height: 37px;
     border-top: 10px solid white;
-    top: 138px;
+    top: 90px;
     position: -webkit-sticky;
     position: sticky;
     display: block;
@@ -473,7 +476,7 @@ aside{
     width: 100%;
     height: 37px;
     border-top: 10px solid white;
-    top: 138px;
+    top: 90px;
     position: -webkit-sticky;
     position: sticky;
     display: block;
