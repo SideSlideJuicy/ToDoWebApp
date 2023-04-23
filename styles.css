@@ -668,7 +668,7 @@ main{
     width:140px;
     font-size: 10px;
     color: grey;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .set-time{
@@ -683,7 +683,7 @@ main{
     width:140px;
     font-size: 10px;
     color: grey;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 
