@@ -2,14 +2,12 @@
 // Inbox task counter
 var inbox_counter = 0;
 
-
 // Add new task
 window.addEventListener('load', () => {
     const form = document.querySelector('#new-task');
     const input_title = document.querySelector('#task-name');
-    // const input_description = document.querySelector('#task-description');
     const input_date = document.querySelector('#task-date');
-    // const input_time = document.querySelector('#task-time');
+    const input_time = document.querySelector('#task-time');
 
     const list_el = document.querySelector('#inbox-tasks');
 
@@ -17,9 +15,8 @@ window.addEventListener('load', () => {
         e.preventDefault();
 
         const title = input_title.value;
-        // const description = input_description.value;
         const date = input_date.value;
-        // const time = input_time.value;
+        const time = input_time.value;
 
         if (!title){
             return;
@@ -36,14 +33,6 @@ window.addEventListener('load', () => {
             task_title_el.innerText = title;
             task_el.appendChild(task_title_el);
 
-            // Description
-            // if(description){
-            //     const task_description_el = document.createElement("div");
-            //     task_description_el.classList.add("description");
-            //     task_description_el.innerText = description;
-            //     task_el.appendChild(task_description_el);
-            // }
-
             // Date
             if (date){
                 const task_date_icon_el = document.createElement("div");
@@ -58,40 +47,19 @@ window.addEventListener('load', () => {
             }
 
             // Time
-            // if(time){
-            //     const task_time_icon_el = document.createElement("div");
-            //     task_time_icon_el.classList.add("task-date-and-time");
-            //     task_time_icon_el.setAttribute("id", "time");
-            //     task_time_icon_el.innerHTML = '<i class="fa-solid fa-clock"</i>';
-            //     task_el.appendChild(task_time_icon_el);
+            if(time){
+                const task_time_icon_el = document.createElement("div");
+                task_time_icon_el.classList.add("task-date-and-time");
+                task_time_icon_el.setAttribute("id", "time");
+                task_time_icon_el.innerHTML = '<i class="fa-solid fa-clock"</i>';
+                task_el.appendChild(task_time_icon_el);
 
 
-            //     const task_time_el = document.createElement("p");
-            //     task_time_el.innerText = time;
-            //     task_time_icon_el.appendChild(task_time_el);
-            // }
+                const task_time_el = document.createElement("p");
+                task_time_el.innerText = time;
+                task_time_icon_el.appendChild(task_time_el);
+            }
         }
-
-
-        
-
-
-
-
-
-
-        
-
-
-
-        
-
-
-
-
-
-
-
 
         // Task counter value 
         inbox_counter += 1;
@@ -106,7 +74,19 @@ window.addEventListener('load', () => {
 
 
 
+
+
+
+
+
+
+
+
+
+// 
 document.getElementById("time").disabled = true;
+
+
 
 
 
@@ -202,6 +182,7 @@ function addTaskButton(){
     document.getElementById("new-task").classList.toggle("active");
     
     // uncheck all checkboxes
+    document.getElementById("time").checked = false;
     document.getElementById("time").disabled = true;
     document.getElementById('day').checked = false;
 
@@ -256,7 +237,7 @@ function clearNewTaskContent(){
         item.classList.remove("calendar-select");
     }
 
-    // document.getElementById('perse').value = "";
+    document.getElementById('perse').value = "";
 }
 
 // set time
@@ -459,7 +440,7 @@ function CalendarControl() {
       },
 
 
-    //   Highlight days
+    //   Highlight today's date
       highlightToday: function () {
         let currentMonth = calendarControl.localDate.getMonth() + 1;
         let changedMonth = calendar.getMonth() + 1;
@@ -476,6 +457,7 @@ function CalendarControl() {
         }
       },
 
+    //   Highlight selected date
       highlightSelect: function () {
         let setMonth = selectedMonth;
         let changedMonth2 = calendar.getMonth() + 1;
@@ -491,8 +473,6 @@ function CalendarControl() {
         document
             .querySelectorAll(".number-item")
             [selectedDay - 1].classList.add("calendar-select");
-
-            
         }
       },
 
