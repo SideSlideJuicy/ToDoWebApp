@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Todo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,106 +15,36 @@
 <body>
     <input type="checkbox" id="bars-btn-checkbox" class="checkbox">
     <header class="page-header">
-        <nav class="top-nav" id="navbar">
+        <nav class="top-nav">
             <ul class="items-left">
                 <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
-                <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
-                <li><a href="#" onclick="newTaskButton()"><i class="fa-solid fa-plus"></i></a></li>
             </ul>
-            
             <ul class="items-right">
-                <input type="search" id="search">
+                <li><a href="#" onclick="newTaskButton()"><i class="fa-solid fa-plus"></i></a></li>
+                <li><a href="#" onclick="homeButton()"><i class="fa-solid fa-home"></i></a></li>
                 <img src="empty.jpg" class="user-pic">
-                <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
             </ul>
         </nav>
     </header>
 
     <aside class="side-nav">
-        <div class="items-up">
-            <a href="#"> <i class="fa-solid fa-pen-to-square"></i> Tasks</a>
-            <a href="#"> <i class="fa-solid fa-eye"></i> Views</a>
-            <a href="#"> <i class="fa-solid fa-filter"></i> Filters</a>
-        </div>
-
-        <div class="items-bottom">
-
-        </div>
+        <a href="#"> <i class="fa-solid fa-layer-group"></i> Tasks</a>
+        <a href="#"> <i class="fa-solid fa-sun"></i> My day</a>
+        <a href="#"> <i class="fa-solid fa-star"></i> Important</a>
+        <a href="#"> <i class="fa-solid fa-tag"></i> Tags</a>
+        <a href="#"> <i class="fa-solid fa-calendar-days"></i> Calendar</a>
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
     </aside>
 
-    <form class="new-task" id="new-task">
-        <input type="checkbox" id="day" class="checkbox" name="check" onclick="onlyOne(this)"> 
-        <input type="checkbox" id="time" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="repeat" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="priority" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="notifications" class="checkbox" name="check" onclick="onlyOne(this)">
-
-            <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
-            
-                <section class="new-task-content">
-                    <var class="task-inputs">
-                        <input type="text" id="set-date" class="set-date" placeholder="No date" readonly>
-                        <input type="text" id="set-time" class="set-time" placeholder="No time" readonly>
-                        <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
-                        <input type="text" class="task-description" id="task-description" placeholder="Description">
-                    </var>
-
-                    <hr class="divider">
-
-                        <ul>
-                            <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
-                            <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
-                            <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
-                            <li><label for="priority"><i class="fa-regular fa-flag"></i></label></li>
-                            <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
-                        </ul>
-
-                        
-                    <!-- <hr> -->
-
-                    <div class="window">
-                        <div class="calendar">
-                    </div>
-
-                    
-
-                    <div class="buttons">
-                        <button class="cancel-btn" onclick="cancelTaskButton()">Cancel</button>
-                        <button class="add-btn" onclick="addTaskButton()" type="button" id="add-btn" disabled>Add task</button>
-                    </div>
-                </section>
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-
-
-        <!-- MAIN CONTENT HEADER -->
-        <header class="content-header">
-            <div class="content-left">
-                <h1><i class="fa-regular fa-clock"></i>Today</h1>
-                <h6 class="date" id="date">Date</h6>
+    <main>
+        <header class="main-header">
+            <div class="items-left">
+                <i class="fa-solid fa-layer-group"></i>
+                <h1 class="date-name">Tasks</h1>
+                <!-- <h6 class="date" id="date">Date</h6> -->
             </div>
 
-            <ul class="content-right">
+            <ul class="items-right">
                 <input type="checkbox" id="sorting" class="checkbox">
                 <li><a href="#"><label for="sorting"><i class="fa-solid fa-arrow-down rotate"></i></label></a></li>
                 <li><a href="#">Sorted by due time</a></li>
@@ -128,314 +58,121 @@
 
 
 
-        <!-- UPCOMING TASKS -->
-        <section class="upcoming-tasks">
-            <nav class="upcoming-nav">
+            <section class="upcoming-section">
+                <header class="section-header"> 
+                    <input type="checkbox" id="upcoming" class="checkbox">
+                    <label for="upcoming"><i onclick="upcoming()" class="fa-solid fa-chevron-down rotate"></i></label>
+                    <p>Upcoming</p> <p class="task-counter" id="upcoming-counter"><sup>0</sup></p>
+                    <hr>
+                </header>
 
-                <input type="checkbox" id="upcoming" class="checkbox">
-
-                    <a href="#"><label for="upcoming"><i onclick="upcoming()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-upcoming"></i></label></a>
-
-                    <p>Upcoming</p> <p class="task-count"><sup>2</sup></p>
-
-                <hr>
-            </nav>
-            
-            <!-- TASKS -->
-            <div id="upcoming-content" class="upcoming-content">
-
-                <div class="task">
-                    <h5>Go to market</h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>12:30</p>
-                    
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>    
+                <div class="upcoming-tasks" id="upcoming-tasks" >
+                    <!-- tänne taskit -->
                 </div>
+            </section>
 
-                <div class="task">
-                    <h5>Meeting</h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>14:20</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-            </div>
-        </section>
-
-
-        <!-- OVERDUE TASKS -->
-        <section class="overdue-tasks">
-            <nav class="overdue-nav">
-
-                <input type="checkbox" id="overdue" class="checkbox">
-
-                    <a href="#"><label for="overdue"><i onclick="overdue()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-overdue"></i></label></a>
-
-                    <p>Overdue</p> <p class="task-count"><sup>1</sup></p>
-
-                <hr>
-            </nav>
-            
-            <!-- TASKS -->
-            <div id="overdue-content" class="overdue-content">
-                <div class="task">
-                    <h5>Learn mathematics</h5>
-                    <p class="task-description">Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>7.January</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>9:30</p>
-                    
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>    
-                </div>
-
-                <div class="task">
-                    <h5>Learn JavaScript</h5>
-                    <p class="task-description">Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>7.January</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>9:30</p>
-                    
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>    
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- COMPLETED TASKS -->
-        <section class="completed-tasks">
-            <div class="completed-nav">
-
-                <input type="checkbox" id="completed" class="checkbox">
-
-                <a href="#">
-                    <label for="completed">
-                        <i onclick="completed()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-completed"></i>
-                    </label>
-                </a>
-
-                <p>Completed</p> <p class="task-count"><sup>1</sup></p>
-
-                <hr>
-            </div>
+            <section class="overdue-section">
+                <header class="section-header">
+                    <input type="checkbox" id="overdue" class="checkbox">
+                    <label for="overdue"><i onclick="overdue()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-overdue"></i></label>
+                    <p>Overdue</p> <p class="task-counter"><sup>1</sup></p>
+                    <hr>
+                </header>
                 
-            <div id="completed-content" class="completed-content">
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
+                <div class="overdue-tasks" id="overdue-tasks" >
+                    <!-- tänne taskit -->
                 </div>
+            </section>
 
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
+            <section class="completed-section">
+                <header class="section-header">
+                    <input type="checkbox" id="completed" class="checkbox">
+                        <label for="completed"><i onclick="completed()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-completed"></i></label>
 
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
+                    <p>Completed</p> <p class="task-counter"><sup>1</sup></p>
+
+                    <hr>
+                </header>
+                    
+                <div id="completed-tasks" class="completed-tasks">
+                    <div class="task">
+                        <input type="text" class="title" value="Title" readonly>
+                        <input type="text" class="description" value="Task description here" readonly>
+                        
+                        <div class="task-date-and-time">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <p>7.January</p> 
+                        </div>
+                        <div class="task-date-and-time">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <p>9:30</p>
+                        </div>
+
+                        
+                        <ul class="actions">
+                            <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
+                            <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
+                        </ul>   
+                    </div>
                 </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-
-                <div class="task">
-                    <h5>
-                        Tennis
-                    </h5>
-                    <p>Task description here</p>
-                    <p><i class="fa-solid fa-calendar-days"></i>11.April</p>
-                    <p><i class="fa-solid fa-clock-rotate-left"></i>18:00</p>
-
-                    <ul class="task-buttons">
-                        <li><a href="#"><i class="fa-solid fa-check"></i></a></li>
-                        <li><a href="#"><i class="fa-regular fa-star"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trash-can"></i></a></li>
-                    </ul>  
-                </div>
-            </div>
-        </section>
+            </section>
     </main>
+
+
+
+
+
+
+
+    <form class="new-task" id="new-task">
+        <input type="checkbox" id="day" class="checkbox" name="check" onclick="onlyOne(this)"> 
+        <input type="checkbox" id="time" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="repeat" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="priority" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="notifications" class="checkbox" name="check" onclick="onlyOne(this)">
+        <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
+            <section class="new-task-content">
+                <var class="task-inputs">
+                    <input type="text" class="set-date" id="task-date" placeholder="" readonly>
+                    <input type="text" class="set-time" id="task-time" placeholder="" readonly>
+                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
+                    <input type="text" class="task-description" id="task-description" placeholder="Description">
+                </var>
+
+                <hr class="divider">
+
+                    <ul>
+                        <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
+                        <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
+                        <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
+                        <li><label for="priority"><i class="fa-regular fa-flag"></i></label></li>
+                        <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
+                    </ul>
+
+                    
+                <!-- <hr> -->
+
+                <div class="window">
+                    <div class="calendar"></div>
+                    <div class="time"></div>
+                    <div class="repeat"></div>
+                </div>
+
+                
+
+                <div class="buttons">
+                    <button class="cancel-btn" onclick="cancelTaskButton()">Cancel</button>
+                    <button class="add-btn" value="Add task" onclick="addTaskButton()" type="submit" id="add-btn" disabled>Add</button>
+                </div>
+            </section>
+    </form>
+
+
+
+
+
 
 
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Todo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <input type="checkbox" id="bars-btn-checkbox" class="checkbox">
+    <header class="page-header">
+        <nav class="top-nav">
+            <ul class="items-left">
+                <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
+            </ul>
+            <ul class="items-right">
+                <li><a href="#" onclick="newTaskButton()"><i class="fa-solid fa-plus"></i></a></li>
+                <li><a href="#" onclick="homeButton()"><i class="fa-solid fa-home"></i></a></li>
+                <img src="empty.jpg" class="user-pic">
+            </ul>
+        </nav>
+    </header>
+
+    <aside class="side-nav">
+        <a href="#"> <i class="fa-solid fa-layer-group"></i> Tasks</a>
+        <a href="#"> <i class="fa-solid fa-sun"></i> My day</a>
+        <a href="#"> <i class="fa-solid fa-star"></i> Important</a>
+        <a href="#"> <i class="fa-solid fa-tag"></i> Tags</a>
+        <a href="#"> <i class="fa-solid fa-calendar-days"></i> Calendar</a>
+        <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+    </aside>
+
+    <main>
+        <header class="main-header">
+            <div class="items-left">
+                <i class="fa-solid fa-layer-group"></i>
+                <h1 class="date-name">Tasks</h1>
+            </div>
+
+            <ul class="items-right">
+                <input type="checkbox" id="sorting" class="checkbox">
+                <li><a href="#"><label for="sorting"><i class="fa-solid fa-arrow-down rotate"></i></label></a></li>
+                <li><a href="#">Sorted by due time</a></li>
+            </ul>
+        </header>
+
+        <section class="inbox-section">
+            <header class="section-header">
+                <input type="checkbox" id="inbox" class="checkbox">
+                <label for="inbox"><i onclick="inbox()" class="fa-solid fa-chevron-down rotate" id="dropdown-btn-inbox"></i></label>
+                <p>Inbox</p>
+                <sup><p class="task-counter" id="inbox-counter">0</p></sup>
+                <hr>
+            </header>
+
+            <div id="inbox-tasks" class="inbox-tasks">
+                <!-- Tasks here -->
+            </div>
+        </section>
+    </main>
+
+    <form class="new-task" id="new-task">
+        <input type="checkbox" id="day" class="checkbox" name="check" onclick="onlyOne(this)"> 
+        <input type="checkbox" id="time" class="checkTime" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="repeat" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="comment" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="tag" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="important" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="notifications" class="checkbox" name="check" onclick="onlyOne(this)">
+        <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
+            
+            <section class="new-task-content">
+   
+                
+                
+
+                    <input type="text" class="set-date" id="task-date" placeholder="date" onchange="setTimeIconActivation()" readonly>
+                    <input type="text" class="set-time" id="task-time" placeholder="time" readonly>
+                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
+                    <!-- <input type="text" class="task-description" id="task-description" placeholder="Description"> -->
+                    <!-- <textarea name="" id="" cols="30" rows="1"></textarea> -->
+                
+
+
+                <hr class="divider">
+
+                
+                <ul>
+                    <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
+                    <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
+                    <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
+                    <li><label for="comment"><i class="fa-solid fa-message"></i></label></li>
+                    <li><label for="tag"><i class="fa-solid fa-tag"></i></label></li>
+                    <li><label for="important"><i class="fa-regular fa-star"></i></label></li>
+                    <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
+                </ul>
+
+                    
+                <hr class="divider2">
+
+                <div class="window">
+                    <div class="calendar"></div>
+                    <div class="time">
+                        <input type="time" class="time-submit" name="perse" id="perse" onchange="timeSubmit()"><br /><br />
+                    </div>
+
+                </div>
+
+                
+
+                <div class="buttons">
+                    <button class="cancel-btn" onclick="cancelTaskButton()">Cancel</button>
+                    <button class="add-btn" value="Add task" onclick="addTaskButton()" type="submit" id="add-btn" disabled>Add</button>
+                </div>
+            </section>
+    </form>
+
+    <footer>
+        
+    </footer>
+
+    <script src="untitled.js"></script>
+
+</body>
+</html>

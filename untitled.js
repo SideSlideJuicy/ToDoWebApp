@@ -1,57 +1,183 @@
-var div = document.getElementById('upcoming-content');
-var display = 0;
+
+// Inbox task counter
+var inbox_counter = 0;
+
+
+// Add new task
+window.addEventListener('load', () => {
+    const form = document.querySelector('#new-task');
+    const input_title = document.querySelector('#task-name');
+    // const input_description = document.querySelector('#task-description');
+    const input_date = document.querySelector('#task-date');
+    // const input_time = document.querySelector('#task-time');
+
+    const list_el = document.querySelector('#inbox-tasks');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const title = input_title.value;
+        // const description = input_description.value;
+        const date = input_date.value;
+        // const time = input_time.value;
+
+        if (!title){
+            return;
+        }
+        else{
+            // Task element
+            const task_el = document.createElement("div");
+            task_el.classList.add("task");
+            list_el.appendChild(task_el);
+
+            // Title
+            const task_title_el = document.createElement("div");
+            task_title_el.classList.add("title");
+            task_title_el.innerText = title;
+            task_el.appendChild(task_title_el);
+
+            // Description
+            // if(description){
+            //     const task_description_el = document.createElement("div");
+            //     task_description_el.classList.add("description");
+            //     task_description_el.innerText = description;
+            //     task_el.appendChild(task_description_el);
+            // }
+
+            // Date
+            if (date){
+                const task_date_icon_el = document.createElement("div");
+                task_date_icon_el.classList.add("task-date-and-time");
+                task_date_icon_el.setAttribute("id", "date");
+                task_date_icon_el.innerHTML = '<i class="fa-solid fa-calendar-days"</i>';
+                task_el.appendChild(task_date_icon_el);
+
+                const task_date_el = document.createElement("p");
+                task_date_el.innerText = date;
+                task_date_icon_el.appendChild(task_date_el);
+            }
+
+            // Time
+            // if(time){
+            //     const task_time_icon_el = document.createElement("div");
+            //     task_time_icon_el.classList.add("task-date-and-time");
+            //     task_time_icon_el.setAttribute("id", "time");
+            //     task_time_icon_el.innerHTML = '<i class="fa-solid fa-clock"</i>';
+            //     task_el.appendChild(task_time_icon_el);
+
+
+            //     const task_time_el = document.createElement("p");
+            //     task_time_el.innerText = time;
+            //     task_time_icon_el.appendChild(task_time_el);
+            // }
+        }
+
+
+        
+
+
+
+
+
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+        // Task counter value 
+        inbox_counter += 1;
+        document.getElementById("inbox-counter").innerHTML = inbox_counter;
+
+       
+    })
+})
+
+
+
+
+
+
+document.getElementById("time").disabled = true;
+
+
+
+// Show / hide task sections
+var upcoming_tasks = document.getElementById('upcoming-tasks');
+var completed_tasks = document.getElementById('completed-tasks');
+var overdue_tasks = document.getElementById('overdue-tasks');
+var inbox_tasks = document.getElementById('inbox-tasks');
+var upcoming_display = 0;
+var completed_display = 0;
+var overdue_display = 0;
+var inbox_display = 0;
+
+function inbox()
+{
+    if(inbox_display == 1)
+    {
+        inbox_tasks.style.display = 'block';
+        inbox_display = 0;
+    }
+    else
+    {
+        inbox_tasks.style.display = 'none'; 
+        inbox_display = 1;
+    }
+}
 
 function upcoming()
 {
-    if(display == 1)
+    if(upcoming_display == 1)
     {
-        div.style.display = 'block';
-        display = 0;
+        upcoming_tasks.style.display = 'block';
+        upcoming_display = 0;
     }
     else
     {
-        div.style.display = 'none'; 
-        display = 1;
+        upcoming_tasks.style.display = 'none'; 
+        upcoming_display = 1;
     }
 }
-
-
-
-var div2 = document.getElementById('completed-content');
-var display2 = 0;
 
 function completed()
 {
-    if(display2 == 1)
+    if(completed_display == 1)
     {
-        div2.style.display = 'block';
-        display2 = 0;
+        completed_tasks.style.display = 'block';
+        completed_display = 0;
     }
     else
     {
-        div2.style.display = 'none'; 
-        display2 = 1;
+        completed_tasks.style.display = 'none'; 
+        completed_display = 1;
     }
 }
-
-
-
-var div3 = document.getElementById('overdue-content');
-var display3 = 0;
 
 function overdue()
 {
-    if(display3 == 1)
+    if(overdue_display == 1)
     {
-        div3.style.display = 'block';
-        display3 = 0;
+        overdue_tasks.style.display = 'block';
+        overdue_display = 0;
     }
     else
     {
-        div3.style.display = 'none'; 
-        display3 = 1;
+        overdue_tasks.style.display = 'none'; 
+        overdue_display = 1;
     }
 }
+
+
+
 
 
 
@@ -60,62 +186,31 @@ n =  new Date();
 y = n.getFullYear();
 m = n.getMonth() + 1;
 d = n.getDate();
-document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+// document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 
 
 
-
-
-// Enable / Disable Scroll
-Scroll = (
-    function(){
-          var x,y;
-         function hndlr(){
-            window.scrollTo(x,y);
-            //return;
-          }  
-          return {
-
-               disable : function(x1,y1){
-                    x = x1;
-                    y = y1;
-                   if(window.addEventListener){
-                       window.addEventListener("scroll",hndlr);
-                   } 
-                   else{
-                        window.attachEvent("onscroll", hndlr);
-                   }     
-
-               },
-               enable: function(){
-                      if(window.removeEventListener){
-                         window.removeEventListener("scroll",hndlr);
-                      }
-                      else{
-                        window.detachEvent("onscroll", hndlr);
-                      }
-               } 
-
-          }
-    })();
 
 
 
 function newTaskButton(){
     document.getElementById("new-task").classList.toggle("active");
-    Scroll.disable(0,document.body.scrollTop);
     clearNewTaskContent()
 }
 
 function addTaskButton(){
     document.getElementById("new-task").classList.toggle("active");
-    Scroll.enable();
-    clearNewTaskContent()
+    
+    // uncheck all checkboxes
+    document.getElementById("time").disabled = true;
+    document.getElementById('day').checked = false;
+
+    
+    
 }
 
 function cancelTaskButton(){
     document.getElementById("new-task").classList.toggle("active");
-    Scroll.enable();
     clearNewTaskContent()
 }
 
@@ -139,30 +234,38 @@ function addTaskButtonActivation(){
 
 
 
+
+
+
 // Clear task content
 function clearNewTaskContent(){
     document.getElementById("add-btn").disabled = true;
     document.getElementById('task-name').value = "";
-    document.getElementById('task-description').value = "";
-    document.getElementById('set-date').value = "";
-    document.getElementById('set-time').value = "";
-
+    // document.getElementById('task-description').value = "";
+    document.getElementById('task-date').value = "";
+    // document.getElementById('task-time').value = "";
+    document.getElementById("time").checked = false;
+    document.getElementById("time").disabled = true;
     document.getElementById('day').checked = false;
-    document.getElementById('time').checked = false;
-    document.getElementById('repeat').checked = false;
-    document.getElementById('priority').checked = false;
-    document.getElementById('notifications').checked = false;
+    // document.getElementById('time').checked = false;
+    // document.getElementById('repeat').checked = false;
+    // document.getElementById('priority').checked = false;
+    // document.getElementById('notifications').checked = false;
 
     for (var item of document.querySelectorAll(".number-item")) {
         item.classList.remove("calendar-select");
     }
+
+    // document.getElementById('perse').value = "";
 }
 
-
-
-
-
-
+// set time
+function timeSubmit(){
+    selectedTime = document.getElementById("perse").value;
+    document.getElementById("task-time").value = selectedTime;
+    
+}
+      
 
 
 
@@ -238,14 +341,17 @@ function CalendarControl() {
       
 
     //   SelectDate function
-      selectDate: function (e) {
+    selectDate: function (e) {
 
         selectedDay = e.target.textContent;
         selectedMonth = calendar.getMonth() + 1;
         selectedYear = calendar.getFullYear();
 
         // set date into text box
-        document.getElementById("set-date").value = selectedDay + "/" + selectedMonth + "/" + selectedYear;
+        document.getElementById("task-date").value = selectedDay + "/" + selectedMonth + "/" + selectedYear;
+
+        // enable time set
+        document.getElementById("time").disabled = false;
 
         // 
         for (var item of document.querySelectorAll(".number-item")) {
@@ -258,6 +364,9 @@ function CalendarControl() {
         }
 
       },
+
+
+
 
 
 
