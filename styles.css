@@ -651,6 +651,8 @@ main{
     /* transition: all 600ms ease-in;
     transition: all 200ms ease-out; */
     /* height: 0px; */
+    position: absolute;
+  right: 50%;
     visibility: hidden;
 }
 
