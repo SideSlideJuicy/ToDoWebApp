@@ -50,7 +50,7 @@ window.addEventListener('load', () => {
       task_date_el.innerText = date;
       task_date_icon_el.appendChild(task_date_el);
 
-      // tähän jos aika on asetettu
+      // IF TIME IS SET
       // Time
       const task_time_icon_el = document.createElement("div");
       task_time_icon_el.classList.add("date-and-time");
