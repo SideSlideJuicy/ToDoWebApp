@@ -2,102 +2,116 @@
 // Inbox task counter
 var inbox_counter = 0;
 
+// Selected date from date picker
+selectedDate = "";
+
+// Calendar date selection variables
+calendarDateSelected = false;
+selectedCalendarDay = 0;
+selectedCalendarMonth = 0;
+selectedCalendarYear = 0;
+
 // Add new task
 window.addEventListener('load', () => {
-    const form = document.querySelector('#new-task');
-    const input_title = document.querySelector('#task-name');
-    const input_date = document.querySelector('#task-date');
-    const input_time = document.querySelector('#task-time');
+  const form = document.querySelector('#new-task');
+  const input_title = document.querySelector('#task-name');
 
-    const list_el = document.querySelector('#inbox-tasks');
+  const list_el = document.querySelector('#inbox-tasks');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-        const title = input_title.value;
-        const date = input_date.value;
-        const time = input_time.value;
+    const title = input_title.value;
+    const date = selectedDate;
 
-        if (!title){
-            return;
-        }
-        else{
-            // Task element
-            const task_el = document.createElement("div");
-            task_el.classList.add("task");
-            list_el.appendChild(task_el);
+    if (!title) {
+        return;
+    }
+    
+    // Task element
+    const task_el = document.createElement("div");
+    task_el.classList.add("task");
+    list_el.appendChild(task_el);
 
-            // Title
-            const task_title_el = document.createElement("div");
-            task_title_el.classList.add("title");
-            task_title_el.innerText = title;
-            task_el.appendChild(task_title_el);
+    // Title
+    const task_title_el = document.createElement("div");
+    task_title_el.classList.add("title");
+    task_title_el.innerText = title;
+    task_el.appendChild(task_title_el);
 
-            // Date
-            if (date){
-                const task_date_icon_el = document.createElement("div");
-                task_date_icon_el.classList.add("task-date-and-time");
-                task_date_icon_el.setAttribute("id", "date");
-                task_date_icon_el.innerHTML = '<i class="fa-solid fa-calendar-days"</i>';
-                task_el.appendChild(task_date_icon_el);
+    // Date
+    if (date){
+      const task_date_icon_el = document.createElement("div");
+      task_date_icon_el.classList.add("date-and-time");
+      task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
+      task_el.appendChild(task_date_icon_el);
 
-                const task_date_el = document.createElement("p");
-                task_date_el.innerText = date;
-                task_date_icon_el.appendChild(task_date_el);
-            }
+      const task_date_el = document.createElement("p");
+      task_date_el.innerText = date;
+      task_date_icon_el.appendChild(task_date_el);
 
-            // Time
-            if(time){
-                const task_time_icon_el = document.createElement("div");
-                task_time_icon_el.classList.add("task-date-and-time");
-                task_time_icon_el.setAttribute("id", "time");
-                task_time_icon_el.innerHTML = '<i class="fa-solid fa-clock"</i>';
-                task_el.appendChild(task_time_icon_el);
+      // tähän jos aika on asetettu
+      // Time
+      const task_time_icon_el = document.createElement("div");
+      task_time_icon_el.classList.add("date-and-time");
+      task_time_icon_el.innerHTML = '<i class="fa-regular fa-clock"</i>';
+      task_el.appendChild(task_time_icon_el);
 
+      const task_time_el = document.createElement("p");
+      task_time_el.innerText = "time";
+      task_time_icon_el.appendChild(task_time_el);
+    }
 
-                const task_time_el = document.createElement("p");
-                task_time_el.innerText = time;
-                task_time_icon_el.appendChild(task_time_el);
-            }
-        }
+    // Action buttons
+    const task_action_buttons_el = document.createElement("div");
+    task_action_buttons_el.classList.add("action-buttons");
+    task_el.appendChild(task_action_buttons_el);
 
-        // Task counter value 
-        inbox_counter += 1;
-        document.getElementById("inbox-counter").innerHTML = inbox_counter;
+    // Action buttons - checkbox
+    const task_action_checkbox_el = document.createElement("i");
+    task_action_checkbox_el.classList.add("fa-regular", "fa-square");
+    task_action_buttons_el.appendChild(task_action_checkbox_el);
 
-       
+    // Action buttons - edit
+    const task_action_edit_el = document.createElement("i");
+    task_action_edit_el.classList.add("fa-regular", "fa-pen-to-square");
+    task_action_buttons_el.appendChild(task_action_edit_el);
+
+    // Action buttons - important
+    const task_action_important_el = document.createElement("i");
+    task_action_important_el.classList.add("fa-regular", "fa-star");
+    task_action_buttons_el.appendChild(task_action_important_el);
+
+    // Action buttons - delete
+    const task_action_delete_el = document.createElement("i");
+    task_action_delete_el.classList.add("fa-regular", "fa-trash-can");
+    //task_action_delete_el.setAttribute("onclick","actionDelete()");
+    task_action_buttons_el.appendChild(task_action_delete_el);
+
+    // Clear functions
+    clearCalendarSelection();
+    clearCheckboxes();
+    clearTaskName();
+    activateNewTaskWindow();
+    clearDate();
+    document.getElementById("time").disabled = true;
+    
+    // Delete task and subtract 1 from task counter
+    task_action_delete_el.addEventListener('click', () => {
+      list_el.removeChild(task_el);
+
+      inbox_counter -= 1;
+      document.getElementById("inbox-counter").innerHTML = inbox_counter;
     })
+
+    // Add 1 to task counter value 
+    inbox_counter += 1;
+    document.getElementById("inbox-counter").innerHTML = inbox_counter;
+  })
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-document.getElementById("time").disabled = true;
-
-
-
-
-
-// Show / hide task sections
-var upcoming_tasks = document.getElementById('upcoming-tasks');
-var completed_tasks = document.getElementById('completed-tasks');
-var overdue_tasks = document.getElementById('overdue-tasks');
+// Task section visibility
 var inbox_tasks = document.getElementById('inbox-tasks');
-var upcoming_display = 0;
-var completed_display = 0;
-var overdue_display = 0;
 var inbox_display = 0;
 
 function inbox()
@@ -113,153 +127,6 @@ function inbox()
         inbox_display = 1;
     }
 }
-
-function upcoming()
-{
-    if(upcoming_display == 1)
-    {
-        upcoming_tasks.style.display = 'block';
-        upcoming_display = 0;
-    }
-    else
-    {
-        upcoming_tasks.style.display = 'none'; 
-        upcoming_display = 1;
-    }
-}
-
-function completed()
-{
-    if(completed_display == 1)
-    {
-        completed_tasks.style.display = 'block';
-        completed_display = 0;
-    }
-    else
-    {
-        completed_tasks.style.display = 'none'; 
-        completed_display = 1;
-    }
-}
-
-function overdue()
-{
-    if(overdue_display == 1)
-    {
-        overdue_tasks.style.display = 'block';
-        overdue_display = 0;
-    }
-    else
-    {
-        overdue_tasks.style.display = 'none'; 
-        overdue_display = 1;
-    }
-}
-
-
-
-
-
-
-// Date
-n =  new Date();
-y = n.getFullYear();
-m = n.getMonth() + 1;
-d = n.getDate();
-// document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
-
-
-
-
-
-
-function newTaskButton(){
-    document.getElementById("new-task").classList.toggle("active");
-    clearNewTaskContent()
-}
-
-function addTaskButton(){
-    document.getElementById("new-task").classList.toggle("active");
-    
-    // uncheck all checkboxes
-    document.getElementById("time").checked = false;
-    document.getElementById("time").disabled = true;
-    document.getElementById('day').checked = false;
-
-    
-    
-}
-
-function cancelTaskButton(){
-    document.getElementById("new-task").classList.toggle("active");
-    clearNewTaskContent()
-}
-
-function addTaskButtonActivation(){
-
-    if(!document.getElementById('task-name').value.length){
-        document.getElementById("add-btn").disabled = true;            
-    }else{
-        document.getElementById("add-btn").disabled = false;
-    }           
-}
-
- function onlyOne(checkbox) {
-    var checkboxes = document.getElementsByName('check')
-    checkboxes.forEach((item) => {
-        if (item !== checkbox) item.checked = false
-    })
-}
-
-
-
-
-
-
-
-
-// Clear task content
-function clearNewTaskContent(){
-    document.getElementById("add-btn").disabled = true;
-    document.getElementById('task-name').value = "";
-    // document.getElementById('task-description').value = "";
-    document.getElementById('task-date').value = "";
-    // document.getElementById('task-time').value = "";
-    document.getElementById("time").checked = false;
-    document.getElementById("time").disabled = true;
-    document.getElementById('day').checked = false;
-    // document.getElementById('time').checked = false;
-    // document.getElementById('repeat').checked = false;
-    // document.getElementById('priority').checked = false;
-    // document.getElementById('notifications').checked = false;
-
-    for (var item of document.querySelectorAll(".number-item")) {
-        item.classList.remove("calendar-select");
-    }
-
-    document.getElementById('perse').value = "";
-}
-
-// set time
-function timeSubmit(){
-    selectedTime = document.getElementById("perse").value;
-    document.getElementById("task-time").value = selectedTime;
-    
-}
-      
-
-
-
-
-
-selection = false;
-selectedDay = value = 0;
-selectedMonth = value = 0;
-selectedYear = value = 0;
-
-// check the console for date click event
-// Fixed day highlight
-// Added previous month and next month view
 
 function CalendarControl() {
     const calendar = new Date();
@@ -321,29 +188,24 @@ function CalendarControl() {
 
       
 
-    //   SelectDate function
+    //   Select task date from calendar
     selectDate: function (e) {
 
-        selectedDay = e.target.textContent;
-        selectedMonth = calendar.getMonth() + 1;
-        selectedYear = calendar.getFullYear();
+        selectedCalendarDay = e.target.textContent;
+        selectedCalendarMonth = calendar.getMonth() + 1;
+        selectedCalendarYear = calendar.getFullYear();
+        selectedDate = selectedCalendarDay + "/" + selectedCalendarMonth + "/" + selectedCalendarYear;
 
-        // set date into text box
-        document.getElementById("task-date").value = selectedDay + "/" + selectedMonth + "/" + selectedYear;
-
-        // enable time set
+        // show hidden clock icon to be able to set time for the task
         document.getElementById("time").disabled = false;
 
-        // 
-        for (var item of document.querySelectorAll(".number-item")) {
-            item.classList.remove("calendar-select");
-        }
+        // Remove previous calendar selection
+        clearCalendarSelection();
 
-        // selected day
+        // select new date
         {
-            document.querySelectorAll(".number-item")[selectedDay - 1].classList.add("calendar-select");
+            document.querySelectorAll(".number-item")[selectedCalendarDay - 1].classList.add("calendar-select");
         }
-
       },
 
 
@@ -432,15 +294,12 @@ function CalendarControl() {
         nextBtn.addEventListener("click", calendarControl.navigateToNextMonth);
         todayDate.addEventListener("click", calendarControl.navigateToCurrentMonth);
         for (var i = 0; i < dateNumber.length; i++) {
-
-            // console.log(i)
-
             dateNumber[i].addEventListener("click",calendarControl.selectDate,false);
         }
       },
 
 
-    //   Highlight today's date
+      // Highlight today's date
       highlightToday: function () {
         let currentMonth = calendarControl.localDate.getMonth() + 1;
         let changedMonth = calendar.getMonth() + 1;
@@ -457,11 +316,11 @@ function CalendarControl() {
         }
       },
 
-    //   Highlight selected date
+      // Highlight selected date
       highlightSelect: function () {
-        let setMonth = selectedMonth;
+        let setMonth = selectedCalendarMonth;
         let changedMonth2 = calendar.getMonth() + 1;
-        let setYear = selectedYear;
+        let setYear = selectedCalendarYear;
         let changedYear2 = calendar.getFullYear();
         if (
           setYear === changedYear2 &&
@@ -472,7 +331,7 @@ function CalendarControl() {
         {
         document
             .querySelectorAll(".number-item")
-            [selectedDay - 1].classList.add("calendar-select");
+            [selectedCalendarDay - 1].classList.add("calendar-select");
         }
       },
 
@@ -526,3 +385,105 @@ function CalendarControl() {
   }
   
   const calendarControl = new CalendarControl();
+
+
+// Button functions
+function newTaskButton(){
+  activateNewTaskWindow();
+}
+  
+function cancelTaskButton(){
+  clearCalendarSelection();
+  clearCheckboxes();
+  clearTaskName();
+  activateNewTaskWindow();
+  clearDate();
+  document.getElementById("time").disabled = true;
+}
+
+// Clear functions
+function clearTaskName(){
+  document.getElementById('task-name').value = "";
+}
+
+function clearCheckboxes() {
+  var get = document.getElementsByName('newTaskCheckbox');
+
+  for(var i = 0; i<get.length; i++){
+    get[i].checked= false;
+  }
+}
+
+function clearCalendarSelection(){
+  for (var item of document.querySelectorAll(".number-item")) {
+    item.classList.remove("calendar-select");
+  }
+}
+
+function clearDate(){
+  selectedCalendarDay = "";
+  selectedCalendarMonth = "";
+  selectedCalendarYear = "";
+  selectedDate = "";
+}
+
+//  Activation functions
+function onlyOne(checkbox) {
+  var checkboxes = document.getElementsByName('newTaskCheckbox')
+  checkboxes.forEach((item) => {
+      if (item !== checkbox) item.checked = false
+  })
+}
+
+function activateAddButton(){
+  if(!document.getElementById('task-name').value.length){
+      document.getElementById("add-new-task-button").disabled = true;            
+  }
+  else{
+      document.getElementById("add-new-task-button").disabled = false;
+  }           
+}
+
+function activateNewTaskWindow(){
+  document.getElementById("new-task").classList.toggle("active");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 
+document.getElementById("time").disabled = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Date
+//n =  new Date();
+//y = n.getFullYear();
+//m = n.getMonth() + 1;
+//d = n.getDate();
+//document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+
+
+

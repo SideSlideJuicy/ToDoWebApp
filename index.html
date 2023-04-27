@@ -14,7 +14,6 @@
 
 <body>
     <input type="checkbox" id="bars-btn-checkbox" class="checkbox">
-    <header class="page-header">
         <nav class="top-nav">
             <ul class="items-left">
                 <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
@@ -25,7 +24,6 @@
                 <img src="empty.jpg" class="user-pic">
             </ul>
         </nav>
-    </header>
 
     <aside class="side-nav">
         <a href="#"> <i class="fa-solid fa-layer-group"></i> Tasks</a>
@@ -40,7 +38,6 @@
         <header class="main-header">
             <div class="items-left">
                 <i class="fa-solid fa-layer-group"></i>
-                <!-- Header date here for "home/today" page -->
                 <h1>Tasks</h1>
             </div>
 
@@ -52,45 +49,43 @@
         </header>
 
         <section class="inbox-section">
-            <header class="section-header">
-                <input type="checkbox" id="inbox" class="checkbox">
-                <label for="inbox"><i onclick="inbox()" class="fa-solid fa-chevron-down rotate"></i></label>
-                <p>Inbox</p>
-                <sup><p class="task-counter" id="inbox-counter">0</p></sup>
-                <hr>
-            </header>
+            <input type="checkbox" id="inbox" class="checkbox">
+                <nav>
+                    <label for="inbox"><i onclick="inbox()" class="fa-solid fa-chevron-down rotate"></i></label>
+                    <p>Inbox</p>
+                    <sup><p class="task-counter" id="inbox-counter">0</p></sup>
+                    <hr>
+                </nav>
 
             <div id="inbox-tasks" class="inbox-tasks">
-                <!-- Tasks here -->
+                <!-- New tasks here -->
             </div>
         </section>
     </main>
 
     <form class="new-task" id="new-task">
-        <input type="checkbox" id="day" class="checkbox" name="check" onclick="onlyOne(this)"> 
-        <input type="checkbox" id="time" class="checkTime" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="repeat" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="comment" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="tag" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="important" class="checkbox" name="check" onclick="onlyOne(this)">
-        <input type="checkbox" id="notifications" class="checkbox" name="check" onclick="onlyOne(this)">
+        <input type="checkbox" id="day" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)"> 
+        <input type="checkbox" id="time" class="checkTime" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="repeat" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="notifications" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="comment" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="tag" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="important" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        
             <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
                 <section class="new-task-content">
-                    <!-- MUUTA NIMI SETTIMEACTICATION -> CLOCKICONACTIVATION -->
-                    <!-- YRITÄ PÄÄSTÄ EROON NUISTA KAHDESTA INPUTISTA AIKA JA PÄIVÄ -->
-                    <input type="text" class="set-date" id="task-date" placeholder="date" onchange="setTimeIconActivation()" readonly>
                     <input type="text" class="set-time" id="task-time" placeholder="time" readonly>
 
-                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="addTaskButtonActivation()">
+                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="activateAddButton()">
                         <hr class="upper-divider">
                             <ul>
                                 <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
                                 <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
                                 <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
+                                <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
                                 <li><label for="comment"><i class="fa-solid fa-message"></i></label></li>
                                 <li><label for="tag"><i class="fa-solid fa-tag"></i></label></li>
                                 <li><label for="important"><i class="fa-regular fa-star"></i></label></li>
-                                <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
                             </ul>
                         <hr class="lower-divider">
 
@@ -100,8 +95,8 @@
                             <div class="time"><input type="time" class="time-submit" name="perse" id="perse" onchange="timeSubmit()"><br /><br /></div>
                         </div>
                     <div class="buttons">
-                        <button class="cancel-btn" onclick="cancelTaskButton()">Cancel</button>
-                        <button class="add-btn" value="Add task" onclick="addTaskButton()" type="submit" id="add-btn" disabled>Add</button>
+                        <button type="button" class="cancel-btn" onclick="cancelTaskButton()" >Cancel</button>
+                        <button type="submit" class="add-btn" id="add-new-task-button" disabled>Add</button>
                     </div>
                 </section>
     </form>
