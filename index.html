@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Todo</title>
+    <title>Tasks</title>
     <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -19,19 +18,16 @@
                 <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
             </ul>
             <ul class="items-right">
-                <li><a href="#" onclick="newTaskButton()"><i class="fa-solid fa-plus"></i></a></li>
-                <li><a href="#" onclick="homeButton()"><i class="fa-solid fa-home"></i></a></li>
+                <li><a onclick="newTaskButton()"><i class="fa-solid fa-plus"></i></a></li>
+                <li><a href="today.html" onclick="homeButton()"><i class="fa-solid fa-home"></i></a></li>
                 <img src="empty.jpg" class="user-pic">
             </ul>
         </nav>
 
     <aside class="side-nav">
-        <a href="#"> <i class="fa-solid fa-layer-group"></i> Tasks</a>
-        <a href="#"> <i class="fa-solid fa-sun"></i> My day</a>
-        <a href="#"> <i class="fa-solid fa-star"></i> Important</a>
-        <a href="#"> <i class="fa-solid fa-tag"></i> Tags</a>
-        <a href="#"> <i class="fa-solid fa-calendar-days"></i> Calendar</a>
-        <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+        <a href="tasks.html"> <i class="fa-solid fa-layer-group"></i> Tasks</a>
+        <a href="important.html"> <i class="fa-solid fa-star"></i> Important</a>
+        <a href="calendar.html"> <i class="fa-solid fa-calendar-days"></i> Calendar</a>
     </aside>
 
     <main>
@@ -41,11 +37,16 @@
                 <h1>Tasks</h1>
             </div>
 
-            <ul class="items-right">
-                <input type="checkbox" id="sorting" class="checkbox">
-                <li><a href="#"><label for="sorting"><i class="fa-solid fa-arrow-down rotate"></i></label></a></li>
-                <li><a href="#">Sorted by due time</a></li>
-            </ul>
+            <div class="dropdown">
+                <div class="select">
+                    <span class="selected">due time</span>
+                    <div class="caret"></div>
+                </div>
+                <ul class="menu">
+                    <li class="active">due time</li>
+                    <li>title name</li>
+                </ul>
+            </div>
         </header>
 
         <section class="inbox-section">
@@ -67,33 +68,33 @@
         <input type="checkbox" id="day" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)"> 
         <input type="checkbox" id="time" class="checkTime" name="newTaskCheckbox" onclick="onlyOne(this)">
         <input type="checkbox" id="repeat" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
-        <input type="checkbox" id="notifications" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
         <input type="checkbox" id="comment" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
-        <input type="checkbox" id="tag" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
-        <input type="checkbox" id="important" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="important" class="checkImportant">
         
             <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
                 <section class="new-task-content">
-                    <input type="text" class="set-time" id="task-time" placeholder="time" readonly>
-
                     <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="activateAddButton()">
                         <hr class="upper-divider">
-                            <ul>
+                            <ul id="new-task-icons" class="new-task-icons">
                                 <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
-                                <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
-                                <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li>
-                                <li><label for="notifications"><i class="fa-regular fa-bell"></i></label></li>
+                                <!-- <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li> -->
                                 <li><label for="comment"><i class="fa-solid fa-message"></i></label></li>
-                                <li><label for="tag"><i class="fa-solid fa-tag"></i></label></li>
-                                <li><label for="important"><i class="fa-regular fa-star"></i></label></li>
+                                <li><label for="important"><i class="fa-solid fa-star"></i></label></li>
                             </ul>
                         <hr class="lower-divider">
 
-                        <div class="window">
-                            <div class="calendar"></div>
-                            <!-- <textarea name="" id="" cols="30" rows="1"></textarea> -->
-                            <div class="time"><input type="time" class="time-submit" name="perse" id="perse" onchange="timeSubmit()"><br /><br /></div>
-                        </div>
+                    <div class="window">
+                        <!-- Calendar view -->
+                        <div class="calendar"></div>
+
+                        <!-- Description view -->
+                        <textarea class="comment-area" placeholder="Description" name="" id="task-description" cols="40" rows="10"></textarea>
+                        
+                        <!-- Time view -->
+                        <input type="time" class="time-picker" id="time-picker">
+                        
+                    </div>
+
                     <div class="buttons">
                         <button type="button" class="cancel-btn" onclick="cancelTaskButton()" >Cancel</button>
                         <button type="submit" class="add-btn" id="add-new-task-button" disabled>Add</button>
@@ -101,8 +102,13 @@
                 </section>
     </form>
 
+    <!-- <form class="edit-task" id="edit-task">
+        <div class="overlay" id="overlay" onclick="cancelEditButton()"></div>
+        <section class="edit-task-container"></section>
+    </form> -->
+
     <footer></footer>
 
-    <script src="untitled.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -36,6 +36,7 @@ body{
     }
         .top-nav ul li{
             display: inline-block;
+            cursor: pointer;
         }
 
         .top-nav ul li:hover a{
@@ -115,6 +116,8 @@ main{
     height: 94vh;
     transition: all 0.5s ease-in-out;
     overflow-y: scroll;
+    cursor: default;
+    user-select: none;
 }
 
     .main-header{
@@ -158,41 +161,171 @@ main{
                         border-radius: 2px;
                     }
 
-        .main-header .items-right{
+        /* .main-header .items-right{
             height: 65px;
             width: 50%;
             display: flex;
             justify-content: right;
             align-items: end;
-        }
+        } */
 
-            .main-header .items-right li{
+            /* .main-header .items-right li{
+                position: absolute;
                 list-style-type: none;
-                margin: 0px 4px 10px 0px;
+                margin: 0px 5px 10px 0px;
+                display: block;
+            } */
+
+            /* .main-header .fa-solid.fa-ellipsis{
+                padding: 8px;
+                font-size: 13px;
+                border-radius: 4px;
+                transition: 0.5s;
+                margin: 0px 5px 2px 0px;
+                display: none;
+                cursor: pointer;
             }
+            .main-header .fa-solid.fa-ellipsis:hover{
+                background: #7dc9d8;
+            }
+
+            @media (max-width: 390px){
+                .main-header .fa-solid.fa-ellipsis{
+                    display: block;
+                }
+
+                .main-header .items-right li{
+                    display: none;
+                }
+            } */
         
-                .main-header ul li a{
+                /* .main-header ul li a{
                     padding: 8px;
                     color: black;
                     text-decoration: none;
                     font-size: 13px;
                     border-radius: 4px;
                     transition: 0.5s;
-                }
+                } */
         
-                    .main-header ul li:hover a{
+                    /* .main-header ul li:hover a{
                         background: #7dc9d8;
-                    }
+                    } */
 
                         /* CONTENT SORTING ICON */
-                        .fa-solid.fa-arrow-down{
+                        /* .fa-solid.fa-arrow-down{
                             transition: 0.5s;
                             cursor: pointer;
                         }
 
                             #sorting:checked ~ * .fa-solid.fa-arrow-down {
                                 transform: rotate(-180deg);
+                            } */
+
+                /* DROPDOWN MENU FOR SORTING */
+                .dropdown{
+                    min-width: 5.2em;
+                    position: absolute;
+                    display: fixed;
+                    right: 5px;
+                    bottom: 5px;
+                }
+
+                    .dropdown * {
+                        box-sizing: border-box;
+                    }
+
+                        .select{
+                            /* background: #2a2f3b; */
+                            /* color: #fff; */
+                            color: rgb(47, 47, 47);
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            /* border: 2px solid #2a2f3b; */
+                            /* background: #7dc9d8; */
+                            border-radius: 0.5em;
+                            padding: 8px;
+                            cursor: pointer;
+                            transition: background 0.3s;
+                            font-size: 12px;
+                        }
+
+                            .select-clicked{
+                                /* border: 1px #26489a solid; */
+                                /* box-shadow: 0 0 0.8em #26489a; */
+                                box-shadow: 0 0 0.8em #2e6d8c;
                             }
+
+                            .select:hover{
+                                /* background: #323741; */
+                                /* background: rgb(47, 47, 47); */
+                                background: #ade1ed;
+                            }
+
+                            
+
+                                .caret{
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 5px solid transparent;
+                                    border-right: 5px solid transparent;
+                                    /* border-top: 6px solid #fff; */
+                                    border-top: 6px solid rgb(47, 47, 47);
+                                    transition: 0.3s;
+                                    opacity: 0;
+                                }
+
+                                .select:hover .caret{
+                                    /* background: #323741; */
+                                    /* background: rgb(47, 47, 47); */
+                                    opacity: 1;
+                                }
+
+                                .caret-rotate{
+                                    transform: rotate(180deg);
+                                    opacity: 1;
+                                }
+
+                                    .menu{
+                                        list-style: none;
+                                        padding: 0.2em 0.5em;
+                                        background: #323741;
+                                        border: 1px #363a43 solid;
+                                        box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+                                        border-radius: 0.5em;
+                                        color: #9fa5b5;
+                                        position: absolute;
+                                        top: 2em;
+                                        left: 50%;
+                                        width: 100%;
+                                        transform: translateX(-50%);
+                                        opacity: 0;
+                                        display: none;
+                                        transition: 0.2s;
+                                        z-index: 1;
+                                        font-size: 12px;
+                                    }
+
+                                    .menu li{
+                                        padding: 0.7em 0.5em;
+                                        margin: 0.3em 0;
+                                        border-radius: 0.5em;
+                                        cursor: pointer;
+                                    }
+
+                                    .menu li:hover{
+                                        background: #2a2d35;
+                                    }
+
+                                        /* .active{
+                                            background: #23242a;
+                                        } */
+
+                                        .menu-open{
+                                            display: block;
+                                            opacity: 1;
+                                        }
 
 /* MAIN PAGE - TASK SECTION - NAV */
 .inbox-section nav{
@@ -205,6 +338,8 @@ main{
     position: sticky;
     display: block;
     background: white;
+    cursor: default;
+    user-select: none;
 }
 
     .inbox-section nav p{
@@ -250,7 +385,7 @@ main{
                         transform: rotate(-90deg);
                     }
 
-/* MAIN PAGE - TASK SECTION - NEW TASK */
+/* MAIN PAGE - INBOX SECTION - NEW TASK */
 .inbox-section .task{            
     width: calc(100% - 58px);
     height: 55px;
@@ -268,18 +403,31 @@ main{
         cursor: pointer;
         color: #313131;
         background-color: transparent;
-        width: calc(100% - 170px);
+        width: calc(100% - 265px);
         padding: 5px;
         margin: 2px 0px 0px 2px;
         font-weight:900;
         font-size: 13px;
+        position: fixed;
+        display: block;
     }
-        .task .date-and-time{
+        .task .date{
+            position: fixed;
             display: inline-flex;
             padding: 5px;
             width: 95px;
             height: 15px;
-            margin: 0px 0px 0px 2px;
+            margin: 28px 0px 0px 2px;
+            align-items: center;
+            font-size: 12px;
+        }   
+        .task .time{
+            position: fixed;
+            display: inline-flex;
+            padding: 5px;
+            width: 95px;
+            height: 15px;
+            margin: 28px 0px 0px 108px;
             align-items: center;
             font-size: 12px;
         }   
@@ -293,24 +441,67 @@ main{
         }
 
             .action-buttons{
-                font-size: 15px;
+                /* font-size: 15px; */
                 visibility: hidden;
-                position: absolute;
+                position:absolute;
                 display: inline-flex;
-                right: 20px;
-                margin: -18px 10px 0px 0px;
+                /* right: 0px; */
+                /* justify-content: center; */
+                right: 28px;
+                margin-top: 4px;
                 opacity: 0;
                 transition:visibility 0.1s linear,opacity 0.1s linear;
+                width: 150px;
+
+
+
+                /* align-items: center; */
+                /* vertical-align: center; */
+                /* vertical-align: middle; */
+                font-size: 13px;
+                padding: 3px;
+                color: rgb(185, 185, 185);
+                /* background: lightblue; */
+                /* position: relative; left: -20px; */
             }
             
                 .action-buttons i{
-                    padding: 10px;
                     border-radius: 5px;
-                    transition: 0.3s;
+                    /* transition: 1s; */
+                    /* background:lightgrey; */
+                    padding: 10px;
+
+                    cursor: pointer;
+                    transition: 0.5s;
                 }
 
                 .action-buttons i:hover{
+                    transition: 0.5s;
                     background:lightgrey;
+                    /* padding: 12px; */
+                }
+
+                .action-buttons .button{
+                    transition: 0.2s;
+                }
+
+                .action-buttons i:hover .button{
+                    transition: 0.2s;
+                    transform: scale(1.4);
+                }
+
+                .action-buttons .status-button{
+                    transform: scale(0.7);
+                    /* opacity: 0; */
+                    /* margin-bottom:2px; */
+                    border: 2px solid black;
+                    border-radius: 5px;
+                    transition: 0.2s;
+                }
+
+                .action-buttons i:hover .status-button{
+                    transition: 0.2s;
+                    transform: scale(1.4);
                 }
 
                     main .task:hover{                              
@@ -321,6 +512,17 @@ main{
                         visibility: visible;
                         opacity: 1;        
                     }
+
+
+
+
+
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                                      ADD NEW TASK                                          //
+////////////////////////////////////////////////////////////////////////////////////////////////
+*/
 
 /* ADD NEW TASK */
 .new-task .overlay{
@@ -349,9 +551,15 @@ main{
         box-sizing: border-box;
         border-radius: 10px;
         box-shadow: 0px 0px 80px 5px rgba(0, 0, 0, 0.5);
-        background: linear-gradient(to top, #2c3e50 0%, #2c3e50 118px, #22242a 22%, #22242a 100%);
+        background: linear-gradient(to top, #2c3e50 0%, #2c3e50 118px, #22242a 67%, #22242a 40%);
         width: 390px;
         transition-duration: 300ms;
+        /* transition: 1s; */
+    }
+
+    .checkbox:checked ~ .new-task-content{
+        /* background: linear-gradient(to top, #2c3e50 0%, #2c3e50 10%, #22242a 60%, #22242a 40%); */
+        transition-duration: 2s;
     }
 
     .new-task.active .new-task-content{
@@ -417,15 +625,103 @@ main{
                     }
 
 
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                                      EDIT TASK                                             //
+////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+
+/* EDIT TASK */
+.edit-task .overlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    display: none;
+}
+
+.edit-task.active .overlay{
+    display: block;
+}
+
+.edit-task-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 170px);
+    transform: translate(-50%, -50%) scale(0);
+    height: 575px;
+    z-index: 4;
+    /* padding: 20px; */
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 80px 5px rgba(0, 0, 0, 0.5);
+    /* background: rgb(221, 221, 221); */
+    background: linear-gradient(to top, #2c3e50 0%, #2c3e50 118px, #22242a 67%, #22242a 40%);
+    /* width: 590px; */
+    transition-duration: 300ms;
+    /* transition: 1s; */
+}
+
+.edit-task.active .edit-task-container{
+    transform: translate(-50%, -50%) scale(1 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////
+//                               NEW TASK ICON BUTTONS                                        //
+////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* Container */
+.window{
+    position: flex;
+    width: 100%;
+    height: 0px;
+    background: white;
+    border: 1px solid rgb(175, 174, 174);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    /* transition: all 300ms ease-in-out; */
+    /* display: none; */
+    /* transform: translate(0%, -50%) scale(0); */
+    /* transition: 0.5s; */
+    /* visibility: hidden; */
+    /* transition: visibility 0s linear 300ms, opacity 300ms; */
+}
+
+
+/* CALENDAR */
 #day:checked ~ * .fa-regular.fa-calendar {
-    /* color: rgb(255, 255, 255); */
     font-size: 35px;
+    color: white;
+    background: rgb(111, 156, 172);
 }
 
     #day:checked ~ .new-task-content .window{
         height: 480px;
         visibility: visible;
-        /* transition-duration: 300ms; */
     }
 
         #day:checked ~ .new-task-content{
@@ -434,27 +730,103 @@ main{
             transition-duration: 300ms;
         }
 
-        @media (max-width: 390px){
-            #day:checked ~ .new-task-content{
-                /* height: 730px; */
-                height: 100vh;
-                top: 370px;
+            @media (max-width: 390px){
+                #day:checked ~ .new-task-content{
+                    height: 100vh;
+                    top: 370px;
+                }
             }
+
+            .new-task-content .window .calendar{
+                transition-duration: 100ms;
+                height: 0px;
+            }
+
+                #day:checked ~ .new-task-content .window .calendar{
+                    /* height: 100vh; */
+                    height: 420px;
+                    transition-duration: 0.2s;
+                }
+
+/* DESCRIPTION */
+#comment:checked ~ * .fa-solid.fa-message {
+    font-size: 35px;
+    color: white;
+    background: rgb(111, 156, 172);
+}
+
+    #comment:checked ~ .new-task-content .window{
+        height: 245px;
+        visibility: visible;
+    }
+
+        #comment:checked ~ .new-task-content{
+            height: 420px;
+            top: 262px;
+            transition-duration: 300ms;
         }
 
-            #day:checked ~ .new-task-content .window .calendar{
-                height: 100vh;
-                transition-duration: 1s;
+            .new-task-content .window .comment-area{
+                position: absolute;
+                border-style: none; 
+                border-color: Transparent; 
+                height: 0px;
+                visibility: hidden;
+                resize: none;
+                margin-top: -32px;
+                margin-left: 2px;
+                padding: 8px;
+                font-size: 16px;
             }
 
+                .new-task-content .window .comment-area:focus{
+                    outline: 0;
+                }
+
+                    #comment:checked ~ .new-task-content .window .comment-area{
+                        visibility: visible;
+                        height: 200px;
+                        transition: 0.3s;
+                    }
+
+/* IMPORTANT */
+.checkImportant{
+    visibility: hidden;
+}
+
+    #important:checked ~ * .fa-solid.fa-star {
+        color: rgb(180, 180, 8);
+    }
+
+    #important:checked ~ * .fa-solid.fa-star:hover {
+        color: yellow;
+    }
 
 
 
-
-
-#time:checked ~ * .fa-regular.fa-clock {
-    /* color: rgb(255, 255, 255); */
+/* REPEAT */
+#repeat:checked ~ * .fa-solid.fa-repeat {
     font-size: 35px;
+    color: white;
+    background: rgb(111, 156, 172);
+}
+
+    #repeat:checked ~ .new-task-content .window{
+        height: 100px;
+        visibility: visible;
+    }
+
+        #repeat:checked ~ .new-task-content{
+            height: 300px;
+            top: 202px;
+            transition-duration: 300ms;
+        }
+
+/* TIME PICKER */
+#time:checked ~ * .fa-regular.fa-clock {
+    font-size: 35px;
+    color: white;
+    background: rgb(111, 156, 172);
 }
 
     #time:checked ~ .new-task-content .window{
@@ -471,153 +843,140 @@ main{
 
         @media (max-width: 390px){
             #time:checked ~ .new-task-content{
-                /* height: 730px; */
                 height: 100vh;
                 top: 370px;
             }
         }
 
-        #time:checked ~ .new-task-content .window .time{
-            /* height: 100vh;
-            transition-duration: 1s; */
-            visibility: visible;
-        }
+            .new-task-content .window .time-picker{
+                visibility: hidden;
+                appearance: none;
+                border: none;
+            }
+
+            #time:checked ~ .new-task-content .window .time-picker{
+                visibility: visible;
+            }
+
+            input[type="time"]::-webkit-calendar-picker-indicator {
+                /* background: none; */
+                /* display:none; */
+            }
+
+            /* #time:checked ~ .new-task-content .window .time-pickable{
+                visibility: visible;
+            }
+
+            .new-task-content .window .time-picker{
+                position: absolute;
+                display: inline-block;
+                padding: 10px;
+                background: #eeeeee;
+                border-radius: 6px;
+                visibility: hidden;
+            }*/
+
+
+
+            /*.time-picker__select{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                outline: none;
+                text-align: center;
+                border: 1px solid #dddddd;
+                border-radius: 6px;
+                padding: 6px 10px;
+                background: #ffffff;
+                cursor: pointer;
+            } */
 
 
 
 
-#repeat:checked ~ * .fa-solid.fa-repeat {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* STATUS ICON BUTTON */
+.status-icon-btn{
+    /* border: 2px solid black; */
+    width: 20px;
+    height: 20px;
 }
 
-    #repeat:checked ~ .new-task-content .window{
-        /* height: 230px; */
-    }
-
-        #repeat:checked ~ .new-task-content{
-            /* height: 500px; */
-
-            /* background: linear-gradient(
-                to top,
-                white 0%,
-                white 78%,
-                rgb(234, 234, 234) 22%,
-                rgb(234, 234, 234) 100%) */
-        }
-
-
-
-
-#priority:checked ~ * .fa-regular.fa-flag {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
+input[id="status-checkbox"]{
+    position: absolute;
+    appearance: none;
+    -webkit-appearance: none;
+    /* background-color: red; */
+    border: 2px solid rgb(33, 33, 33);
+    border-radius: 3px;
+    /* position: absolute; */
+    /* margin: auto; */
+    /* margin-top: 2px; */
+    margin: 3px 2px 0px 0px;
+    width: 15px;
+    height: 15px;
+    /* align-items: center; */
+    /* vertical-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-    #priority:checked ~ .new-task-content .window{
-        /* height: 230px; */
-    }
-
-        #priority:checked ~ .new-task-content{
-            /* height: 500px; */
-
-            /* background: linear-gradient(
-                to top,
-                white 0%,
-                white 78%,
-                rgb(234, 234, 234) 22%,
-                rgb(234, 234, 234) 100%) */
-        }
-
-
-
-
-#notifications:checked ~ * .fa-regular.fa-bell {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
+input[id="status-checkbox"]:after{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 9px;
+    content: "\f00c";
+    display: none;
+    transition: all 0.3s;
+    color: rgb(228, 228, 228);
 }
 
-    #notifications:checked ~ .new-task-content .window{
-        /* height: 230px; */
-    }
-
-        #notifications:checked ~ .new-task-content{
-            /* height: 500px; */
-
-            /* background: linear-gradient(
-                to top,
-                white 0%,
-                white 78%,
-                rgb(234, 234, 234) 22%,
-                rgb(234, 234, 234) 100%) */
-        }
-
-
-
-#comment:checked ~ * .fa-solid.fa-message {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
+input[id="status-checkbox"]:hover{
+    /* margin-top: 0px; */
+    /* margin-left: -2px; */
+    position: fixed;
+    margin: 0px 0px 0px -2px;
+    width: 20px;
+    height: 20px;
+    /* transition: all 0.3s; */
+    border: 2px solid black;
+}
+input[id="status-checkbox"]:hover:after{
+    font-size: 15px;
+    /* transition: all 0.3s; */
+    color: rgb(228, 228, 228);
 }
 
-    #comment:checked ~ .new-task-content .window{
-        /* height: 230px; */
-    }
-
-        #comment:checked ~ .new-task-content{
-            /* height: 500px; */
-
-            /* background: linear-gradient(
-                to top,
-                white 0%,
-                white 78%,
-                rgb(234, 234, 234) 22%,
-                rgb(234, 234, 234) 100%) */
-        }
-
-
-
-#tag:checked ~ * .fa-solid.fa-tag {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
+input[id="status-checkbox"]:checked{
+    color: white;
+    background: rgb(0, 210, 0);
+    border: 2px solid rgb(0, 210, 0);
+    /* transition: all 0.3s; */
 }
 
-    #tag:checked ~ .new-task-content .window{
-        /* height: 230px; */
-    }
-
-        #tag:checked ~ .new-task-content{
-            /* height: 500px; */
-
-            /* background: linear-gradient(
-                to top,
-                white 0%,
-                white 78%,
-                rgb(234, 234, 234) 22%,
-                rgb(234, 234, 234) 100%) */
-        }
-
-
-
-
-#important:checked ~ * .fa-regular.fa-star {
-    color: rgb(255, 255, 255);
-    font-size: 35px;
+input[id="status-checkbox"]:checked:after{
+ display: block;
 }
 
-    #important:checked ~ .new-task-content .window{
-        /* height: 230px; */
-    }
 
-        #important:checked ~ .new-task-content{
-            /* height: 500px; */
 
-            /* background: linear-gradient(
-                to top,
-                white 0%,
-                white 78%,
-                rgb(234, 234, 234) 22%,
-                rgb(234, 234, 234) 100%) */
-        }
+
 
 
 
@@ -675,21 +1034,6 @@ main{
 
 
 
-
-.window{
-    position: flex;
-    width: 100%;
-    height: 0px;
-    background: white;
-    border: 1px solid rgb(175, 174, 174);
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    /* transition: all 300ms ease-in-out; */
-    /* display: none; */
-    /* transform: translate(0%, -50%) scale(0); */
-    /* transition: 0.5s; */
-    /* visibility: hidden; */
-    /* transition: visibility 0s linear 300ms, opacity 300ms; */
-}
 
 
 
@@ -800,22 +1144,8 @@ main{
     transition-duration: 300ms;
 }
 
-.new-task-content .window .calendar{
-    /* transition: all 600ms ease-in; */
-    /* transition: all 300ms ease-out; */
-    transition-duration: 200ms;
-    height: 0px;
-    /* visibility: hidden; */
-}
 
-.new-task-content .window .time{
-    /* transition: all 600ms ease-in;
-    transition: all 200ms ease-out; */
-    /* height: 0px; */
-    position: absolute;
-  right: 50%;
-    visibility: hidden;
-}
+
 
 
 
@@ -896,7 +1226,7 @@ main{
         /* vertical-align: middle; */
         font-size: 13px;
         padding: 3px;
-        color: white;
+        color: rgb(185, 185, 185);
         /* background: lightblue; */
         position: relative; left: -20px;
     }
@@ -904,44 +1234,57 @@ main{
         .new-task-content ul li i{
             cursor: pointer;
             padding: 8px;
-            background: rgb(111, 156, 172);
+            background: #384e64;
             border-radius: 5px;
             transition: 0.5s;
         }
 
 
-        /* time checkbox */
+
+            .new-task-content ul li:hover i{
+                color: white;
+                background: rgb(111, 156, 172);
+                font-size: 35px;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+        /* CLOCK ICON */
         .checkTime{
             visibility: hidden;
         }
 
         .checkTime:enabled ~ .new-task-content ul li .fa-regular.fa-clock{
-            cursor: pointer;
-            padding: 8px;
-            background: rgb(111, 156, 172);
-            border-radius: 5px;
-            transition: 0.5s;
-            visibility: visible;
+            display: block;
+            animation: visible 0.5s;
+            animation: size 0.5s;
         }
 
-        .checkTime:disabled ~ .new-task-content ul li .fa-regular.fa-clock{
-            padding: 0px;
-            width: 0px;
-            background: rgb(255, 255, 255);
-            border-radius: 5px;
-            transition: 1s;
-            visibility: hidden;
-        }
+            @keyframes visible {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
 
-        .checkTime:disabled ~ .new-task-content ul li .fa-regular.fa-calendar{
-            cursor: pointer;
-            margin: 0px -6px 0px 0px;
-            
-            transition: 0.5s;
-        }
-
-            .new-task-content ul li:hover i{
-                font-size: 35px;
+            @keyframes size {
+                from {
+                    font-size: 0px;
+                }
+                to {
+                    font-size: 14px;
+                }
             }
 
 
@@ -957,16 +1300,6 @@ main{
 
 
 
-
-
-
-
-
-
-
-
-
-        
 
 
 
