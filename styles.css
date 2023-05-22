@@ -859,7 +859,7 @@ main{
                 visibility: visible;
             }
 
-/* 
+
             input[type="time"] {
                 background: #ccc;
                 background: linear-gradient(90deg, #ddd, #ccc);
@@ -876,7 +876,7 @@ main{
                 position: absolute;
                 top: 50%;
                 width: 200px;
-            } */
+            }
 
             /* input[type="time"]::-webkit-calendar-picker-indicator:before {
                 background: #eee;
