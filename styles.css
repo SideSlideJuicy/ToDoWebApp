@@ -859,12 +859,7 @@ main{
                 visibility: visible;
             }
 
-            input[type="time"]::-webkit-calendar-picker-indicator {
-                /* background: none; */
-                /* appearance: none; */
-                /* display:none; */
-            }
-
+/* 
             input[type="time"] {
                 background: #ccc;
                 background: linear-gradient(90deg, #ddd, #ccc);
@@ -881,9 +876,9 @@ main{
                 position: absolute;
                 top: 50%;
                 width: 200px;
-            }
+            } */
 
-            input[type="time"]::-webkit-calendar-picker-indicator:before {
+            /* input[type="time"]::-webkit-calendar-picker-indicator:before {
                 background: #eee;
                 background: linear-gradient(90deg, #eee, #fff);
                 box-shadow: 0 1px 1px rgba(0,0,0,0.1);
@@ -896,7 +891,7 @@ main{
                 top: -5px;
                 width: 22px;
                 z-index: -1;
-            }
+            } */
             /* #time:checked ~ .new-task-content .window .time-pickable{
                 visibility: visible;
             }
