@@ -852,6 +852,7 @@ main{
                 visibility: hidden;
                 appearance: none;
                 border: none;
+                
             }
 
             #time:checked ~ .new-task-content .window .time-picker{
@@ -860,9 +861,42 @@ main{
 
             input[type="time"]::-webkit-calendar-picker-indicator {
                 /* background: none; */
+                /* appearance: none; */
                 /* display:none; */
             }
 
+            input[type="time"] {
+                background: #ccc;
+                background: linear-gradient(90deg, #ddd, #ccc);
+                border: 3px solid #eee;
+                border-radius: 20px;
+                box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+                color: #222;
+                font: 16px Helvetica,Arial,sans-serif;
+                left: 50%;
+                line-height: 20px;
+                margin: -15px 0 0 -100px;
+                outline: 0;
+                padding: 5px 10px;
+                position: absolute;
+                top: 50%;
+                width: 200px;
+            }
+
+            input[type="time"]::-webkit-calendar-picker-indicator:before {
+                background: #eee;
+                background: linear-gradient(90deg, #eee, #fff);
+                box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+                border-radius: 24px;
+                content: '';
+                display: block;
+                height: 22px;
+                left: -2px;
+                position: absolute;
+                top: -5px;
+                width: 22px;
+                z-index: -1;
+            }
             /* #time:checked ~ .new-task-content .window .time-pickable{
                 visibility: visible;
             }
@@ -1265,8 +1299,8 @@ input[id="status-checkbox"]:checked:after{
 
         .checkTime:enabled ~ .new-task-content ul li .fa-regular.fa-clock{
             display: block;
-            animation: visible 0.5s;
-            animation: size 0.5s;
+            animation: visible 0.3s;
+            animation: size 0.3s;
         }
 
             @keyframes visible {

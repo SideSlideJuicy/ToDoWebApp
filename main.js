@@ -136,6 +136,7 @@ window.addEventListener('load', () => {
     clearCalendarSelection();
     clearCheckboxes();
     clearTaskName();
+    clearTaskTime();
     activateNewTaskWindow();
     clearDate();
     document.getElementById("time").disabled = true;
@@ -457,6 +458,7 @@ function cancelTaskButton(){
     clearCalendarSelection();
     clearCheckboxes();
     clearTaskName();
+    clearTaskTime();
     activateNewTaskWindow();
     clearDate();
     document.getElementById("time").disabled = true;
@@ -473,6 +475,10 @@ function editTaskButton(){
 function clearTaskName(){
     document.getElementById('task-name').value = "";
     activateAddButton();
+}
+
+function clearTaskTime(){
+  document.querySelector('#time-picker').value = "";
 }
 
 function clearCheckboxes() {
