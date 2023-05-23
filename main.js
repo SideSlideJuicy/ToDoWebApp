@@ -136,6 +136,7 @@ window.addEventListener('load', () => {
     clearCalendarSelection();
     clearCheckboxes();
     clearTaskName();
+    clearTaskDescription();
     clearTaskTime();
     activateNewTaskWindow();
     clearDate();
@@ -456,6 +457,7 @@ function cancelTaskButton(){
     clearCalendarSelection();
     clearCheckboxes();
     clearTaskName();
+    clearTaskDescription();
     clearTaskTime();
     activateNewTaskWindow();
     clearDate();
@@ -480,6 +482,10 @@ function clearButton(){
 function clearTaskName(){
     document.getElementById('task-name').value = "";
     activateAddButton();
+}
+
+function clearTaskDescription(){
+  document.getElementById('task-description').value = "";
 }
 
 function clearTaskTime(){
