@@ -67,7 +67,7 @@
     <form class="new-task" id="new-task">
         <input type="checkbox" id="day" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)"> 
         <input type="checkbox" id="time" class="checkTime" name="newTaskCheckbox" onclick="onlyOne(this)">
-        <input type="checkbox" id="repeat" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
+        <input type="checkbox" id="repeat" class="checkRepeat" name="newTaskCheckbox" onclick="onlyOne(this)">
         <input type="checkbox" id="comment" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
         <input type="checkbox" id="important" class="checkImportant">
         
@@ -77,6 +77,7 @@
                         <hr class="upper-divider">
                             <ul id="new-task-icons" class="new-task-icons">
                                 <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
+                                <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
                                 <!-- <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li> -->
                                 <li><label for="comment"><i class="fa-solid fa-message"></i></label></li>
                                 <li><label for="important"><i class="fa-solid fa-star"></i></label></li>
@@ -86,7 +87,8 @@
                     <div class="window">
                         <!-- Calendar view -->
                         <div class="calendar"></div>
-
+                            <button type="button" class="clear-btn" id="clear-btn" onclick="clearButton()">Clear</button>
+                        
                         <!-- Description view -->
                         <textarea class="comment-area" placeholder="Description" name="" id="task-description" cols="40" rows="10"></textarea>
                         

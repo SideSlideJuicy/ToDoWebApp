@@ -3,7 +3,7 @@
 //                            IMPORTANT VARIABLES                          //
 /////////////////////////////////////////////////////////////////////////////
 
-// Inbox task counter - show how many tasks are created
+// Inbox task counter
 var inbox_counter = 0;
 
 // Selected date from date picker
@@ -140,8 +140,7 @@ window.addEventListener('load', () => {
     activateNewTaskWindow();
     clearDate();
     document.getElementById("time").disabled = true;
-    clock_icon_value = 0;
-    removeClockIcon();
+    document.getElementById("clear-btn").disabled = true;
     
     // Status button
     task_action_checkbox_el.addEventListener("click", () => {
@@ -246,17 +245,16 @@ function CalendarControl() {
     //   Select task date from calendar
     selectDate: function (e) {
 
-        clock_icon_value += 1;
-
         selectedCalendarDay = e.target.textContent;
         selectedCalendarMonth = calendar.getMonth() + 1;
         selectedCalendarYear = calendar.getFullYear();
         selectedDate = selectedCalendarDay + "/" + selectedCalendarMonth + "/" + selectedCalendarYear;
 
-        // Add clock icon
-        if(clock_icon_value == 1){
-            activateClockIcon();
-        }
+        // activate clear button
+        document.getElementById("clear-btn").disabled = false;
+
+        // Activate clock icon
+        document.getElementById("time").disabled = false;
         
         // Remove previous calendar selection
         clearCalendarSelection();
@@ -462,12 +460,19 @@ function cancelTaskButton(){
     activateNewTaskWindow();
     clearDate();
     document.getElementById("time").disabled = true;
-    clock_icon_value = 0;
-    removeClockIcon();
+    document.getElementById("clear-btn").disabled = true;
 }
 
 function editTaskButton(){
     activateNewTaskWindow();
+}
+
+function clearButton(){
+  clearCalendarSelection();
+  document.getElementById("time").disabled = true;
+  document.getElementById("clear-btn").disabled = true;
+  clearDate();
+  clearTaskTime();
 }
 
 
@@ -524,23 +529,26 @@ function activateAddButton(){
   }           
 }
 
+// activateClearButton
+document.getElementById("clear-btn").disabled = true;
+
+
 function activateNewTaskWindow(){
   document.getElementById("new-task").classList.toggle("active");
 }
 
-function activateClockIcon(){
-    // Enable checkbox
-    document.getElementById("time").disabled = false;
+// activateClockIcon
+document.getElementById("time").disabled = true;
 
-    // Create element
-    var list_el_clock = document.createElement('li');
-    list_el_clock.setAttribute("id","clock-icon")
-    list_el_clock.innerHTML = '<label for="time"><i class="fa-regular fa-clock"></i></label>';
-    var someplace = document.getElementById('new-task-icons');
-    someplace.appendChild(list_el_clock);
+// activateRepeatIcon
+document.getElementById("repeat").disabled = true;
 
-    
-}
+
+
+
+
+
+
 
 // function activateEditTaskWindow(){
 //     document.getElementById("edit-task").classList.toggle("active");
@@ -548,13 +556,6 @@ function activateClockIcon(){
 
 
 
-// Remove functions
-function removeClockIcon(){
-    if(document.getElementById("clock-icon")){
-        rm_clock_icon = document.getElementById("clock-icon");
-        rm_clock_icon.remove();
-        }
-}
 
 
 
@@ -578,8 +579,6 @@ function inbox()
 }
 
 
-clock_icon_value = 0;
-
 
 
 
@@ -594,7 +593,7 @@ clock_icon_value = 0;
 
 
 /////////////////////////////////////////////////////////////////////////////
-//                            USER ICON BUTTON                             //
+//                            TOP NAV USER ICON                            //
 /////////////////////////////////////////////////////////////////////////////
 
 
