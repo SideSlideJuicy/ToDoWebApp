@@ -110,18 +110,21 @@ window.addEventListener('load', () => {
     task_action_save_el.innerText = "Save";
     document.getElementById("buttons").appendChild(task_action_save_el);
 
-
-
     // Date
-    if (date){
-      const task_date_icon_el = document.createElement("div");
-      task_date_icon_el.classList.add("date");
-      task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
-      task_el.appendChild(task_date_icon_el);
+    const task_date_icon_el = document.createElement("div");
+    task_date_icon_el.classList.add("date");
+    task_el.appendChild(task_date_icon_el);
+    const task_date_el = document.createElement("p");
+    
 
-      const task_date_el = document.createElement("p");
+    if (date){
+      // Set icon for date
+      task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
+      
+      // Set date text
       task_date_el.innerText = date;
       task_date_icon_el.appendChild(task_date_el);
+      console.log(date);
 
       // Time
       if(time){
@@ -136,7 +139,6 @@ window.addEventListener('load', () => {
       }
     }
     
-
     // Clear functions
     clearCalendarSelection();
     clearCheckboxes();
@@ -209,25 +211,37 @@ window.addEventListener('load', () => {
 
 
 
-
-
-
+      selectedDate = task_date_el.innerText;
 
 
       // set date
-      if(date){
-        const parts = date.split("/");
+      if(selectedDate){
+        console.log("selectedDate is: " + selectedDate);
+        // Fetch calendar selection by splitting selectedDate in parts
+        const parts = selectedDate.split("/");
         selectedCalendarDay = parseInt(parts[0]);
         selectedCalendarMonth = parseInt(parts[1]);
         selectedCalendarYear = parseInt(parts[2]);
-
-        console.log(selectedCalendarDay);
-
+        
+        // Make calendar selection
         document.querySelectorAll(".number-item")[selectedCalendarDay - 1].classList.add("calendar-select");
 
+        // Set buttons
         document.getElementById("clear-btn").disabled = false;
         document.getElementById("time").disabled = false;
       }
+      else{
+        console.log("there is no selectedDate");
+      }
+
+
+
+
+
+
+
+
+
 
       // set time
       if(time){
@@ -266,6 +280,49 @@ window.addEventListener('load', () => {
       task_description_el.value = input_description.value;
 
       // Change date
+      if(!task_date_el.innerText){
+        console.log("task_date_el.innerText: FALSE");
+        
+        // If selectedDate is true, set time stamp and clock icon
+        if(selectedDate){
+          console.log("selectedDate: TRUE")
+          task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
+          task_date_el.innerText = selectedDate;
+          task_date_icon_el.appendChild(task_date_el);
+          console.log(selectedDate);
+        }
+
+        // If selectedDate is not selected, continue without adding values
+        if(!selectedDate){
+          console.log("selectedDate: FALSE")
+          selectedDate = "";
+          task_date_el.innerText = "";
+          task_date_icon_el.innerHTML = "";
+          // clearCalendarSelection();
+        }
+      }
+      if(task_date_el.innerText){
+        console.log("task_date_el.innerText: TRUE");
+
+        // 
+        if(selectedDate){
+          console.log("selectedDate: TRUE")
+          task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
+          task_date_el.innerText = selectedDate;
+          task_date_icon_el.appendChild(task_date_el);
+        }
+        if(!selectedDate){
+          console.log("selectedDate: FALSE")
+          selectedDate = "";
+          task_date_el.innerText = "";
+          task_date_icon_el.innerHTML = "";
+          // clearCalendarSelection();
+          console.log(selectedDate);
+        }
+      }
+
+
+        
 
 
 
@@ -277,8 +334,8 @@ window.addEventListener('load', () => {
       document.getElementById('important').checked = false;
       document.getElementById("comment").checked = false;
 
-      // Close edit window
-      activateNewTaskWindow();
+      // Run clearing functions
+      cancelTaskButton();
     })
 
 
@@ -586,7 +643,7 @@ function CalendarControl() {
 function newTaskButton(){
   activateNewTaskWindow();
 
-  // Swap add and save buttons visibility
+  // Hide add button
   document.getElementById('add-button').style.visibility="visible";
 }
   
