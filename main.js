@@ -26,21 +26,22 @@ window.addEventListener('load', () => {
 
   const list_el = document.querySelector('#inbox-tasks');
 
+
+  
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+
+    
     const title = input_title.value;
     const date = selectedDate;
     const time = input_time.value;
-    const important = document.getElementById('important');
-    const description = input_description.value;
-    console.log(time);
-
+    // const important = document.getElementById('important');
+    // const description = input_description.value;
     
     // Task element
     const task_el = document.createElement("div");
     task_el.classList.add("task");
-    // task_el.setAttribute("onclick", "editTaskButton()")
     list_el.appendChild(task_el);
 
     // Title
@@ -52,10 +53,8 @@ window.addEventListener('load', () => {
     // Description
     const task_description_el = document.createElement("div");
     task_description_el.classList.add("description");
+    task_description_el.value = input_description.value;
     task_el.appendChild(task_description_el);
-    console.log("description=" + description);
-
-
 
     // Action buttons
     const task_action_buttons_el = document.createElement("div");
@@ -68,8 +67,7 @@ window.addEventListener('load', () => {
     task_action_checkbox_el.innerHTML = '<input type="checkbox" id="status-checkbox">';
     task_action_checkbox_el.innerHTML += '<label for="status-checkbox"></label>';
     task_action_buttons_el.appendChild(task_action_checkbox_el);
-    console.log("status=" + task_action_buttons_el.value);
-    // Add here function which sets the alarm/notifications off when task is done
+    // console.log("status=" + task_action_buttons_el.value);
 
     if(document.getElementById("status-checkbox").checked = false){
         task_action_checkbox_el.value = 1;
@@ -83,19 +81,18 @@ window.addEventListener('load', () => {
     task_action_important_el.classList.add("important-icon-btn");
     task_action_buttons_el.appendChild(task_action_important_el);
 
-    if(!important.checked){
+    if(!document.getElementById('important').checked){
         task_action_important_el.innerHTML = '<svg class="button" width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Interface / Star"><path id="Vector" d="M2.33496 10.3368C2.02171 10.0471 2.19187 9.52339 2.61557 9.47316L8.61914 8.76107C8.79182 8.74059 8.94181 8.63215 9.01465 8.47425L11.5469 2.98446C11.7256 2.59703 12.2764 2.59695 12.4551 2.98439L14.9873 8.47413C15.0601 8.63204 15.2092 8.74077 15.3818 8.76124L21.3857 9.47316C21.8094 9.52339 21.9791 10.0472 21.6659 10.3369L17.2278 14.4419C17.1001 14.56 17.0433 14.7357 17.0771 14.9063L18.255 20.8359C18.3382 21.2544 17.8928 21.5787 17.5205 21.3703L12.2451 18.4166C12.0934 18.3317 11.9091 18.3321 11.7573 18.417L6.48144 21.3695C6.10913 21.5779 5.66294 21.2544 5.74609 20.8359L6.92414 14.9066C6.95803 14.7361 6.90134 14.5599 6.77367 14.4419L2.33496 10.3368Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>';
-        task_action_important_el.value = '0';
+        task_action_important_el.value = 0;
     }
     else{
         task_action_important_el.innerHTML = '<svg class="button" width="18px" height="18px" viewBox="0 0 24 24" fill="yellow" xmlns="http://www.w3.org/2000/svg"><g id="Interface / Star"><path id="Vector" d="M2.33496 10.3368C2.02171 10.0471 2.19187 9.52339 2.61557 9.47316L8.61914 8.76107C8.79182 8.74059 8.94181 8.63215 9.01465 8.47425L11.5469 2.98446C11.7256 2.59703 12.2764 2.59695 12.4551 2.98439L14.9873 8.47413C15.0601 8.63204 15.2092 8.74077 15.3818 8.76124L21.3857 9.47316C21.8094 9.52339 21.9791 10.0472 21.6659 10.3369L17.2278 14.4419C17.1001 14.56 17.0433 14.7357 17.0771 14.9063L18.255 20.8359C18.3382 21.2544 17.8928 21.5787 17.5205 21.3703L12.2451 18.4166C12.0934 18.3317 11.9091 18.3321 11.7573 18.417L6.48144 21.3695C6.10913 21.5779 5.66294 21.2544 5.74609 20.8359L6.92414 14.9066C6.95803 14.7361 6.90134 14.5599 6.77367 14.4419L2.33496 10.3368Z" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>';
-        task_action_important_el.value = '1';
+        task_action_important_el.value = 1;
     }
 
     // Action buttons - edit
     const task_action_edit_el = document.createElement("i");
     task_action_edit_el.classList.add("edit-icon-btn");
-    // task_action_edit_el.setAttribute("onclick", "editTaskButton()")
     task_action_buttons_el.appendChild(task_action_edit_el);
     task_action_edit_el.innerHTML = '<svg class="button" width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.1213 2.70705C19.9497 1.53548 18.0503 1.53547 16.8787 2.70705L15.1989 4.38685L7.29289 12.2928C7.16473 12.421 7.07382 12.5816 7.02986 12.7574L6.02986 16.7574C5.94466 17.0982 6.04451 17.4587 6.29289 17.707C6.54127 17.9554 6.90176 18.0553 7.24254 17.9701L11.2425 16.9701C11.4184 16.9261 11.5789 16.8352 11.7071 16.707L19.5556 8.85857L21.2929 7.12126C22.4645 5.94969 22.4645 4.05019 21.2929 2.87862L21.1213 2.70705ZM18.2929 4.12126C18.6834 3.73074 19.3166 3.73074 19.7071 4.12126L19.8787 4.29283C20.2692 4.68336 20.2692 5.31653 19.8787 5.70705L18.8622 6.72357L17.3068 5.10738L18.2929 4.12126ZM15.8923 6.52185L17.4477 8.13804L10.4888 15.097L8.37437 15.6256L8.90296 13.5112L15.8923 6.52185ZM4 7.99994C4 7.44766 4.44772 6.99994 5 6.99994H10C10.5523 6.99994 11 6.55223 11 5.99994C11 5.44766 10.5523 4.99994 10 4.99994H5C3.34315 4.99994 2 6.34309 2 7.99994V18.9999C2 20.6568 3.34315 21.9999 5 21.9999H16C17.6569 21.9999 19 20.6568 19 18.9999V13.9999C19 13.4477 18.5523 12.9999 18 12.9999C17.4477 12.9999 17 13.4477 17 13.9999V18.9999C17 19.5522 16.5523 19.9999 16 19.9999H5C4.44772 19.9999 4 19.5522 4 18.9999V7.99994Z" fill="#000000"/></svg>';
 
@@ -104,6 +101,14 @@ window.addEventListener('load', () => {
     task_action_delete_el.classList.add("delete-icon-btn");
     task_action_buttons_el.appendChild(task_action_delete_el);
     task_action_delete_el.innerHTML = '<svg class="button" width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Interface / Trash_Full"><path id="Vector" d="M14 10V17M10 10V17M6 6V17.8C6 18.9201 6 19.4798 6.21799 19.9076C6.40973 20.2839 6.71547 20.5905 7.0918 20.7822C7.5192 21 8.07899 21 9.19691 21H14.8031C15.921 21 16.48 21 16.9074 20.7822C17.2837 20.5905 17.5905 20.2839 17.7822 19.9076C18 19.4802 18 18.921 18 17.8031V6M6 6H8M6 6H4M8 6H16M8 6C8 5.06812 8 4.60241 8.15224 4.23486C8.35523 3.74481 8.74432 3.35523 9.23438 3.15224C9.60192 3 10.0681 3 11 3H13C13.9319 3 14.3978 3 14.7654 3.15224C15.2554 3.35523 15.6447 3.74481 15.8477 4.23486C15.9999 4.6024 16 5.06812 16 6M16 6H18M18 6H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>';
+
+    // Save button
+    const task_action_save_el = document.createElement("button");
+    task_action_save_el.type = "button";
+    task_action_save_el.classList.add("save-btn");
+    task_action_save_el.setAttribute("id", "save-button")
+    task_action_save_el.innerText = "Save";
+    document.getElementById("buttons").appendChild(task_action_save_el);
 
 
 
@@ -142,8 +147,10 @@ window.addEventListener('load', () => {
     clearDate();
     document.getElementById("time").disabled = true;
     document.getElementById("clear-btn").disabled = true;
+    task_action_save_el.style.visibility="hidden";
     
-    // Status button
+    // ICON BUTTONS
+    // Status icon button
     task_action_checkbox_el.addEventListener("click", () => {
         if(task_action_checkbox_el.value == 0){
             task_action_checkbox_el.value = 1;
@@ -164,6 +171,130 @@ window.addEventListener('load', () => {
             task_action_important_el.value = 0;
         }
     });
+
+
+
+
+
+
+
+
+
+    // When edit icon button is pressed
+    task_action_edit_el.addEventListener("click", () => {
+      
+      // Activate container
+      activateNewTaskWindow();
+
+      // Show save button
+      task_action_save_el.style.visibility="visible";
+
+      // Hide add button
+      document.getElementById('add-button').style.visibility="hidden";
+
+      // set title
+      document.getElementById("task-name").value = task_title_el.innerText;
+
+      // set important value
+      if(task_action_important_el.value == 0){
+        document.getElementById("important").checked = false;
+      }
+      else{
+        document.getElementById("important").checked = true;
+      }
+
+      // Open 'description' container and set content value
+      document.getElementById("comment").checked = true;
+      document.getElementById("task-description").value = task_description_el.value;
+
+
+
+
+
+
+
+
+      // set date
+      if(date){
+        const parts = date.split("/");
+        selectedCalendarDay = parseInt(parts[0]);
+        selectedCalendarMonth = parseInt(parts[1]);
+        selectedCalendarYear = parseInt(parts[2]);
+
+        console.log(selectedCalendarDay);
+
+        document.querySelectorAll(".number-item")[selectedCalendarDay - 1].classList.add("calendar-select");
+
+        document.getElementById("clear-btn").disabled = false;
+        document.getElementById("time").disabled = false;
+      }
+
+      // set time
+      if(time){
+        document.getElementById("time").disabled = false;
+        document.getElementById("time-picker").value = time;
+      }
+    });
+
+
+
+
+
+
+
+
+    // Save button functionalities
+    task_action_save_el.addEventListener("click", () => {
+
+      // Hide save button
+      task_action_save_el.style.visibility="hidden";
+
+      // Change title name
+      task_title_el.innerText = input_title.value;
+
+      // Change important value
+      if(!document.getElementById('important').checked){
+        task_action_important_el.innerHTML = '<svg class="button" width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Interface / Star"><path id="Vector" d="M2.33496 10.3368C2.02171 10.0471 2.19187 9.52339 2.61557 9.47316L8.61914 8.76107C8.79182 8.74059 8.94181 8.63215 9.01465 8.47425L11.5469 2.98446C11.7256 2.59703 12.2764 2.59695 12.4551 2.98439L14.9873 8.47413C15.0601 8.63204 15.2092 8.74077 15.3818 8.76124L21.3857 9.47316C21.8094 9.52339 21.9791 10.0472 21.6659 10.3369L17.2278 14.4419C17.1001 14.56 17.0433 14.7357 17.0771 14.9063L18.255 20.8359C18.3382 21.2544 17.8928 21.5787 17.5205 21.3703L12.2451 18.4166C12.0934 18.3317 11.9091 18.3321 11.7573 18.417L6.48144 21.3695C6.10913 21.5779 5.66294 21.2544 5.74609 20.8359L6.92414 14.9066C6.95803 14.7361 6.90134 14.5599 6.77367 14.4419L2.33496 10.3368Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>';
+        task_action_important_el.value = 0;
+      }
+      else{
+          task_action_important_el.innerHTML = '<svg class="button" width="18px" height="18px" viewBox="0 0 24 24" fill="yellow" xmlns="http://www.w3.org/2000/svg"><g id="Interface / Star"><path id="Vector" d="M2.33496 10.3368C2.02171 10.0471 2.19187 9.52339 2.61557 9.47316L8.61914 8.76107C8.79182 8.74059 8.94181 8.63215 9.01465 8.47425L11.5469 2.98446C11.7256 2.59703 12.2764 2.59695 12.4551 2.98439L14.9873 8.47413C15.0601 8.63204 15.2092 8.74077 15.3818 8.76124L21.3857 9.47316C21.8094 9.52339 21.9791 10.0472 21.6659 10.3369L17.2278 14.4419C17.1001 14.56 17.0433 14.7357 17.0771 14.9063L18.255 20.8359C18.3382 21.2544 17.8928 21.5787 17.5205 21.3703L12.2451 18.4166C12.0934 18.3317 11.9091 18.3321 11.7573 18.417L6.48144 21.3695C6.10913 21.5779 5.66294 21.2544 5.74609 20.8359L6.92414 14.9066C6.95803 14.7361 6.90134 14.5599 6.77367 14.4419L2.33496 10.3368Z" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>';
+          task_action_important_el.value = 1;
+      }
+
+      // Change description value
+      task_description_el.value = input_description.value;
+
+      // Change date
+
+
+
+
+
+      // Clear
+      clearTaskName();
+      input_description.value = "";
+      document.getElementById('important').checked = false;
+      document.getElementById("comment").checked = false;
+
+      // Close edit window
+      activateNewTaskWindow();
+    })
+
+
+
+
+
+
+
+
+
+
+    // By pressing a cancel button, hide save button elements 
+    document.getElementById("cancel-button").addEventListener('click', () => {
+      task_action_save_el.style.visibility="hidden";
+      // console.log("hide");
+    })
         
     // Delete task and subtract 1 from task counter
     task_action_delete_el.addEventListener('click', () => {
@@ -178,6 +309,8 @@ window.addEventListener('load', () => {
     document.getElementById("inbox-counter").innerHTML = inbox_counter;
   })
 })
+
+
 
 /////////////////////////////////////////////////////////////////////////////
 //                            CALENDAR CONTROL                             //
@@ -250,6 +383,7 @@ function CalendarControl() {
         selectedCalendarMonth = calendar.getMonth() + 1;
         selectedCalendarYear = calendar.getFullYear();
         selectedDate = selectedCalendarDay + "/" + selectedCalendarMonth + "/" + selectedCalendarYear;
+        console.log(selectedDate);
 
         // activate clear button
         document.getElementById("clear-btn").disabled = false;
@@ -451,6 +585,9 @@ function CalendarControl() {
 // Button functions
 function newTaskButton(){
   activateNewTaskWindow();
+
+  // Swap add and save buttons visibility
+  document.getElementById('add-button').style.visibility="visible";
 }
   
 function cancelTaskButton(){
@@ -465,9 +602,14 @@ function cancelTaskButton(){
     document.getElementById("clear-btn").disabled = true;
 }
 
-function editTaskButton(){
-    activateNewTaskWindow();
-}
+// function cancelEditButton(){
+//   activateEditTaskWindow();
+// }
+
+// function editTaskButton(){
+  // activateEditTaskWindow();
+//   activateNewTaskWindow();
+// }
 
 function clearButton(){
   clearCalendarSelection();
@@ -526,17 +668,40 @@ function onlyOne(checkbox) {
   })
 }
 
+
+
 function activateAddButton(){
   if(!document.getElementById('task-name').value.length){
-      document.getElementById("add-new-task-button").disabled = true;        
+      document.getElementById("add-button").disabled = true;        
   }
   else{
-      document.getElementById("add-new-task-button").disabled = false;
+      document.getElementById("add-button").disabled = false;
   }           
+
+  if(!inbox_counter == 0){
+    document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton(); activateSaveButton()")
+  }
+  else{
+    document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton()")
+  }
 }
 
-// activateClearButton
-document.getElementById("clear-btn").disabled = true;
+function activateSaveButton(){
+  if(!document.getElementById('task-name').value.length){
+    document.getElementById("save-button").disabled = true;        
+  }
+  else{
+    document.getElementById("save-button").disabled = false;
+  }    
+}
+
+
+
+  
+
+
+
+
 
 
 function activateNewTaskWindow(){
@@ -546,19 +711,10 @@ function activateNewTaskWindow(){
 // activateClockIcon
 document.getElementById("time").disabled = true;
 
-// activateRepeatIcon
-document.getElementById("repeat").disabled = true;
+// activateClearButton
+document.getElementById("clear-btn").disabled = true;
 
 
-
-
-
-
-
-
-// function activateEditTaskWindow(){
-//     document.getElementById("edit-task").classList.toggle("active");
-// }
 
 
 

@@ -67,7 +67,6 @@
     <form class="new-task" id="new-task">
         <input type="checkbox" id="day" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)"> 
         <input type="checkbox" id="time" class="checkTime" name="newTaskCheckbox" onclick="onlyOne(this)">
-        <input type="checkbox" id="repeat" class="checkRepeat" name="newTaskCheckbox" onclick="onlyOne(this)">
         <input type="checkbox" id="comment" class="checkbox" name="newTaskCheckbox" onclick="onlyOne(this)">
         <input type="checkbox" id="important" class="checkImportant">
         
@@ -78,39 +77,25 @@
                             <ul id="new-task-icons" class="new-task-icons">
                                 <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
                                 <li><label for="time"><i class="fa-regular fa-clock"></i></label></li>
-                                <!-- <li><label for="repeat"><i class="fa-solid fa-repeat"></i></label></li> -->
                                 <li><label for="comment"><i class="fa-solid fa-message"></i></label></li>
                                 <li><label for="important"><i class="fa-solid fa-star"></i></label></li>
                             </ul>
                         <hr class="lower-divider">
 
                     <div class="window">
-                        <!-- Calendar view -->
                         <div class="calendar"></div>
-                            <button type="button" class="clear-btn" id="clear-btn" onclick="clearButton()">Clear</button>
-                        
-                        <!-- Description view -->
                         <textarea class="comment-area" placeholder="Description" name="" id="task-description" cols="40" rows="10"></textarea>
-                        
-                        <!-- Time view -->
                         <input type="time" class="time-picker" id="time-picker">
-                        
                     </div>
 
-                    <div class="buttons">
-                        <button type="button" class="cancel-btn" onclick="cancelTaskButton()" >Cancel</button>
-                        <button type="submit" class="add-btn" id="add-new-task-button" disabled>Add</button>
+                    <div class="buttons" id="buttons">
+                        <button type="button" class="clear-btn" id="clear-btn" onclick="clearButton()">Clear</button>
+                        <button type="button" class="cancel-btn" id="cancel-button" onclick="cancelTaskButton()">Cancel</button>
+                        <button type="submit" class="add-btn" id="add-button" disabled>Add</button>
+                        <!-- <button type="button" class="save-btn" id="save-button" disabled>Save</button> -->
                     </div>
                 </section>
     </form>
-
-    <!-- <form class="edit-task" id="edit-task">
-        <div class="overlay" id="overlay" onclick="cancelEditButton()"></div>
-        <section class="edit-task-container"></section>
-    </form> -->
-
-    <footer></footer>
-
     <script src="main.js"></script>
 </body>
 </html>
