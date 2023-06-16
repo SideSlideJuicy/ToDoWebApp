@@ -3,6 +3,13 @@
 //                            IMPORTANT VARIABLES                          //
 /////////////////////////////////////////////////////////////////////////////
 
+// new task window
+jep = 0;
+console.log(jep);
+
+// add button
+addButton = 0;
+
 // Inbox task counter
 var inbox_counter = 0;
 
@@ -30,8 +37,7 @@ window.addEventListener('load', () => {
   
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-
+    addButton = 0;
     
     const title = input_title.value;
     const date = selectedDate;
@@ -152,6 +158,9 @@ window.addEventListener('load', () => {
     document.getElementById("time").disabled = true;
     document.getElementById("clear-btn").disabled = true;
     task_action_save_el.style.visibility="hidden";
+
+    jep = 0;
+    console.log(jep);
     
 
 
@@ -181,6 +190,9 @@ window.addEventListener('load', () => {
     // When edit icon button is pressed
     task_action_edit_el.addEventListener("click", () => {
       
+      // Disable user submit a new task with enter key
+      addButton = 1;
+
       // Activate container
       activateNewTaskWindow();
 
@@ -189,6 +201,8 @@ window.addEventListener('load', () => {
 
       // Hide add button
       document.getElementById('add-button').style.visibility="hidden";
+
+
 
       // set title
       document.getElementById("task-name").value = task_title_el.innerText;
@@ -230,6 +244,9 @@ window.addEventListener('load', () => {
 
         document.querySelector('#time-picker').value = task_time_el.innerText;
       }
+
+      jep = 1;
+      console.log(jep);
     });
 
 
@@ -318,6 +335,9 @@ window.addEventListener('load', () => {
           task_time_el.innerText = "";
           task_time_icon_el.innerHTML = "";
         }
+
+        jep = 0;
+        console.log(jep);
       }
         
 
@@ -640,8 +660,14 @@ function CalendarControl() {
 function newTaskButton(){
   activateNewTaskWindow();
 
+  jep = 1;
+  console.log(jep);
+
+  addButton = 0;
+
   // Show add button
   document.getElementById('add-button').style.visibility="visible";
+  
 
   // Focus title name
   document.getElementById("task-name").focus();
@@ -657,6 +683,9 @@ function cancelTaskButton(){
     clearDate();
     document.getElementById("time").disabled = true;
     document.getElementById("clear-btn").disabled = true;
+
+    jep = 0;
+    console.log(jep);
 }
 
 function clearButton(){
@@ -724,19 +753,22 @@ function onlyOne(checkbox) {
   activateClearButton();
 }
 
-function activateAddButton(){
-  if(!document.getElementById('task-name').value.length){
-      document.getElementById("add-button").disabled = true;        
-  }
-  else{
-      document.getElementById("add-button").disabled = false;
-  }           
 
-  if(!inbox_counter == 0){
-    document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton(); activateSaveButton()")
-  }
-  else{
-    document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton()")
+function activateAddButton(){
+  if(addButton == 0){
+    if(!document.getElementById('task-name').value.length){
+        document.getElementById("add-button").disabled = true;        
+    }
+    else{
+        document.getElementById("add-button").disabled = false;
+    }           
+
+    if(!inbox_counter == 0){
+      document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton(); activateSaveButton()")
+    }
+    else{
+      document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton()")
+    }
   }
 }
 
@@ -786,6 +818,8 @@ function checkTime(){
 
 
 
+
+
 // Task section visibility
 var inbox_tasks = document.getElementById('inbox-tasks');
 var inbox_display = 0;
@@ -806,6 +840,39 @@ function inbox()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Key handlers
+const KEY_HANDLERS = {
+  KeyQ: () => newTaskButton() + clearTaskName(),
+};
+
+document.addEventListener('keyup', (e) => {
+  e.preventDefault();
+
+  if(jep == 0){
+    const handler = KEY_HANDLERS[e.code];
+  
+    if (handler) {
+      handler();
+      return;
+    }
+  
+    // console.log('Pressed a key without a handler.')
+  }
+
+});
 
 
 

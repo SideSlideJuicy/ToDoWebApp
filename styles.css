@@ -275,6 +275,7 @@ main{
     background: white;
     cursor: default;
     user-select: none;
+    z-index: 1;
 }
 
     .inbox-section nav p{
@@ -323,7 +324,7 @@ main{
 /* MAIN PAGE - INBOX SECTION - NEW TASK */
 .inbox-section .task{            
     width: calc(70% - 58px);
-    height: 55px;
+    height: 57px;
     padding: 2px;
     margin-top: 10px;
     margin-left: calc(15% + 34px);
@@ -339,34 +340,53 @@ main{
         cursor: pointer;
         color: #313131;
         background-color: transparent;
-        width: calc(100% - 265px);
+        width: calc(100% - 175px);
         padding: 5px;
         margin: 2px 0px 0px 2px;
         font-weight:900;
         font-size: 15px;
-        position: fixed;
+        position:relative;
         display: block;
     }
         .task .date{
-            position: fixed;
-            display: inline-flex;
+            position: absolute;
+            display: inline-block;
             padding: 5px;
             width: 95px;
             height: 15px;
-            margin: 28px 0px 0px 0px;
-            align-items: center;
+            margin: 0px 0px 0px 2px;
             font-size: 12px;
+            border-radius: 0px;
+
         }   
+
+        .task .date p{
+            display: inline-flex;
+            margin: -20px 0px 0px 0px;
+        }
+
+        .task .date i{
+            display: inline-flex;
+        }
+
         .task .time{
-            position: fixed;
-            display: inline-flex;
+            position: absolute;
+            display: inline-block;
             padding: 5px;
             width: 95px;
             height: 15px;
-            margin: 28px 0px 0px 87px;
-            align-items: center;
+            margin: 0px 0px 0px 95px;
             font-size: 12px;
         }   
+
+        .task .time p{
+            display: inline-flex;
+            margin: -20px 0px 0px 0px;
+        }
+
+        .task .time i{
+            display: inline-flex;
+        }
         
         .task .fa-regular.fa-calendar-days{
             margin: 0px 5px 0px 0px;
@@ -381,7 +401,7 @@ main{
                 position:absolute;
                 display: inline-flex;
                 right: calc(15% + 25px);
-                margin-top: 4px;
+                margin-top: -25px;
                 opacity: 0;
                 transition:visibility 0.1s linear,opacity 0.1s linear;
                 width: 150px;
