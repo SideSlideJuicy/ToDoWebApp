@@ -1,13 +1,12 @@
+/* MAIN */
 *{
     font-family: 'Barlow', sans-serif;
 }
-
 body{
     margin: 0;
     height: 100%;
     overflow: hidden
 }
-
 .page-header{
     top: 0;
     z-index: 2;
@@ -25,61 +24,57 @@ body{
     background: #22242a;
     justify-content: space-between;
 }
+.top-nav ul.items-left{
+    float: left;
+    margin-left: -30px;
+}
+.top-nav ul.items-right{
+    float: right;
+}
+.top-nav ul li{
+    display: inline-block;
+    cursor: pointer;
+}
+.top-nav ul li a{
+    text-decoration: none;
+    padding: 8px;
+    color: white;
+    border-radius: 4px;
+}
+.top-nav ul li:hover a{
+    background: rgb(92, 92, 92);
+}
+.user-pic{
+    cursor: pointer;
+    float: right;
+    width: 36px;
+    border-radius: 50%;
+    margin: -10px 10px 0px 10px;
+}
 
-    .top-nav ul.items-left{
-        float: left;
-        margin-left: -30px;
-    }
-
-    .top-nav ul.items-right{
-        float: right;
-    }
-        .top-nav ul li{
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .top-nav ul li:hover a{
-            background: rgb(92, 92, 92);
-        }
-
-        .top-nav ul li:hover a .fa-solid.fa-bars{
-            color: #19b3d3;
-        }
-
-            .top-nav ul li a{
-                text-decoration: none;
-                padding: 8px;
-                color: white;
-                border-radius: 4px;
-            }
-
-                .user-pic{
-                    cursor: pointer;
-                    float: right;
-                    width: 36px;
-                    border-radius: 50%;
-                    margin: -10px 10px 0px 10px;
-                }
-
-                    /* BARS BTN */
-                    label #menu_btn{
-                        cursor: pointer;
-                        transition: 0.3s;
-                    }
-
-                        #bars-btn-checkbox:checked ~ aside {
-                            left: 0;
-                        }
-
-                            #bars-btn-checkbox:checked ~ main {
-                                margin: 0px 0px 20px 170px;
-                                width: calc(100% - 170px);
-                            }
-
-                                #bars-btn-checkbox:checked ~ * .fa-solid.fa-bars{
-                                    color: #19b3d3;
-                                }
+/* TOP NAV - BARS BUTTON */
+.fa-solid.fa-bars{
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: -10px;
+}
+.fa-solid.fa-bars:hover{
+    background: rgb(92, 92, 92);
+    color: #19b3d3;
+}
+#bars-button:checked ~ aside {
+    left: 0;
+}
+#bars-button:checked ~ main {
+    margin: 0px 0px 20px 170px;
+    width: calc(100% - 170px);
+}
+#bars-button:checked ~ * .fa-solid.fa-bars{
+    color: #19b3d3;
+}
 
 /* SIDE NAV BAR */
 aside{
@@ -109,7 +104,7 @@ aside{
 /* MAIN CONTENT & HEADER */
 main{
     position: absolute;
-    margin: 0px 0px 0px 20px;
+    margin-left: 20px;
     width: calc(100% - 20px);
     height: 94vh;
     transition: all 0.5s ease-in-out;
@@ -121,7 +116,7 @@ main{
     .main-header{
         z-index: 1;
         height: 70px;
-        width: calc(100% - 20px);
+        width: calc(70% - 20px);
         background: rgb(207, 233, 242);
         border-top: 20px solid white;
         top: 0px;
@@ -129,6 +124,8 @@ main{
         position: sticky;
         display: flex;
         align-items: center;
+        margin-left:15%;
+        border-right: 20px solid white;
     }
 
         .main-header .items-left{
@@ -267,7 +264,8 @@ main{
 /* MAIN PAGE - TASK SECTION - NAV */
 .inbox-section nav{
     margin-top: 0px;
-    width: 100%;
+    margin-left: 15%;
+    width: 70%;
     height: 37px;
     border-top: 10px solid white;
     top: 90px;
@@ -324,10 +322,11 @@ main{
 
 /* MAIN PAGE - INBOX SECTION - NEW TASK */
 .inbox-section .task{            
-    width: calc(100% - 58px);
+    width: calc(70% - 58px);
     height: 55px;
     padding: 2px;
-    margin: 10px 0px 0px 34px;
+    margin-top: 10px;
+    margin-left: calc(15% + 34px);
     cursor: pointer;
     transition: 0.5s;
     border-radius: 5px;
@@ -344,7 +343,7 @@ main{
         padding: 5px;
         margin: 2px 0px 0px 2px;
         font-weight:900;
-        font-size: 13px;
+        font-size: 15px;
         position: fixed;
         display: block;
     }
@@ -354,7 +353,7 @@ main{
             padding: 5px;
             width: 95px;
             height: 15px;
-            margin: 28px 0px 0px 18px;
+            margin: 28px 0px 0px 0px;
             align-items: center;
             font-size: 12px;
         }   
@@ -364,7 +363,7 @@ main{
             padding: 5px;
             width: 95px;
             height: 15px;
-            margin: 28px 0px 0px 108px;
+            margin: 28px 0px 0px 87px;
             align-items: center;
             font-size: 12px;
         }   
@@ -378,34 +377,21 @@ main{
         }
 
             .action-buttons{
-                /* font-size: 15px; */
                 visibility: hidden;
                 position:absolute;
                 display: inline-flex;
-                /* right: 0px; */
-                /* justify-content: center; */
-                right: 28px;
+                right: calc(15% + 25px);
                 margin-top: 4px;
                 opacity: 0;
                 transition:visibility 0.1s linear,opacity 0.1s linear;
                 width: 150px;
-
-
-
-                /* align-items: center; */
-                /* vertical-align: center; */
-                /* vertical-align: middle; */
                 font-size: 13px;
                 padding: 3px;
                 color: rgb(185, 185, 185);
-                /* background: lightblue; */
-                /* position: relative; left: -20px; */
             }
             
                 .action-buttons i{
                     border-radius: 5px;
-                    /* transition: 1s; */
-                    /* background:lightgrey; */
                     padding: 10px;
 
                     cursor: pointer;
@@ -415,7 +401,6 @@ main{
                 .action-buttons i:hover{
                     transition: 0.5s;
                     background:lightgrey;
-                    /* padding: 12px; */
                 }
 
                 .action-buttons .button{
@@ -429,8 +414,6 @@ main{
 
                 .action-buttons .status-button{
                     transform: scale(0.7);
-                    /* opacity: 0; */
-                    /* margin-bottom:2px; */
                     border: 2px solid black;
                     border-radius: 5px;
                     transition: 0.2s;
@@ -745,6 +728,13 @@ main{
                 visibility: visible;
             }
 
+            #time:checked ~ .new-task-content .clear-btn{
+                /* visibility: visible; */
+                
+                /* transition: opacity 1s; */
+                animation: opacity 0.26s;
+                opacity: 100;
+            }
 
             /* input[type="time"] {
                 background: #ccc;
@@ -826,8 +816,11 @@ main{
 /* STATUS ICON BUTTON */
 .status-icon-btn{
     /* border: 2px solid black; */
+
+
     width: 20px;
-    height: 20px;
+    /* height: 20px; */
+    /* background: blue; */
 }
 
 input[id="status-checkbox"]{
@@ -850,6 +843,7 @@ input[id="status-checkbox"]{
     justify-content: space-around;
     cursor: pointer;
     transition: all 0.3s;
+    /* background: lightblue; */
 }
 
 input[id="status-checkbox"]:after{
@@ -863,15 +857,18 @@ input[id="status-checkbox"]:after{
 }
 
 input[id="status-checkbox"]:hover{
-    /* margin-top: 0px; */
-    /* margin-left: -2px; */
     position: fixed;
     margin: 0px 0px 0px -2px;
     width: 20px;
     height: 20px;
-    /* transition: all 0.3s; */
     border: 2px solid black;
 }
+
+.action-buttons i:hover ~ input[id="status-checkbox"] {
+    background: blue;
+}
+
+
 input[id="status-checkbox"]:hover:after{
     font-size: 15px;
     /* transition: all 0.3s; */

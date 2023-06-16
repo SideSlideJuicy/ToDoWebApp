@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <input type="checkbox" id="bars-btn-checkbox" class="checkbox">
+    <input type="checkbox" id="bars-button" class="checkbox">
         <nav class="top-nav">
             <ul class="items-left">
-                <li><a href="#"><label for="bars-btn-checkbox"><i class="fa-solid fa-bars" id="menu_btn"></i></label></a></li>
+                <li><label for="bars-button"><i class="fa-solid fa-bars"></i></label></li>
             </ul>
             <ul class="items-right">
                 <li><a onclick="newTaskButton()"><i class="fa-solid fa-plus"></i></a></li>
@@ -72,7 +72,7 @@
         
             <div class="overlay" id="overlay" onclick="cancelTaskButton()"></div>
                 <section class="new-task-content">
-                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="activateAddButton()">
+                    <input type="text" class="task-name" id="task-name" placeholder="Task name" onkeyup="activateAddButton()" autocomplete="off">
                         <hr class="upper-divider">
                             <ul id="new-task-icons" class="new-task-icons">
                                 <li><label for="day"><i class="fa-regular fa-calendar"></i></label></li>
@@ -84,15 +84,14 @@
 
                     <div class="window">
                         <div class="calendar"></div>
-                        <textarea class="comment-area" placeholder="Description" name="" id="task-description" cols="40" rows="10"></textarea>
-                        <input type="time" class="time-picker" id="time-picker">
+                        <textarea class="comment-area" placeholder="Description" name="" id="task-description" cols="40" rows="10" autocomplete="off"></textarea>
+                        <input type="time" class="time-picker" id="time-picker" onchange="checkTime()">
                     </div>
 
                     <div class="buttons" id="buttons">
                         <button type="button" class="clear-btn" id="clear-btn" onclick="clearButton()">Clear</button>
                         <button type="button" class="cancel-btn" id="cancel-button" onclick="cancelTaskButton()">Cancel</button>
                         <button type="submit" class="add-btn" id="add-button" disabled>Add</button>
-                        <!-- <button type="button" class="save-btn" id="save-button" disabled>Save</button> -->
                     </div>
                 </section>
     </form>

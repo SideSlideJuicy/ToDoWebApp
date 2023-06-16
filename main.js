@@ -115,7 +115,12 @@ window.addEventListener('load', () => {
     task_date_icon_el.classList.add("date");
     task_el.appendChild(task_date_icon_el);
     const task_date_el = document.createElement("p");
-    
+
+    // Time
+    const task_time_icon_el = document.createElement("div");
+    task_time_icon_el.classList.add("time");
+    task_el.appendChild(task_time_icon_el);
+    const task_time_el = document.createElement("p");
 
     if (date){
       // Set icon for date
@@ -124,16 +129,13 @@ window.addEventListener('load', () => {
       // Set date text
       task_date_el.innerText = date;
       task_date_icon_el.appendChild(task_date_el);
-      console.log(date);
 
       // Time
       if(time){
-        const task_time_icon_el = document.createElement("div");
-        task_time_icon_el.classList.add("time");
+        // Set icon for time
         task_time_icon_el.innerHTML = '<i class="fa-regular fa-clock"</i>';
-        task_el.appendChild(task_time_icon_el);
 
-        const task_time_el = document.createElement("p");
+        // Set time text
         task_time_el.innerText = time;
         task_time_icon_el.appendChild(task_time_el);
       }
@@ -151,7 +153,9 @@ window.addEventListener('load', () => {
     document.getElementById("clear-btn").disabled = true;
     task_action_save_el.style.visibility="hidden";
     
-    // ICON BUTTONS
+
+
+    // BUTTONS
     // Status icon button
     task_action_checkbox_el.addEventListener("click", () => {
         if(task_action_checkbox_el.value == 0){
@@ -173,14 +177,6 @@ window.addEventListener('load', () => {
             task_action_important_el.value = 0;
         }
     });
-
-
-
-
-
-
-
-
 
     // When edit icon button is pressed
     task_action_edit_el.addEventListener("click", () => {
@@ -209,15 +205,11 @@ window.addEventListener('load', () => {
       document.getElementById("comment").checked = true;
       document.getElementById("task-description").value = task_description_el.value;
 
-
-
-      selectedDate = task_date_el.innerText;
-
-
       // set date
+      selectedDate = task_date_el.innerText;
+      selectedTime = task_time_el.innerText;
+
       if(selectedDate){
-        console.log("selectedDate is: " + selectedDate);
-        // Fetch calendar selection by splitting selectedDate in parts
         const parts = selectedDate.split("/");
         selectedCalendarDay = parseInt(parts[0]);
         selectedCalendarMonth = parseInt(parts[1]);
@@ -230,23 +222,13 @@ window.addEventListener('load', () => {
         document.getElementById("clear-btn").disabled = false;
         document.getElementById("time").disabled = false;
       }
-      else{
-        console.log("there is no selectedDate");
-      }
-
-
-
-
-
-
-
-
-
 
       // set time
-      if(time){
+      if(task_time_el.innerText){
         document.getElementById("time").disabled = false;
         document.getElementById("time-picker").value = time;
+
+        document.querySelector('#time-picker').value = task_time_el.innerText;
       }
     });
 
@@ -281,47 +263,62 @@ window.addEventListener('load', () => {
 
       // Change date
       if(!task_date_el.innerText){
-        console.log("task_date_el.innerText: FALSE");
-        
         // If selectedDate is true, set time stamp and clock icon
         if(selectedDate){
-          console.log("selectedDate: TRUE")
           task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
           task_date_el.innerText = selectedDate;
           task_date_icon_el.appendChild(task_date_el);
-          console.log(selectedDate);
         }
 
-        // If selectedDate is not selected, continue without adding values
+        // If selectedDate is false, continue without adding values
         if(!selectedDate){
-          console.log("selectedDate: FALSE")
           selectedDate = "";
           task_date_el.innerText = "";
           task_date_icon_el.innerHTML = "";
-          // clearCalendarSelection();
         }
       }
       if(task_date_el.innerText){
-        console.log("task_date_el.innerText: TRUE");
-
-        // 
+        // If selectedDate is true, set time stamp and clock icon
         if(selectedDate){
-          console.log("selectedDate: TRUE")
           task_date_icon_el.innerHTML = '<i class="fa-regular fa-calendar-days"</i>';
           task_date_el.innerText = selectedDate;
           task_date_icon_el.appendChild(task_date_el);
         }
+        // If selectedDate is false, continue without adding values
         if(!selectedDate){
-          console.log("selectedDate: FALSE")
           selectedDate = "";
           task_date_el.innerText = "";
           task_date_icon_el.innerHTML = "";
-          // clearCalendarSelection();
-          console.log(selectedDate);
         }
       }
 
+      // Time
+      if(!task_time_el.innerText){
+        // If time is selected
+        if(document.querySelector('#time-picker').value){
+          task_time_icon_el.innerHTML = '<i class="fa-regular fa-clock"</i>';
+          task_time_el.innerText = document.querySelector('#time-picker').value;
+          task_time_icon_el.appendChild(task_time_el);
+        }
 
+        // If time is not selected, continue without adding values
+        if(!document.querySelector('#time-picker').value){
+          task_time_el.innerText = "";
+          task_time_icon_el.innerHTML = "";
+        }
+      }
+
+      if(task_time_el.innerText){
+        if(document.querySelector('#time-picker').value){
+          task_time_icon_el.innerHTML = '<i class="fa-regular fa-clock"</i>';
+          task_time_el.innerText = document.querySelector('#time-picker').value;
+          task_time_icon_el.appendChild(task_time_el);
+        }
+        if(!document.querySelector('#time-picker').value){
+          task_time_el.innerText = "";
+          task_time_icon_el.innerHTML = "";
+        }
+      }
         
 
 
@@ -440,10 +437,9 @@ function CalendarControl() {
         selectedCalendarMonth = calendar.getMonth() + 1;
         selectedCalendarYear = calendar.getFullYear();
         selectedDate = selectedCalendarDay + "/" + selectedCalendarMonth + "/" + selectedCalendarYear;
-        console.log(selectedDate);
 
-        // activate clear button
-        document.getElementById("clear-btn").disabled = false;
+        // activate clear button in date selection page
+        activateClearButton();
 
         // Activate clock icon
         document.getElementById("time").disabled = false;
@@ -639,14 +635,18 @@ function CalendarControl() {
 //                            NEW TASK FUNCTIONS                           //
 /////////////////////////////////////////////////////////////////////////////
 
+
 // Button functions
 function newTaskButton(){
   activateNewTaskWindow();
 
-  // Hide add button
+  // Show add button
   document.getElementById('add-button').style.visibility="visible";
+
+  // Focus title name
+  document.getElementById("task-name").focus();
 }
-  
+
 function cancelTaskButton(){
     clearCalendarSelection();
     clearCheckboxes();
@@ -659,21 +659,18 @@ function cancelTaskButton(){
     document.getElementById("clear-btn").disabled = true;
 }
 
-// function cancelEditButton(){
-//   activateEditTaskWindow();
-// }
-
-// function editTaskButton(){
-  // activateEditTaskWindow();
-//   activateNewTaskWindow();
-// }
-
 function clearButton(){
-  clearCalendarSelection();
-  document.getElementById("time").disabled = true;
   document.getElementById("clear-btn").disabled = true;
-  clearDate();
-  clearTaskTime();
+
+  if(document.getElementById("day").checked){
+    clearCalendarSelection();
+    clearDate();
+    clearTaskTime();
+    document.getElementById("time").disabled = true;
+  }
+  if(document.getElementById("time").checked){
+    clearTaskTime();
+  }
 }
 
 
@@ -723,9 +720,9 @@ function onlyOne(checkbox) {
   checkboxes.forEach((item) => {
       if (item !== checkbox) item.checked = false
   })
+
+  activateClearButton();
 }
-
-
 
 function activateAddButton(){
   if(!document.getElementById('task-name').value.length){
@@ -752,15 +749,6 @@ function activateSaveButton(){
   }    
 }
 
-
-
-  
-
-
-
-
-
-
 function activateNewTaskWindow(){
   document.getElementById("new-task").classList.toggle("active");
 }
@@ -771,10 +759,29 @@ document.getElementById("time").disabled = true;
 // activateClearButton
 document.getElementById("clear-btn").disabled = true;
 
+function activateClearButton(){
+  if(document.getElementById("day").checked){
+    if(selectedDate){
+      document.getElementById("clear-btn").disabled = false;
+    }
+    else{
+      document.getElementById("clear-btn").disabled = true;
+    }
+  }
 
+  if(document.getElementById("time").checked){
+    if(document.querySelector('#time-picker').value){
+      document.getElementById("clear-btn").disabled = false;
+    }
+    else{
+      document.getElementById("clear-btn").disabled = true;
+    }
+  }
+}
 
-
-
+function checkTime(){
+  activateClearButton();
+}
 
 
 
