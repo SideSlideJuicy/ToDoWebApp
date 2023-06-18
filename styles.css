@@ -163,6 +163,7 @@ main{
                     display: fixed;
                     right: 5px;
                     bottom: 5px;
+                    z-index: 5;
                 }
 
                     .dropdown * {
@@ -275,7 +276,7 @@ main{
     background: white;
     cursor: default;
     user-select: none;
-    z-index: 1;
+    z-index: 0;
 }
 
     .inbox-section nav p{
@@ -357,7 +358,6 @@ main{
             margin: 0px 0px 0px 2px;
             font-size: 12px;
             border-radius: 0px;
-
         }   
 
         .task .date p{

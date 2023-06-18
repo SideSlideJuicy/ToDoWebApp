@@ -3,9 +3,13 @@
 //                            IMPORTANT VARIABLES                          //
 /////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
 // new task window
 jep = 0;
-console.log(jep);
+// console.log(jep);
 
 // add button
 addButton = 0;
@@ -39,6 +43,10 @@ window.addEventListener('load', () => {
     e.preventDefault();
     addButton = 0;
     
+
+
+
+
     const title = input_title.value;
     const date = selectedDate;
     const time = input_time.value;
@@ -160,7 +168,7 @@ window.addEventListener('load', () => {
     task_action_save_el.style.visibility="hidden";
 
     jep = 0;
-    console.log(jep);
+    // console.log(jep);
     
 
 
@@ -187,6 +195,9 @@ window.addEventListener('load', () => {
         }
     });
 
+
+
+
     // When edit icon button is pressed
     task_action_edit_el.addEventListener("click", () => {
       
@@ -195,6 +206,7 @@ window.addEventListener('load', () => {
 
       // Activate container
       activateNewTaskWindow();
+
 
       // Show save button
       task_action_save_el.style.visibility="visible";
@@ -246,15 +258,19 @@ window.addEventListener('load', () => {
       }
 
       jep = 1;
-      console.log(jep);
+      // console.log(jep);
     });
 
+    // input.addEventListener("change", activateSaveButton);
 
-
-
-
-
-
+    // function activateSaveButton(){
+    //   if(input.value == ""){
+    //     task_action_save_el.disabled = true;
+    //   }
+    //   else{
+    //     task_action_save_el.disabled = true;
+    //   }
+    // }
 
     // Save button functionalities
     task_action_save_el.addEventListener("click", () => {
@@ -337,14 +353,9 @@ window.addEventListener('load', () => {
         }
 
         jep = 0;
-        console.log(jep);
+        // console.log(jep);
       }
         
-
-
-
-
-
       // Clear
       clearTaskName();
       input_description.value = "";
@@ -354,8 +365,6 @@ window.addEventListener('load', () => {
       // Run clearing functions
       cancelTaskButton();
     })
-
-
 
 
 
@@ -661,7 +670,7 @@ function newTaskButton(){
   activateNewTaskWindow();
 
   jep = 1;
-  console.log(jep);
+  // console.log(jep);
 
   addButton = 0;
 
@@ -685,7 +694,7 @@ function cancelTaskButton(){
     document.getElementById("clear-btn").disabled = true;
 
     jep = 0;
-    console.log(jep);
+    // console.log(jep);
 }
 
 function clearButton(){
@@ -762,24 +771,9 @@ function activateAddButton(){
     else{
         document.getElementById("add-button").disabled = false;
     }           
-
-    if(!inbox_counter == 0){
-      document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton(); activateSaveButton()")
-    }
-    else{
-      document.getElementById("task-name").setAttribute("onkeyup", "activateAddButton()")
-    }
   }
 }
 
-function activateSaveButton(){
-  if(!document.getElementById('task-name').value.length){
-    document.getElementById("save-button").disabled = true;        
-  }
-  else{
-    document.getElementById("save-button").disabled = false;
-  }    
-}
 
 function activateNewTaskWindow(){
   document.getElementById("new-task").classList.toggle("active");
@@ -841,7 +835,27 @@ function inbox()
 
 
 
+function activateSaveButton(){
+  if(inbox_counter > 0){
+    if(!document.getElementById("task-name").value.length){
+      const buttons = document.querySelectorAll('[id=save-button]');
 
+      for (var i = 0; i < buttons.length; i++) {
+        // console.log('buttons: ', buttons[i]);
+
+        buttons[i].disabled = true;
+      }
+    }
+    else{
+      const buttons = document.querySelectorAll('[id=save-button]');
+
+      for (var i = 0; i < buttons.length; i++) {
+        // console.log('buttons: ', buttons[i]);
+        buttons[i].disabled = false;
+      }
+    }
+  }
+}
 
 
 
