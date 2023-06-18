@@ -208,6 +208,14 @@ window.addEventListener('load', () => {
       activateNewTaskWindow();
 
 
+      // Activate save button
+      const buttons = document.querySelectorAll('[id=save-button]');
+
+      for (var i = 0; i < buttons.length; i++) {
+        // console.log('buttons: ', buttons[i]);
+        buttons[i].disabled = false;
+      } 
+
       // Show save button
       task_action_save_el.style.visibility="visible";
 
