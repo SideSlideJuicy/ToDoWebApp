@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -37,16 +38,14 @@
                 <h1>Tasks</h1>
             </div>
 
-            <div class="dropdown">
-                <div class="select">
-                    <span class="selected">due time</span>
-                    <div class="caret"></div>
+            <div class="sorting-dropdown">
+                <button class="btn" id="btn"></button>
+              
+                <div class="dropdown" id="dropdown">
+                  <a href="#" onclick="sortByName()" id="name">Name</a>
+                  <a href="#" onclick="sortByDueTime()" id="due">Due time</a>
                 </div>
-                <ul class="menu">
-                    <li class="active">due time</li>
-                    <li>title name</li>
-                </ul>
-            </div>
+              </div>
         </header>
 
         <section class="inbox-section">
@@ -58,9 +57,9 @@
                     <hr>
                 </nav>
 
-            <div id="inbox-tasks" class="inbox-tasks">
+            <ol id="task-list">
                 <!-- New tasks here -->
-            </div>
+            </ol>
         </section>
     </main>
 
