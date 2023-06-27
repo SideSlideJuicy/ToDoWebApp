@@ -1,4 +1,23 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////
 //                            IMPORTANT VARIABLES                          //
 /////////////////////////////////////////////////////////////////////////////
@@ -1057,18 +1076,14 @@ if(sorting == "time"){
 
 
 function sortByName(){
-  // console.log("sort by name");
-
-
   var list, i, switching, shouldSwitch;
-
   list = document.getElementById("task-list")
-
   switching = true;
 
   while(switching){
     switching = false;
     b = list.getElementsByTagName('li');
+
     for(i=0; i<(b.length - 1); i++){
       shouldSwitch=false;
       if(b[i].innerHTML.toLowerCase() > b[i+1].innerHTML.toLowerCase()){
@@ -1084,6 +1099,67 @@ function sortByName(){
 }
 
 function sortByDueTime(){
-  // console.log("sort by due time");
+  // var list, i, switching, shouldSwitch;
+  // list = document.getElementById("task-list")
+  // switching = true;
+
+  // while(switching){
+  //   switching = false;
+  //   b = list.getElementsByTagName('li');
+    
+  //   for(i=0; i<(b.length - 1); i++){
+  //     shouldSwitch=false;
+  //     if(b[i].innerHTML.toLowerCase() > b[i+1].innerHTML.toLowerCase()){
+  //       shouldSwitch=true;
+  //       break;
+  //     }
+  //   }
+  //   if(shouldSwitch){
+  //     b[i].parentNode.insertBefore(b[i+1], b[i]);
+  //     switching=true;
+  //   }
+  // }
 }
 
+
+
+
+
+
+
+
+document.getElementById('add-task-bgrnd').style.display = 'none';
+
+// popups
+var e = document.getElementById('newTask');
+e.onmouseover = function() {
+  document.getElementById('add-task-bgrnd').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('add-task-bgrnd').style.display = 'none';
+}
+
+
+
+
+
+e1 = document.getElementById('new-task-bgrnd');
+
+
+var delay = function (elem, callback) {
+  var timeout = null;
+  elem.onmouseover = function() {
+      // Set timeout to be a timer which will invoke callback after 1s
+      timeout = setTimeout(callback, 1000);
+  };
+
+  elem.onmouseout = function() {
+      // Clear any timers set to timeout
+      clearTimeout(timeout);
+  }
+};
+
+
+delay(e1, function() {
+  alert("Fired");
+});

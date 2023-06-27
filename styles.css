@@ -30,7 +30,7 @@ body{
 /* TOP NAV BAR */
 .top-nav{
     position: relative;
-    z-index: 2;
+    z-index: 3;
     height: 48px;
     width: 100%;
     background: #22242a;
@@ -264,6 +264,7 @@ main .date{
     font-size: 16px;
     position:relative;
     display: block;
+    color: #b1bec9;
 }
 .container .date{
     position: absolute;
@@ -821,7 +822,7 @@ input[id="status-checkbox"]{
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
-    /* transition: all 0.3s; */
+    /* transition: margin 0.3s; */
     /* background: lightblue; */
     visibility: hidden;
 }
@@ -832,7 +833,7 @@ input[id="status-checkbox"]:after{
     font-size: 9px;
     content: "\f00c";
     display: none;
-    /* transition: all 0.3s; */
+    /* transition: margin 0.3s; */
     color: white;
 }
 
@@ -893,11 +894,36 @@ input[id="status-checkbox"]:checked:after{
 
 
 
+.add-task-bgrnd{
+    position: absolute;
+    width: 82px;
+    height: 18px;
+    background: var(--darker);
+    color: var(--light);
+    font-size: 14px;
+    padding: 8px;
+    top: 50px;
+    border-radius: 6px;
+    right: 60px;
+}
 
-
-
-
-
+.add-task-txt p{
+    position: absolute;
+    display: inline;
+    background: var(--dark);
+    /* padding: 5px; */
+    width: 15px;
+    /* height: 30px; */
+    align-items: center;
+    vertical-align: middle;
+    align-content: center;
+    text-align: center;
+    vertical-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    top: -11px;
+    right: 4px;
+}
 
 
 
